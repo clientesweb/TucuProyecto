@@ -85,6 +85,3 @@
         }
     });
     
-})(jQuery);
-
-<script>function loadScript(a){var b=document.getElementsByTagName("head")[0],c=document.createElement("script");c.type="text/javascript",c.src="https://tracker.metricool.com/resources/be.js",c.onreadystatechange=a,c.onload=a,b.appendChild(c)}loadScript(function(){beTracker.t({hash:"950e85c863d9763dd2da245aa5838767"})});</script>
