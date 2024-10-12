@@ -33,14 +33,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const servicesGrid = document.getElementById('servicesGrid');
     services.forEach((service, index) => {
         const serviceElement = document.createElement('div');
-        serviceElement.className = 'bg-primary text-custom p-6 rounded-lg text-center';
+        serviceElement.className = 'bg-primary p-6 rounded-lg text-center';
         serviceElement.setAttribute('data-aos', 'fade-up');
         serviceElement.setAttribute('data-aos-delay', (index * 100).toString());
         serviceElement.innerHTML = `
-            <i class="fas ${service.icon} text-4xl mb-4 text-secondary"></i>
+            <i class="fas ${service.icon} text-4xl mb-4"></i>
             <h3 class="text-xl font-bold mb-2">${service.title}</h3>
             <p class="mb-4">${service.description}</p>
-            <button class="bg-secondary text-custom py-2 px-4 rounded-full hover:bg-accent transition-colors">
+            <button class="bg-custom text-primary py-2 px-4 rounded-full hover:bg-accent hover:text-custom transition-colors">
                 Descubre más
             </button>
         `;
@@ -50,16 +50,16 @@ document.addEventListener('DOMContentLoaded', function() {
     // Clients data
     const clients = [
         { name: 'AG ALEXIS GORGONEA PELUQUERIA CANINA', style: 'font-bold' },
-        { name: 'MARKET', style: 'text-primary font-bold' },
+        { name: 'MARKET', style: 'text-blue-600 font-bold' },
         { name: 'Florencio Soto', style: 'font-serif' },
-        { name: 'FASHION', style: 'text-accent uppercase' },
+        { name: 'FASHION', style: 'text-pink-400 uppercase' },
     ];
 
     // Render clients
     const clientsGrid = document.getElementById('clientsGrid');
     clients.forEach((client, index) => {
         const clientElement = document.createElement('div');
-        clientElement.className = `bg-secondary text-custom p-4 rounded-lg flex items-center justify-center h-24 ${client.style}`;
+        clientElement.className = `bg-custom text-primary p-4 rounded-lg flex items-center justify-center h-24 ${client.style}`;
         clientElement.setAttribute('data-aos', 'fade-up');
         clientElement.setAttribute('data-aos-delay', (index * 100).toString());
         clientElement.textContent = client.name;
@@ -84,8 +84,8 @@ document.addEventListener('DOMContentLoaded', function() {
             <div class="w-32 h-32 mx-auto mb-4 gradient-primary rounded-lg flex items-center justify-center">
                 <img src="/placeholder.svg" alt="${member.name}" width="96" height="96" class="rounded-lg">
             </div>
-            <h3 class="font-bold text-primary">${member.name}</h3>
-            <p class="text-accent">${member.role}</p>
+            <h3 class="font-bold">${member.name}</h3>
+            <p>${member.role}</p>
         `;
         teamGrid.appendChild(memberElement);
     });
@@ -114,14 +114,14 @@ document.addEventListener('DOMContentLoaded', function() {
         reasonElement.innerHTML = `
             <i class="fas ${reason.icon} text-3xl text-primary"></i>
             <div>
-                <h3 class="text-xl font-bold mb-2 text-secondary">${reason.title}</h3>
-                <p class="text-custom">${reason.description}</p>
+                <h3 class="text-xl font-bold mb-2">${reason.title}</h3>
+                <p>${reason.description}</p>
             </div>
         `;
         reasonsGrid.appendChild(reasonElement);
     });
 
-    // Agency features data
+    // New section: Agency Features
     const agencyFeatures = [
         { icon: 'fa-globe', title: 'Global', 
           description: 'Somos una agencia de marketing que trabajamos con empresas de diversos países como Argentina, Uruguay, Chile, Paraguay, México, España y Estados Unidos.' },
@@ -135,13 +135,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const agencyFeaturesGrid = document.getElementById('agencyFeaturesGrid');
     agencyFeatures.forEach((feature, index) => {
         const featureElement = document.createElement('div');
-        featureElement.className = 'bg-primary bg-opacity-10 p-6 rounded-lg text-center';
+        featureElement.className = 'bg-custom bg-opacity-50 p-6 rounded-lg text-center';
         featureElement.setAttribute('data-aos', 'fade-up');
         featureElement.setAttribute('data-aos-delay', (index * 100).toString());
         featureElement.innerHTML = `
             <i class="fas ${feature.icon} text-4xl mb-4 text-accent"></i>
-            <h3 class="text-xl font-bold mb-2 text-primary">${feature.title}</h3>
-            <p class="text-custom">${feature.description}</p>
+            <h3 class="text-xl font-bold mb-2">${feature.title}</h3>
+            <p>${feature.description}</p>
         `;
         agencyFeaturesGrid.appendChild(featureElement);
     });
@@ -164,15 +164,15 @@ document.addEventListener('DOMContentLoaded', function() {
     const faqContainer = document.getElementById('faqContainer');
     faqs.forEach((faq, index) => {
         const faqElement = document.createElement('div');
-        faqElement.className = 'border-b border-primary pb-4';
+        faqElement.className = 'border-b border-gray-700 pb-4';
         faqElement.setAttribute('data-aos', 'fade-up');
         faqElement.setAttribute('data-aos-delay', (index * 100).toString());
         faqElement.innerHTML = `
-            <button class="flex justify-between items-center w-full text-left font-bold mb-2 text-primary">
+            <button class="flex justify-between items-center w-full text-left font-bold mb-2">
                 ${faq.question}
-                <i class="fas fa-chevron-down transform transition-transform duration-200 text-secondary"></i>
+                <i class="fas fa-chevron-down transform transition-transform duration-200"></i>
             </button>
-            <p class="hidden text-custom">${faq.answer}</p>
+            <p class="hidden">${faq.answer}</p>
         `;
         faqContainer.appendChild(faqElement);
 
@@ -182,7 +182,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
         button.addEventListener('click', () => {
             answer.classList.toggle('hidden');
-            
             icon.classList.toggle('rotate-180');
         });
     });
