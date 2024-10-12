@@ -7,6 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <style>
         :root {
             --color-primary: #FF5E00;
@@ -14,21 +15,32 @@
             --color-accent: #FFA500;
             --color-background: #000000;
             --color-text: #FFFFFF;
+            --color-yellow: #FFD700;
         }
         .bg-primary { background-color: var(--color-primary); }
         .bg-secondary { background-color: var(--color-secondary); }
         .bg-accent { background-color: var(--color-accent); }
+        .bg-yellow { background-color: var(--color-yellow); }
         .bg-custom { background-color: var(--color-background); }
         .text-primary { color: var(--color-primary); }
         .text-secondary { color: var(--color-secondary); }
         .text-accent { color: var(--color-accent); }
+        .text-yellow { color: var(--color-yellow); }
         .text-custom { color: var(--color-text); }
         .hover\:bg-primary:hover { background-color: var(--color-primary); }
         .hover\:bg-secondary:hover { background-color: var(--color-secondary); }
         .hover\:bg-accent:hover { background-color: var(--color-accent); }
+        .hover\:bg-yellow:hover { background-color: var(--color-yellow); }
         .hover\:text-primary:hover { color: var(--color-primary); }
         .hover\:text-secondary:hover { color: var(--color-secondary); }
         .hover\:text-accent:hover { color: var(--color-accent); }
+        .hover\:text-yellow:hover { color: var(--color-yellow); }
+        .gradient-primary {
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+        }
+        .gradient-yellow {
+            background: linear-gradient(135deg, var(--color-yellow) 0%, var(--color-accent) 100%);
+        }
     </style>
 </head>
 <body class="min-h-screen bg-custom text-custom">
@@ -41,7 +53,7 @@
                 <a href="#" class="text-primary hover:text-secondary transition-colors">contactos</a>
             </nav>
             <button id="mobileMenuButton" class="md:hidden text-primary">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                <i class="fas fa-bars"></i>
             </button>
         </div>
     </header>
@@ -52,19 +64,19 @@
                 <h1 class="text-5xl font-bold mb-4 text-custom" data-aos="fade-up">Agencia Marketing Digital</h1>
                 <p class="text-xl mb-8 text-custom" data-aos="fade-up" data-aos-delay="200">Prepárate para el futuro.</p>
                 <div class="flex flex-col sm:flex-row justify-center gap-4" data-aos="fade-up" data-aos-delay="400">
-                    <button class="bg-primary text-custom py-2 px-6 rounded-full hover:bg-secondary transition-colors">
+                    <button class="gradient-primary text-custom py-2 px-6 rounded-full hover:opacity-90 transition-opacity">
                         Botón de acción
                     </button>
-                    <button class="bg-custom text-primary py-2 px-6 rounded-full border border-primary hover:bg-primary hover:text-custom transition-colors">
+                    <button class="bg-transparent text-primary py-2 px-6 rounded-full border-2 border-primary hover:bg-primary hover:text-custom transition-colors">
                         Más información
                     </button>
                 </div>
             </div>
-            <div class="absolute top-0 right-0 w-1/2 h-full bg-primary transform skew-y-6 z-0"></div>
-            <div class="absolute bottom-0 left-0 w-1/4 h-1/4 bg-accent rounded-full z-0"></div>
+            <div class="absolute top-0 right-0 w-1/2 h-full gradient-primary transform skew-y-6 z-0"></div>
+            <div class="absolute bottom-0 left-0 w-1/4 h-1/4 gradient-yellow rounded-full z-0"></div>
         </section>
 
-        <section class="py-20 bg-primary">
+        <section class="py-20 gradient-primary">
             <div class="container mx-auto px-4">
                 <h2 class="text-3xl font-bold mb-8 text-center text-custom" data-aos="fade-up">Vibrando Alto</h2>
                 <p class="text-lg mb-8 text-center max-w-3xl mx-auto text-custom" data-aos="fade-up" data-aos-delay="200">
@@ -76,7 +88,7 @@
                     digital.
                 </p>
                 <div class="text-center" data-aos="fade-up" data-aos-delay="400">
-                    <button class="bg-custom text-primary py-2 px-6 rounded-full hover:bg-secondary hover:text-custom transition-colors">
+                    <button class="bg-custom text-primary py-2 px-6 rounded-full hover:bg-yellow hover:text-custom transition-colors">
                         Descubre más
                     </button>
                 </div>
@@ -87,7 +99,21 @@
             <div class="container mx-auto px-4">
                 <h2 class="text-3xl font-bold mb-8 text-center text-custom" data-aos="fade-up">Nuestros Servicios de <span class="text-primary">Marketing Digital</span></h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="servicesGrid">
-                    <!-- Services will be dynamically inserted here -->
+                    <div class="bg-gray-900 p-6 rounded-lg" data-aos="fade-up">
+                        <i class="fas fa-bullhorn text-4xl text-primary mb-4"></i>
+                        <h3 class="text-xl font-bold mb-2 text-custom">Publicidad en Redes Sociales</h3>
+                        <p class="text-gray-400">Maximiza tu alcance y engagement con estrategias efectivas en plataformas sociales.</p>
+                    </div>
+                    <div class="bg-gray-900 p-6 rounded-lg" data-aos="fade-up" data-aos-delay="200">
+                        <i class="fas fa-search text-4xl text-primary mb-4"></i>
+                        <h3 class="text-xl font-bold mb-2 text-custom">SEO</h3>
+                        <p class="text-gray-400">Mejora tu visibilidad en los motores de búsqueda y atrae tráfico orgánico de calidad.</p>
+                    </div>
+                    <div class="bg-gray-900 p-6 rounded-lg" data-aos="fade-up" data-aos-delay="400">
+                        <i class="fas fa-envelope text-4xl text-primary mb-4"></i>
+                        <h3 class="text-xl font-bold mb-2 text-custom">Email Marketing</h3>
+                        <p class="text-gray-400">Crea campañas personalizadas que conviertan leads en clientes fieles.</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -105,11 +131,22 @@
             </div>
         </section>
 
-        <section class="py-20 bg-primary">
+        <section class="py-20 gradient-primary">
             <div class="container mx-auto px-4">
                 <h2 class="text-3xl font-bold mb-8 text-center text-custom" data-aos="fade-up">Clientes que creen en nosotros</h2>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-8" id="clientsGrid">
-                    <!-- Clients will be dynamically inserted here -->
+                    <div class="bg-white p-4 rounded-lg flex items-center justify-center" data-aos="fade-up">
+                        <img src="/client-logo-1.png" alt="Cliente 1" class="max-w-full h-auto">
+                    </div>
+                    <div class="bg-white p-4 rounded-lg flex items-center justify-center" data-aos="fade-up" data-aos-delay="200">
+                        <img src="/client-logo-2.png" alt="Cliente 2" class="max-w-full h-auto">
+                    </div>
+                    <div class="bg-white p-4 rounded-lg flex items-center justify-center" data-aos="fade-up" data-aos-delay="400">
+                        <img src="/client-logo-3.png" alt="Cliente 3" class="max-w-full h-auto">
+                    </div>
+                    <div class="bg-white p-4 rounded-lg flex items-center justify-center" data-aos="fade-up" data-aos-delay="600">
+                        <img src="/client-logo-4.png" alt="Cliente 4" class="max-w-full h-auto">
+                    </div>
                 </div>
             </div>
         </section>
@@ -118,14 +155,28 @@
             <div class="container mx-auto px-4">
                 <h2 class="text-3xl font-bold mb-8 text-center text-custom" data-aos="fade-up">Nuestro Equipo</h2>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="teamGrid">
-                    <!-- Team members will be dynamically inserted here -->
+                    <div class="text-center" data-aos="fade-up">
+                        <img src="/team-member-1.jpg" alt="Miembro del equipo 1" class="w-32 h-32 rounded-full mx-auto mb-4">
+                        <h3 class="text-xl font-bold mb-2 text-custom">Nombre Apellido</h3>
+                        <p class="text-gray-400">Cargo</p>
+                    </div>
+                    <div class="text-center" data-aos="fade-up" data-aos-delay="200">
+                        <img src="/team-member-2.jpg" alt="Miembro del equipo 2" class="w-32 h-32 rounded-full mx-auto mb-4">
+                        <h3 class="text-xl font-bold mb-2 text-custom">Nombre Apellido</h3>
+                        <p class="text-gray-400">Cargo</p>
+                    </div>
+                    <div class="text-center" data-aos="fade-up" data-aos-delay="400">
+                        <img src="/team-member-3.jpg" alt="Miembro del equipo 3" class="w-32 h-32 rounded-full mx-auto mb-4">
+                        <h3 class="text-xl font-bold mb-2 text-custom">Nombre Apellido</h3>
+                        <p class="text-gray-400">Cargo</p>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section class="py-20 bg-gradient-to-r from-primary to-secondary">
+        <section class="py-20 gradient-primary">
             <div class="container mx-auto px-4 text-center">
-                <svg class="w-16 h-16 mx-auto mb-4 text-custom" data-aos="zoom-in" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path></svg>
+                <i class="fas fa-check-circle text-6xl text-custom mb-4" data-aos="zoom-in"></i>
                 <h2 class="text-3xl font-bold mb-4 text-custom" data-aos="fade-up" data-aos-delay="200">100% Remota</h2>
                 <p class="max-w-2xl mx-auto text-custom" data-aos="fade-up" data-aos-delay="400">
                     Brindamos un servicio personalizado para cada cliente. Como agencia de marketing digital trabajamos
@@ -138,19 +189,32 @@
             <div class="container mx-auto px-4">
                 <h2 class="text-3xl font-bold mb-8 text-center text-custom" data-aos="fade-up">¿Por qué elegir a <span class="text-primary">Vibrando Alto</span>?</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8" id="reasonsGrid">
-                    <!-- Reasons will be dynamically inserted here -->
+                    <div class="flex items-start" data-aos="fade-up">
+                        <i class="fas fa-chart-line text-3xl text-primary mr-4"></i>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2 text-custom">Resultados Medibles</h3>
+                            <p class="text-gray-400">Utilizamos métricas y análisis avanzados para medir y optimizar el rendimiento de tus campañas.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start" data-aos="fade-up"   data-aos-delay="200">
+                        <i class="fas fa-users text-3xl text-primary mr-4"></i>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2 text-custom">Equipo Experto</h3>
+                            <p class="text-gray-400">Nuestro equipo está formado por profesionales con amplia experiencia en marketing digital.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section class="py-20 bg-primary">
+        <section class="py-20 gradient-primary">
             <div class="container mx-auto px-4 text-center">
                 <h2 class="text-3xl font-bold mb-4 text-custom" data-aos="fade-up">AGENDA UNA ASESORÍA PERSONALIZADA CON Vibrando Alto</h2>
                 <p class="mb-8 text-custom" data-aos="fade-up" data-aos-delay="200">Descubre cómo podemos impulsar tu negocio en el mundo digital</p>
                 <div class="calendly-inline-widget" data-url="https://calendly.com/vibrandoalto516" style="min-width:320px;height:700px;" data-aos="fade-up" data-aos-delay="400"></div>
                 <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
                 <p class="mt-4 text-custom" data-aos="fade-up" data-aos-delay="600">En caso de no poder agregar el link:</p>
-                <a href="https://calendly.com/vibrandoalto516" class="text-custom underline hover:text-accent" data-aos="fade-up" data-aos-delay="800">https://calendly.com/vibrandoalto516</a>
+                <a href="https://calendly.com/vibrandoalto516" class="text-custom underline hover:text-yellow" data-aos="fade-up" data-aos-delay="800">https://calendly.com/vibrandoalto516</a>
             </div>
         </section>
 
@@ -158,7 +222,14 @@
             <div class="container mx-auto px-4">
                 <h2 class="text-3xl font-bold mb-8 text-center text-custom" data-aos="fade-up">Preguntas Frecuentes</h2>
                 <div class="space-y-4" id="faqContainer">
-                    <!-- FAQ items will be dynamically inserted here -->
+                    <div class="bg-gray-900 p-6 rounded-lg" data-aos="fade-up">
+                        <h3 class="text-xl font-bold mb-2 text-custom">¿Qué servicios de marketing digital ofrecen?</h3>
+                        <p class="text-gray-400">Ofrecemos una amplia gama de servicios, incluyendo SEO, publicidad en redes sociales, email marketing, y más. Nuestro enfoque es personalizado para cada cliente.</p>
+                    </div>
+                    <div class="bg-gray-900 p-6 rounded-lg" data-aos="fade-up" data-aos-delay="200">
+                        <h3 class="text-xl font-bold mb-2 text-custom">¿Cómo miden el éxito de las campañas?</h3>
+                        <p class="text-gray-400">Utilizamos herramientas analíticas avanzadas para rastrear KPIs relevantes y proporcionar informes detallados sobre el rendimiento de las campañas.</p>
+                    </div>
                 </div>
             </div>
         </section>
