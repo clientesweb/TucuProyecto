@@ -10,22 +10,19 @@
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
     <style>
         :root {
-            --color-primary: #FF5E00;
-            --color-secondary: #FF7F33;
-            --color-accent: #FFA500;
-            --color-yellow: #FFD700;
-            --color-background: #000000;
-            --color-text: #FFFFFF;
+            --color-primary: #FFA500; /* Orange */
+            --color-secondary: #FFD700; /* Yellow */
+            --color-accent: #FF8C00; /* Dark Orange */
+            --color-background: #FFFFFF; /* White */
+            --color-text: #000000; /* Black */
         }
         .bg-primary { background-color: var(--color-primary); }
         .bg-secondary { background-color: var(--color-secondary); }
         .bg-accent { background-color: var(--color-accent); }
-        .bg-yellow { background-color: var(--color-yellow); }
         .bg-custom { background-color: var(--color-background); }
         .text-primary { color: var(--color-primary); }
         .text-secondary { color: var(--color-secondary); }
         .text-accent { color: var(--color-accent); }
-        .text-yellow { color: var(--color-yellow); }
         .text-custom { color: var(--color-text); }
         .hover\:bg-primary:hover { background-color: var(--color-primary); }
         .hover\:bg-secondary:hover { background-color: var(--color-secondary); }
@@ -33,13 +30,11 @@
         .hover\:text-primary:hover { color: var(--color-primary); }
         .hover\:text-secondary:hover { color: var(--color-secondary); }
         .hover\:text-accent:hover { color: var(--color-accent); }
-        .hover\:bg-yellow:hover { background-color: var(--color-yellow); }
-        .hover\:text-yellow:hover { color: var(--color-yellow); }
         .gradient-primary {
             background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
         }
-        .gradient-yellow {
-            background: linear-gradient(135deg, var(--color-yellow) 0%, var(--color-accent) 100%);
+        .gradient-secondary {
+            background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-primary) 100%);
         }
     </style>
 </head>
