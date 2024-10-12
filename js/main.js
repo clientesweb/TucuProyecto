@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const servicesGrid = document.getElementById('servicesGrid');
     services.forEach((service, index) => {
         const serviceElement = document.createElement('div');
-        serviceElement.className = 'bg-gradient-to-br from-orange-500 to-yellow-500 p-6 rounded-lg text-center'; // Updated service card background color
+        serviceElement.className = 'bg-[#FF5E00] p-6 rounded-lg text-center'; 
         serviceElement.setAttribute('data-aos', 'fade-up');
         serviceElement.setAttribute('data-aos-delay', (index * 100).toString());
         serviceElement.innerHTML = `
@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
             <h3 class="text-xl font-bold mb-2">${service.title}</h3>
             <p class="mb-4">${service.description}</p>
-            <button class="bg-white text-orange-500 py-2 px-4 rounded-full  hover:bg-gray-100 transition-colors">
+            <button class="bg-white text-[#FF5E00] py-2 px-4 rounded-full  hover:bg-gray-100 transition-colors">
                 Descubre más
             </button>
         `;
@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const clientsGrid = document.getElementById('clientsGrid');
     clients.forEach((client, index) => {
         const clientElement = document.createElement('div');
-        clientElement.className = `bg-white text-black p-4 rounded-lg flex items-center justify-center h-24 ${client.style}`; // Updated client card background color
+        clientElement.className = `bg-white text-black p-4 rounded-lg flex items-center justify-center h-24 ${client.style}`; 
         clientElement.setAttribute('data-aos', 'fade-up');
         clientElement.setAttribute('data-aos-delay', (index * 100).toString());
         clientElement.textContent = client.name;
@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', function() {
         memberElement.setAttribute('data-aos', 'fade-up');
         memberElement.setAttribute('data-aos-delay', (index * 100).toString());
         memberElement.innerHTML = `
-            <div class="w-32 h-32 mx-auto mb-4 bg-gradient-to-br from-orange-500 to-yellow-500 rounded-lg flex items-center justify-center">  <!-- Updated team member image background -->
+            <div class="w-32 h-32 mx-auto mb-4 bg-gradient-to-br from-orange-500 to-yellow-500 rounded-lg flex items-center justify-center">  
                 <img src="/placeholder.svg" alt="${member.name}" width="96" height="96" class="rounded-lg">
             </div>
             <h3 class="font-bold">${member.name}</h3>
@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', function() {
         reasonElement.setAttribute('data-aos', 'fade-up');
         reasonElement.setAttribute('data-aos-delay', (index * 100).toString());
         reasonElement.innerHTML = `
-            <svg class="w-12 h-12 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <svg class="w-12 h-12 text-[#FF5E00]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <use xlink:href="#icon-${reason.icon}"></use>
             </svg>
             <div>
@@ -171,9 +171,9 @@ const heroSection = document.querySelector('section');
 const heroObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (!entry.isIntersecting) {
-            header.classList.add('bg-gray-800', 'shadow-md'); // Updated header background change
+            header.classList.add('bg-black', 'shadow-md'); 
         } else {
-            header.classList.remove('bg-gray-800', 'shadow-md'); // Updated header background change
+            header.classList.remove('bg-black', 'shadow-md'); 
         }
     });
 }, { threshold: 0.1 });
