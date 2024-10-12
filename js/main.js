@@ -15,19 +15,25 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Services data
     const services = [
-        { icon: 'globe', title: 'SEO', description: 'Impulsamos el crecimiento de tu negocio en canales orgánicos a través de estrategias de posicionamiento web.' },
-        { icon: 'megaphone', title: 'Redes Sociales', description: 'Activamos y gestionamos tu presencia online en las redes sociales más importantes del momento.' },
-        { icon: 'layout', title: 'Diseño y Desarrollo Web', description: 'Nos encargamos del diseño de tu sitio web o aplicación abordando todas las necesidades de tu empresa.' },
-        { icon: 'message-square', title: 'Setters', description: 'Identifica cuentas de alto potencial y optimiza la búsqueda de clientes calificados.' },
-        { icon: 'zap', title: 'Google ADS', description: 'Desarrollamos campañas de búsqueda, display, remarketing, discovery y performance max.' },
-        { icon: 'laptop', title: 'Crecimiento con IA', description: 'Sistematización de crecimiento exponencial que mejorará la imagen de tu perfil.' },
+        { icon: 'globe', title: 'SEO', 
+          description: 'Impulsamos el crecimiento de tu negocio en canales orgánicos a través de estrategias de posicionamiento web.' },
+        { icon: 'megaphone', title: 'Redes Sociales',
+          description: 'Activamos y gestionamos tu presencia online en las redes sociales más importantes del momento.' },
+        { icon: 'layout', title: 'Diseño y Desarrollo Web',
+          description: 'Nos encargamos del diseño de tu sitio web o aplicación abordando todas las necesidades de tu empresa.' },
+        { icon: 'message-square', title: 'Setters',
+          description: 'Identifica cuentas de alto potencial y optimiza la búsqueda de clientes calificados.' },
+        { icon: 'zap', title: 'Google ADS',
+          description: 'Desarrollamos campañas de búsqueda, display, remarketing, discovery y performance max.' },
+        { icon: 'laptop', title: 'Crecimiento con IA',
+          description: 'Sistematización de crecimiento exponencial que mejorará la imagen de tu perfil.' },
     ];
 
     // Render services
     const servicesGrid = document.getElementById('servicesGrid');
     services.forEach((service, index) => {
         const serviceElement = document.createElement('div');
-        serviceElement.className = 'bg-[#FF5E00] p-6 rounded-lg text-center'; 
+        serviceElement.className = 'bg-primary p-6 rounded-lg text-center';
         serviceElement.setAttribute('data-aos', 'fade-up');
         serviceElement.setAttribute('data-aos-delay', (index * 100).toString());
         serviceElement.innerHTML = `
@@ -38,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
             <h3 class="text-xl font-bold mb-2">${service.title}</h3>
             <p class="mb-4">${service.description}</p>
-            <button class="bg-white text-[#FF5E00] py-2 px-4 rounded-full  hover:bg-gray-100 transition-colors">
+            <button class="bg-custom text-primary py-2 px-4 rounded-full hover:bg-accent hover:text-custom transition-colors">
                 Descubre más
             </button>
         `;
@@ -57,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const clientsGrid = document.getElementById('clientsGrid');
     clients.forEach((client, index) => {
         const clientElement = document.createElement('div');
-        clientElement.className = `bg-white text-black p-4 rounded-lg flex items-center justify-center h-24 ${client.style}`; 
+        clientElement.className = `bg-custom text-primary p-4 rounded-lg flex items-center justify-center h-24 ${client.style}`;
         clientElement.setAttribute('data-aos', 'fade-up');
         clientElement.setAttribute('data-aos-delay', (index * 100).toString());
         clientElement.textContent = client.name;
@@ -79,7 +85,7 @@ document.addEventListener('DOMContentLoaded', function() {
         memberElement.setAttribute('data-aos', 'fade-up');
         memberElement.setAttribute('data-aos-delay', (index * 100).toString());
         memberElement.innerHTML = `
-            <div class="w-32 h-32 mx-auto mb-4 bg-gradient-to-br from-orange-500 to-yellow-500 rounded-lg flex items-center justify-center">  
+            <div class="w-32 h-32 mx-auto mb-4 gradient-primary rounded-lg flex items-center justify-center">
                 <img src="/placeholder.svg" alt="${member.name}" width="96" height="96" class="rounded-lg">
             </div>
             <h3 class="font-bold">${member.name}</h3>
@@ -90,11 +96,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Reasons data
     const reasons = [
-        { icon: 'message-square', title: 'Interpretamos las necesidades', description: 'Interpretamos las necesidades reales de cada cliente, aún cuando le resulte complejo explicarlas.' },
-        { icon: 'lightbulb', title: 'Planificamos estrategias', description: 'Planificamos estrategias de marketing digital que le permitirán a tu empresa destacarse por frente a la competencia.' },
-        { icon: 'dollar-sign', title: 'Cuidamos tu presupuesto', description: 'Cuidamos tu presupuesto, y lo empleamos para acciones de publicidad online que generen resultados concretos de negocio.' },
-        { icon: 'bar-chart-2', title: 'Generamos reportes claros', description: 'Mediante datos de Google Analytics, generamos reportes claros que se envían al cliente periódicamente, brindando información precisa y transparente sobre cada etapa del proyecto.' },
-        { icon: 'users', title: 'Soluciones integrales', description: 'Brindamos soluciones integrales, contamos con especialistas en cada una de las áreas del marketing digital y del inbound marketing.' },
+        { icon: 'message-square', title: 'Interpretamos las necesidades',
+          description: 'Interpretamos las necesidades reales de cada cliente, aún cuando le resulte complejo explicarlas.' },
+        { icon: 'lightbulb', title: 'Planificamos estrategias',
+          description: 'Planificamos estrategias de marketing digital que le permitirán a tu empresa destacarse por frente a la competencia.' },
+        { icon: 'dollar-sign', title: 'Cuidamos tu presupuesto',
+          description: 'Cuidamos tu presupuesto, y lo empleamos para acciones de publicidad online que generen resultados concretos de negocio.' },
+        { icon: 'bar-chart-2', title: 'Generamos reportes claros',
+          description: 'Mediante datos de Google Analytics, generamos reportes claros que se envían al cliente periódicamente, brindando información precisa y transparente sobre cada etapa del proyecto.' },
+        { icon: 'users', title: 'Soluciones integrales',
+          description: 'Brindamos soluciones integrales, contamos con especialistas en cada una de las áreas del marketing digital y del inbound marketing.' },
     ];
 
     // Render reasons
@@ -105,7 +116,7 @@ document.addEventListener('DOMContentLoaded', function() {
         reasonElement.setAttribute('data-aos', 'fade-up');
         reasonElement.setAttribute('data-aos-delay', (index * 100).toString());
         reasonElement.innerHTML = `
-            <svg class="w-12 h-12 text-[#FF5E00]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <svg class="w-12 h-12 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <use xlink:href="#icon-${reason.icon}"></use>
             </svg>
             <div>
@@ -118,11 +129,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // FAQ data
     const faqs = [
-        { question: '¿Qué es y cómo funciona el Marketing Digital?', answer: 'El Marketing Digital es el conjunto de estrategias y técnicas que se utilizan para promocionar productos o servicios a través de medios digitales. Funciona mediante la creación de contenido relevante, la optimización para motores de búsqueda, la  publicidad en redes sociales, el email marketing, entre otras tácticas.' },
-        { question: '¿Para qué sirve el Marketing Digital?', answer: 'El Marketing Digital sirve para aumentar la visibilidad de una marca en línea, atraer más tráfico a un sitio web, generar leads, convertir clientes potenciales en compradores, y fidelizar a los clientes existentes. También permite medir y analizar el rendimiento de las campañas en tiempo real.' },
-        { question: '¿Qué elementos componen al Marketing Digital?', answer: 'Los elementos principales del Marketing Digital incluyen: SEO, SEM, Marketing de Contenidos, Marketing en Redes Sociales, Email Marketing, Marketing de Afiliados, Publicidad Display, y Analítica Web.' },
-        { question: '¿Cómo funciona una Agencia de Marketing?', answer: 'Una Agencia de Marketing funciona como un equipo externo que se encarga de diseñar, implementar y gestionar estrategias de marketing para sus clientes. Esto incluye la planificación de campañas, creación de contenido, gestión de redes sociales, análisis de datos y optimización continua de las estrategias.' },
-        { question: '¿Cómo está conformado el equipo de una agencia de marketing?', answer: 'El equipo de una agencia de marketing suele estar compuesto por especialistas en diferentes áreas como estrategia digital, diseño gráfico, desarrollo web, SEO, SEM, gestión de redes sociales, creación de contenido, análisis de datos, entre otros.' },
+        { question: '¿Qué es y cómo funciona el Marketing Digital?',
+          answer: 'El Marketing Digital es el conjunto de estrategias y técnicas que se utilizan para promocionar productos o servicios a través de medios digitales. Funciona mediante la creación de contenido relevante, la optimización para motores de búsqueda, la publicidad en redes sociales, el email marketing, entre otras tácticas.' },
+        { question: '¿Para qué sirve el Marketing Digital?',
+          answer: 'El Marketing Digital sirve para aumentar la visibilidad de una marca en línea, atraer más tráfico a un sitio web, generar leads, convertir clientes potenciales en compradores, y fidelizar a los clientes existentes. También permite medir y analizar el rendimiento de las campañas en tiempo real.' },
+        { question: '¿Qué elementos componen al Marketing Digital?',
+          answer: 'Los elementos principales del Marketing Digital incluyen: SEO, SEM, Marketing de Contenidos, Marketing en Redes Sociales, Email Marketing, Marketing de Afiliados, Publicidad Display, y Analítica Web.' },
+        { question: '¿Cómo funciona una Agencia de Marketing?',
+          answer: 'Una Agencia de Marketing funciona como un equipo externo que se encarga de diseñar, implementar y gestionar estrategias de marketing para sus clientes. Esto incluye la planificación de campañas, creación de contenido, gestión de redes sociales, análisis de datos y optimización continua de las estrategias.' },
+        { question: '¿Cómo está conformado el equipo de una agencia de marketing?',
+          answer: 'El equipo de una agencia de marketing suele estar compuesto por especialistas en diferentes áreas como estrategia digital, diseño gráfico, desarrollo web, SEO, SEM, gestión de redes sociales, creación de contenido, análisis de datos, entre otros.' },
     ];
 
     // Render FAQs
@@ -171,9 +187,9 @@ const heroSection = document.querySelector('section');
 const heroObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (!entry.isIntersecting) {
-            header.classList.add('bg-black', 'shadow-md'); 
+            header.classList.add('bg-custom', 'shadow-md');
         } else {
-            header.classList.remove('bg-black', 'shadow-md'); 
+            header.classList.remove('bg-custom', 'shadow-md');
         }
     });
 }, { threshold: 0.1 });
