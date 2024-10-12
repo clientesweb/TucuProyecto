@@ -4,271 +4,139 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vibrando Alto - Agencia de Marketing Digital</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'orange': '#FF6B00',
-                        'yellow': '#FFD700',
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-            100% { transform: translateY(0px); }
-        }
-        .float { animation: float 6s ease-in-out infinite; }
-    </style>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
 </head>
-<body class="bg-black text-white">
-    <header class="container mx-auto py-4 px-4">
-        <nav class="flex justify-between items-center">
-            <img src="/vibrando-alto-logo.svg" alt="Vibrando Alto" class="w-36">
-            <div class="space-x-4">
-                <a href="#" class="text-orange hover:underline">inicio</a>
-                <a href="#" class="text-orange hover:underline">servicios</a>
-                <a href="#" class="text-orange hover:underline">contactos</a>
-            </div>
-        </nav>
+<body class="min-h-screen bg-black text-white">
+    <header class="bg-black py-4 fixed w-full z-50">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <img src="/vibrando-alto-logo.svg" alt="Vibrando Alto" width="144" height="40">
+            <nav class="hidden md:flex space-x-4">
+                <a href="#" class="text-orange-500 hover:text-orange-400 transition-colors">inicio</a>
+                <a href="#" class="text-orange-500 hover:text-orange-400 transition-colors">servicios</a>
+                <a href="#" class="text-orange-500 hover:text-orange-400 transition-colors">contactos</a>
+            </nav>
+            <button id="mobileMenuButton" class="md:hidden text-orange-500">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+        </div>
     </header>
 
-    <main class="container mx-auto px-4">
-        <section class="py-12 text-center relative">
-            <div class="absolute top-0 right-0 w-1/2 h-64 bg-orange transform -skew-y-6"></div>
-            <h1 class="text-5xl font-bold mb-4 relative z-10">Agencia Marketing Digital</h1>
-            <p class="text-xl mb-8 relative z-10">Prepárate para el futuro.</p>
-            <div class="space-y-4 relative z-10">
-                <button class="w-full max-w-md bg-orange text-white py-2 px-4 rounded-full hover:bg-opacity-90 transition-colors duration-300">Botón de acción</button>
-                <button class="w-full max-w-md border border-white text-white py-2 px-4 rounded-full hover:bg-white hover:text-black transition-colors duration-300">Más información</button>
-            </div>
-            <div class="absolute bottom-0 left-0 w-32 h-32 bg-yellow rounded-full float"></div>
-        </section>
-
-        <section class="py-12 bg-orange rounded-lg mb-12">
-            <h2 class="text-3xl font-bold mb-4">Vibrando Alto</h2>
-            <p class="text-lg mb-4">
-                Somos un equipo apasionado por crear estrategias digitales que
-                impulsan marcas hacia el éxito. En Vibrando Alto, combinamos
-                creatividad, innovación y experiencia para conectar a nuestros
-                clientes con su audiencia ideal, logrando resultados reales.
-                Nuestro objetivo es hacer que tu marca brille y crezca en el mundo
-                digital.
-            </p>
-            <button class="bg-white text-orange py-2 px-4 rounded-full hover:bg-opacity-90 transition-colors duration-300">Descubre más</button>
-        </section>
-
-        <section class="py-12">
-            <h2 class="text-3xl font-bold mb-8 text-center">Certificaciones de Nuestra <span class="text-orange">Agencia de Marketing Digital</span></h2>
-            <div class="flex justify-center space-x-4 flex-wrap">
-                <img src="/meta-logo.png" alt="Meta Business Partner" class="w-24 h-12 object-contain">
-                <img src="/instagram-logo.png" alt="Instagram Partner" class="w-24 h-12 object-contain">
-                <img src="/tiktok-logo.png" alt="TikTok Marketing Partner" class="w-24 h-12 object-contain">
-                <img src="/linkedin-logo.png" alt="LinkedIn Marketing Partner" class="w-24 h-12 object-contain">
-                <img src="/google-logo.png" alt="Google Partner" class="w-24 h-12 object-contain">
-            </div>
-        </section>
-
-        <section class="py-12">
-            <h2 class="text-3xl font-bold mb-8 text-center">Somos una Agencia de <span class="text-orange">Marketing Digital</span></h2>
-            <div class="grid md:grid-cols-2 gap-8">
-                <div class="bg-gradient-to-br from-orange to-yellow text-white rounded-lg p-6 transform hover:scale-105 transition-transform duration-300">
-                    <svg class="w-16 h-16 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                    <h3 class="text-xl font-bold mb-2">Global</h3>
-                    <p>Somos una agencia de marketing que trabajamos con empresas de diversos países como Argentina, Uruguay, Chile, Paraguay, México, España y Estados Unidos.</p>
-                </div>
-                <div class="bg-gradient-to-br from-orange to-yellow text-white rounded-lg p-6 transform hover:scale-105 transition-transform duration-300">
-                    <svg class="w-16 h-16 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                    <h3 class="text-xl font-bold mb-2">Boutique</h3>
-                    <p>Somos una agencia 100% remota. Estamos actualizados con las últimas tendencias y tecnologías en marketing digital.</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="py-12">
-            <h2 class="text-3xl font-bold mb-8 text-center">Nuestros Servicios de <span class="text-orange">Marketing Digital</span></h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="bg-gradient-to-br from-orange to-yellow text-white rounded-lg p-6 transform hover:scale-105 transition-transform duration-300">
-                    <svg class="w-12 h-12 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
-                    <h3 class="text-xl font-bold mb-2">SEO</h3>
-                    <p>Impulsamos el crecimiento de tu negocio en canales orgánicos a través de estrategias de posicionamiento web.</p>
-                    <button class="mt-4 bg-white text-orange py-2 px-4 rounded-full hover:bg-opacity-90 transition-colors duration-300 w-full">Descubre más</button>
-                </div>
-                <div class="bg-gradient-to-br from-orange to-yellow text-white rounded-lg p-6 transform hover:scale-105 transition-transform duration-300">
-                    <svg class="w-12 h-12 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
-                    <h3 class="text-xl font-bold mb-2">Redes Sociales</h3>
-                    <p>Activamos y gestionamos tu presencia online en las redes sociales más importantes del momento, incluyendo Instagram, Facebook, TikTok, LinkedIn, y más.</p>
-                    <button class="mt-4 bg-white text-orange py-2 px-4 rounded-full hover:bg-opacity-90 transition-colors duration-300 w-full">Descubre más</button>
-                </div>
-                <div class="bg-gradient-to-br from-orange to-yellow text-white rounded-lg p-6 transform hover:scale-105 transition-transform duration-300">
-                    <svg class="w-12 h-12 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                    <h3 class="text-xl font-bold mb-2">Diseño y Desarrollo Web</h3>
-                    <p>Nos encargamos del diseño de tu sitio web o aplicación abordando todas las necesidades de tu empresa. Desarrollamos sitios de carga rápida y eficientes para el SEO.</p>
-                    <button class="mt-4 bg-white text-orange py-2 px-4 rounded-full hover:bg-opacity-90 transition-colors duration-300 w-full">Descubre más</button>
-                </div>
-                <div class="bg-gradient-to-br from-orange to-yellow text-white rounded-lg p-6 transform hover:scale-105 transition-transform duration-300">
-                    <svg class="w-12 h-12 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path></svg>
-                    <h3 class="text-xl font-bold mb-2">Setters</h3>
-                    <p>Identifica cuentas de alto potencial y optimiza la búsqueda de clientes calificados. Esto incrementa la conversión y maximiza el retorno de inversión.</p>
-                    <button class="mt-4 bg-white text-orange py-2 px-4 rounded-full hover:bg-opacity-90 transition-colors duration-300 w-full">Descubre más</button>
-                </div>
-                <div class="bg-gradient-to-br from-orange to-yellow text-white rounded-lg p-6 transform hover:scale-105 transition-transform duration-300">
-                    <svg class="w-12 h-12 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                    <h3 class="text-xl font-bold mb-2">Google ADS</h3>
-                    <p>Desarrollamos  campañas de búsqueda, display, remarketing, discovery y performance max. Lleva tu empresa a los primeros lugares de Google.</p>
-                    <button class="mt-4 bg-white text-orange py-2 px-4 rounded-full hover:bg-opacity-90 transition-colors duration-300 w-full">Descubre más</button>
-                </div>
-                <div class="bg-gradient-to-br from-orange to-yellow text-white rounded-lg p-6 transform hover:scale-105 transition-transform duration-300">
-                    <svg class="w-12 h-12 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                    <h3 class="text-xl font-bold mb-2">Crecimiento con IA</h3>
-                    <p>Sistematización de crecimiento exponencial que mejorará la imagen de tu perfil, llamará la atención y será un gancho para aumentar números orgánica.</p>
-                    <button class="mt-4 bg-white text-orange py-2 px-4 rounded-full hover:bg-opacity-90 transition-colors duration-300 w-full">Descubre más</button>
-                </div>
-            </div>
-        </section>
-
-        <section class="py-12">
-            <h2 class="text-3xl font-bold mb-8 text-center">¿Por qué elegir a <span class="text-orange">Vibrando Alto</span>?</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="flex items-start space-x-4">
-                    <svg class="w-12 h-12 text-orange flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path></svg>
-                    <div>
-                        <h3 class="text-xl font-bold mb-2">Interpretamos las necesidades</h3>
-                        <p>Interpretamos las necesidades reales de cada cliente, aún cuando le resulte complejo explicarlas.</p>
-                    </div>
-                </div>
-                <div class="flex items-start space-x-4">
-                    <svg class="w-12 h-12 text-orange flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path></svg>
-                    <div>
-                        <h3 class="text-xl font-bold mb-2">Planificamos estrategias</h3>
-                        <p>Planificamos estrategias de marketing digital que le permitirán a tu empresa destacarse por frente a la competencia.</p>
-                    </div>
-                </div>
-                <div class="flex items-start space-x-4">
-                    <svg class="w-12 h-12 text-orange flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
-                    <div>
-                        <h3 class="text-xl font-bold mb-2">Cuidamos tu presupuesto</h3>
-                        <p>Cuidamos tu presupuesto, y lo empleamos para acciones de publicidad online que generen resultados concretos de negocio.</p>
-                    </div>
-                </div>
-                <div class="flex items-start space-x-4">
-                    <svg class="w-12 h-12 text-orange flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                    <div>
-                        <h3 class="text-xl font-bold mb-2">Generamos reportes claros</h3>
-                        <p>Mediante datos de Google Analytics, generamos reportes claros que se envían al cliente periódicamente, brindando información precisa y transparente sobre cada etapa del proyecto.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="py-12 bg-orange rounded-lg mb-12">
-            <div class="p-6">
-                <svg class="w-16 h-16 text-white mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
-                <h3 class="text-2xl font-bold mb-2">100% Remota</h3>
-                <p>Brindamos un servicio personalizado para cada cliente. Como agencia de marketing digital trabajamos enfocados en lograr resultados de negocio.</p>
-            </div>
-        </section>
-
-        <section class="py-12">
-            <h2 class="text-3xl font-bold mb-8 text-center">Nuestro Equipo</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="text-center">
-                    <div class="w-32 h-32 mx-auto mb-4 bg-gradient-to-br from-orange to-yellow rounded-full flex items-center justify-center">
-                        <img src="/placeholder.svg" alt="VALENTINA TERAN" class="w-24 h-24 rounded-full">
-                    </div>
-                    <h3 class="font-bold">VALENTINA TERAN</h3>
-                    <p>CEO Y EDITORA</p>
-                </div>
-                <div class="text-center">
-                    <div class="w-32 h-32 mx-auto mb-4 bg-gradient-to-br from-orange to-yellow rounded-full flex items-center justify-center">
-                        <img src="/placeholder.svg" alt="MARIANA MÓNACO TORRENTE" class="w-24 h-24 rounded-full">
-                    </div>
-                    <h3 class="font-bold">MARIANA MÓNACO TORRENTE</h3>
-                    <p>CEO Y COMMUNITY MANAGER</p>
-                </div>
-                <div class="text-center">
-                    <div class="w-32 h-32 mx-auto mb-4 bg-gradient-to-br from-orange to-yellow rounded-full flex items-center justify-center">
-                        <img src="/placeholder.svg" alt="CANDELA CIUTATT" class="w-24 h-24 rounded-full">
-                    </div>
-                    <h3 class="font-bold">CANDELA CIUTATT</h3>
-                    <p>CEO Y CLOSER</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="py-12">
-            <h2 class="text-3xl font-bold mb-8 text-center">Clientes que creen en nosotros</h2>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-                <div class="bg-gradient-to-br from-orange to-yellow p-4 rounded-lg flex items-center justify-center h-20">
-                    <span class="font-bold text-white">AG</span>
-                </div>
-                <div class="bg-gradient-to-br from-orange to-yellow p-4 rounded-lg flex items-center justify-center h-20">
-                    <span class="font-bold text-white">MARKET</span>
-                </div>
-                <div class="bg-gradient-to-br from-orange to-yellow p-4 rounded-lg flex items-center justify-center h-20">
-                    <span class="font-bold text-white">Florencio Soto</span>
-                </div>
-                <div class="bg-gradient-to-br from-orange to-yellow p-4 rounded-lg flex items-center justify-center h-20">
-                    <span class="font-bold text-white">FASHION</span>
-                </div>
-            </div>
-        </section>
-
-        <section class="py-12">
-            <h2 class="text-3xl font-bold mb-8 text-center">Preguntas Frecuentes</h2>
-            <div class="space-y-4">
-                <div class="border-b border-gray-700 pb-4">
-                    <button class="flex justify-between items-center w-full text-left font-bold mb-2" onclick="toggleAccordion(this)">
-                        ¿Qué es y cómo funciona el Marketing Digital?
-                        <svg class="w-6 h-6 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+    <main>
+        <section class="py-20 text-center relative overflow-hidden" style="padding-top: 7rem;">
+            <div class="container mx-auto px-4 relative z-10">
+                <h1 class="text-5xl font-bold mb-4" data-aos="fade-up">Agencia Marketing Digital</h1>
+                <p class="text-xl mb-8" data-aos="fade-up" data-aos-delay="200">Prepárate para el futuro.</p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4" data-aos="fade-up" data-aos-delay="400">
+                    <button class="bg-orange-500 text-white py-2 px-6 rounded-full hover:bg-orange-600 transition-colors">
+                        Botón de acción
                     </button>
-                    <div class="hidden">
-                        <p>El Marketing Digital es el conjunto de estrategias y técnicas que se utilizan para promocionar productos o servicios a través de medios digitales. Funciona mediante la creación de contenido relevante, la optimización para motores de búsqueda, la publicidad en redes sociales, el email marketing, entre otras tácticas.</p>
-                    </div>
-                </div>
-                <div class="border-b border-gray-700 pb-4">
-                    <button class="flex justify-between items-center w-full text-left font-bold mb-2" onclick="toggleAccordion(this)">
-                        ¿Para qué sirve el Marketing Digital?
-                        <svg class="w-6 h-6 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    <button class="bg-white text-black py-2 px-6 rounded-full hover:bg-gray-200 transition-colors">
+                        Más información
                     </button>
-                    <div class="hidden">
-                        <p>El Marketing Digital sirve para aumentar la visibilidad de una marca en línea, atraer más tráfico a un sitio web, generar leads, convertir clientes potenciales en compradores, y fidelizar a los clientes existentes. También permite medir y analizar el rendimiento de las campañas en tiempo real.</p>
-                    </div>
                 </div>
-                <div class="border-b border-gray-700 pb-4">
-                    <button class="flex justify-between items-center w-full text-left font-bold mb-2" onclick="toggleAccordion(this)">
-                        ¿Qué elementos componen al Marketing Digital?
-                        <svg class="w-6 h-6 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </div>
+            <div class="absolute top-0 right-0 w-1/2 h-full bg-orange-500 transform skew-y-6 -z-10"></div>
+            <div class="absolute bottom-0 left-0 w-1/4 h-1/4 bg-yellow-400 rounded-full -z-10"></div>
+        </section>
+
+        <section class="py-20 bg-orange-500">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold mb-8 text-center" data-aos="fade-up">Vibrando Alto</h2>
+                <p class="text-lg mb-8 text-center max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="200">
+                    Somos un equipo apasionado por crear estrategias digitales que
+                    impulsan marcas hacia el éxito. En Vibrando Alto, combinamos
+                    creatividad, innovación y experiencia para conectar a nuestros
+                    clientes con su audiencia ideal, logrando resultados reales.
+                    Nuestro objetivo es hacer que tu marca brille y crezca en el mundo
+                    digital.
+                </p>
+                <div class="text-center" data-aos="fade-up" data-aos-delay="400">
+                    <button class="bg-white text-orange-500 py-2 px-6 rounded-full hover:bg-gray-100 transition-colors">
+                        Descubre más
                     </button>
-                    <div class="hidden">
-                        <p>Los elementos principales del Marketing Digital incluyen: SEO, SEM, Marketing de Contenidos, Marketing en Redes Sociales, Email Marketing, Marketing de Afiliados, Publicidad Display, y Analítica Web.</p>
-                    </div>
-                </div>
-                <div class="border-b border-gray-700 pb-4">
-                    <button class="flex justify-between items-center w-full text-left font-bold mb-2" onclick="toggleAccordion(this)">
-                        ¿Cómo funciona una Agencia de Marketing?
-                        <svg class="w-6 h-6 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                    </button>
-                    <div class="hidden">
-                        <p>Una Agencia de Marketing funciona como un equipo externo que se encarga de diseñar, implementar y gestionar estrategias de marketing para sus clientes. Esto incluye la planificación de campañas, creación de contenido, gestión de redes sociales, análisis de datos y optimización continua de las estrategias.</p>
-                    </div>
                 </div>
             </div>
         </section>
 
-        <section class="py-12 bg-orange rounded-lg mb-12">
-            <div class="p-6 text-center">
-                <h2 class="text-3xl font-bold mb-4">AGENDA UNA ASESORÍA PERSONALIZADA CON Vibrando Alto</h2>
-                <p class="mb-4">INSERTAR ESTE CÓDIGO PARA QUE APAREZCA EL CALENDLY PARA AGENDAR LLAMADA</p>
-                <div class="calendly-inline-widget" data-url="https://calendly.com/vibrandoalto516" style="min-width:320px;height:700px;"></div>
+        <section class="py-20 bg-black">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold mb-8 text-center" data-aos="fade-up">Nuestros Servicios de <span class="text-orange-500">Marketing Digital</span></h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="servicesGrid">
+                    <!-- Services will be dynamically inserted here -->
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20 bg-gray-900">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold mb-8 text-center" data-aos="fade-up">Certificaciones de Nuestra <span class="text-orange-500">Agencia de Marketing Digital</span></h2>
+                <div class="flex justify-center items-center flex-wrap gap-8" data-aos="fade-up" data-aos-delay="200">
+                    <img src="/meta-logo.png" alt="Meta Business Partner" width="96" height="48">
+                    <img src="/instagram-logo.png" alt="Instagram Partner" width="96" height="48">
+                    <img src="/tiktok-logo.png" alt="TikTok Marketing Partner" width="96" height="48">
+                    <img src="/linkedin-logo.png" alt="LinkedIn Marketing Partner" width="96" height="48">
+                    <img src="/google-logo.png" alt="Google Partner" width="96" height="48">
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20 bg-orange-500">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold mb-8 text-center" data-aos="fade-up">Clientes que creen en nosotros</h2>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8" id="clientsGrid">
+                    <!-- Clients will be dynamically inserted here -->
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20 bg-black">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold mb-8 text-center" data-aos="fade-up">Nuestro Equipo</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="teamGrid">
+                    <!-- Team members will be dynamically inserted here -->
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20 bg-gradient-to-r from-orange-500 to-yellow-500">
+            <div class="container mx-auto px-4 text-center">
+                <svg class="w-16 h-16 mx-auto mb-4" data-aos="zoom-in" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path></svg>
+                <h2 class="text-3xl font-bold mb-4" data-aos="fade-up" data-aos-delay="200">100% Remota</h2>
+                <p class="max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="400">
+                    Brindamos un servicio personalizado para cada cliente. Como agencia de marketing digital trabajamos
+                    enfocados en lograr resultados de negocio.
+                </p>
+            </div>
+        </section>
+
+        <section class="py-20 bg-black">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold mb-8 text-center" data-aos="fade-up">¿Por qué elegir a <span class="text-orange-500">Vibrando Alto</span>?</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8" id="reasonsGrid">
+                    <!-- Reasons will be dynamically inserted here -->
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20 bg-orange-500">
+            <div class="container mx-auto px-4 text-center">
+                <h2 class="text-3xl font-bold mb-4" data-aos="fade-up">AGENDA UNA ASESORÍA PERSONALIZADA CON Vibrando Alto</h2>
+                <p class="mb-8" data-aos="fade-up" data-aos-delay="200">Descubre cómo podemos impulsar tu negocio en el mundo digital</p>
+                <div class="calendly-inline-widget" data-url="https://calendly.com/vibrandoalto516" style="min-width:320px;height:700px;" data-aos="fade-up" data-aos-delay="400"></div>
                 <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
-                <p class="mt-4">y en caso de no poder agregar el link</p>
-                <a href="https://calendly.com/vibrandoalto516" class="text-white underline">https://calendly.com/vibrandoalto516</a>
+                <p class="mt-4" data-aos="fade-up" data-aos-delay="600">En caso de no poder agregar el link:</p>
+                <a href="https://calendly.com/vibrandoalto516" class="text-white underline" data-aos="fade-up" data-aos-delay="800">https://calendly.com/vibrandoalto516</a>
+            </div>
+        </section>
+
+        <section class="py-20 bg-black">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold mb-8 text-center" data-aos="fade-up">Preguntas Frecuentes</h2>
+                <div class="space-y-4" id="faqContainer">
+                    <!-- FAQ items will be dynamically inserted here -->
+                </div>
             </div>
         </section>
     </main>
@@ -279,26 +147,6 @@
         </div>
     </footer>
 
-    <script>
-        function toggleAccordion(element) {
-            const content = element.nextElementSibling;
-            const icon = element.querySelector('svg');
-            content.classList.toggle('hidden');
-            icon.classList.toggle('rotate-180');
-        }
-
-        // Animación de entrada para los elementos
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animate-fadeIn');
-                }
-            });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('section').forEach(section => {
-            observer.observe(section);
-        });
-    </script>
+    <script src="js/script.js"></script>
 </body>
 </html>
