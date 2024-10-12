@@ -206,31 +206,53 @@ document.addEventListener('DOMContentLoaded', function() {
             icon.classList.toggle('rotate-180');
         });
     });
-});
 
-// Smooth scroll for navigation links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
+    // Smooth scroll for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
         });
     });
+
+    // Slider functionality
+    const slideTrack = document.querySelector('.slide-track');
+    const slides = document.querySelectorAll('.slide');
+    let currentIndex = 0;
+
+    function nextSlide() {
+        currentIndex = (currentIndex + 1) % slides.length;
+        updateSlider();
+    }
+
+    function updateSlider() {
+        const offset = -currentIndex * 100;
+        slideTrack.style.transform = `translateX(${offset}%)`;
+    }
+
+    setInterval(nextSlide, 5000); // Change slide every 5 seconds
+
+    // Add data-translate attributes to elements
+    const translatableElements = {
+        'inicio': document.querySelector('nav a[href="#inicio"]'),
+        'servicios': document.querySelector('nav a[href="#servicios"]'),
+        'nosotros': document.querySelector('nav a[href="#nosotros"]'),
+        'clientes': document.querySelector('nav a[href="#clientes"]'),
+        'contacto': document.querySelector('nav a[href="#contacto"]'),
+        'agenciaMarketingDigital': document.querySelector('#inicio h1'),
+        'preparateParaElFuturo': document.querySelector('#inicio p'),
+        'reservarAsesoria': document.querySelector('#btnAsesoria'),
+        'masInformacion': document.querySelector('#btnInfo'),
+    };
+
+    Object.entries(translatableElements).forEach(([key, element]) => {
+        if (element) {
+            element.setAttribute('data-translate', key);
+        }
+    });
+
+    // Initialize language
+    updateLanguage(document.documentElement.lang);
 });
-
-// Slider functionality
-const slideTrack = document.querySelector('.slide-track');
-const slides = document.querySelectorAll('.slide');
-let currentIndex =  0;
-
-function nextSlide() {
-    currentIndex = (currentIndex + 1) % slides.length;
-    updateSlider();
-}
-
-function updateSlider() {
-    const offset = -currentIndex * 100;
-    slideTrack.style.transform = `translateX(${offset}%)`;
-}
-
-setInterval(nextSlide, 5000); // Change slide every 5 seconds
