@@ -121,6 +121,17 @@
             background-color: transparent;
             pointer-events: none;
         }
+        .hero-slider {
+            overflow: hidden;
+            position: relative;
+        }
+        .slide-container {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .slide {
+            flex: 0 0 100%;
+        }
     </style>
 </head>
 <body class="min-h-screen bg-custom text-custom">
@@ -346,6 +357,6 @@
     </style>
 
     <script src="js/main.js"></script>
-    <script src="js/js_translations.js"></script>
+    <script src="js/translations.js"></script>
 </body>
 </html>
