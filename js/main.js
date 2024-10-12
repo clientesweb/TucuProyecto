@@ -15,17 +15,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Services data
     const services = [
-        { icon: 'globe', title: 'SEO', 
+        { icon: 'fa-globe', title: 'SEO', 
           description: 'Impulsamos el crecimiento de tu negocio en canales orgánicos a través de estrategias de posicionamiento web.' },
-        { icon: 'megaphone', title: 'Redes Sociales',
+        { icon: 'fa-bullhorn', title: 'Redes Sociales',
           description: 'Activamos y gestionamos tu presencia online en las redes sociales más importantes del momento.' },
-        { icon: 'layout', title: 'Diseño y Desarrollo Web',
+        { icon: 'fa-laptop-code', title: 'Diseño y Desarrollo Web',
           description: 'Nos encargamos del diseño de tu sitio web o aplicación abordando todas las necesidades de tu empresa.' },
-        { icon: 'message-square', title: 'Setters',
+        { icon: 'fa-comments', title: 'Setters',
           description: 'Identifica cuentas de alto potencial y optimiza la búsqueda de clientes calificados.' },
-        { icon: 'zap', title: 'Google ADS',
+        { icon: 'fa-bolt', title: 'Google ADS',
           description: 'Desarrollamos campañas de búsqueda, display, remarketing, discovery y performance max.' },
-        { icon: 'laptop', title: 'Crecimiento con IA',
+        { icon: 'fa-robot', title: 'Crecimiento con IA',
           description: 'Sistematización de crecimiento exponencial que mejorará la imagen de tu perfil.' },
     ];
 
@@ -37,11 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
         serviceElement.setAttribute('data-aos', 'fade-up');
         serviceElement.setAttribute('data-aos-delay', (index * 100).toString());
         serviceElement.innerHTML = `
-            <div class="flex justify-center">
-                <svg class="w-12 h-12 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <use xlink:href="#icon-${service.icon}"></use>
-                </svg>
-            </div>
+            <i class="fas ${service.icon} text-4xl mb-4"></i>
             <h3 class="text-xl font-bold mb-2">${service.title}</h3>
             <p class="mb-4">${service.description}</p>
             <button class="bg-custom text-primary py-2 px-4 rounded-full hover:bg-accent hover:text-custom transition-colors">
@@ -96,15 +92,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Reasons data
     const reasons = [
-        { icon: 'message-square', title: 'Interpretamos las necesidades',
+        { icon: 'fa-comments', title: 'Interpretamos las necesidades',
           description: 'Interpretamos las necesidades reales de cada cliente, aún cuando le resulte complejo explicarlas.' },
-        { icon: 'lightbulb', title: 'Planificamos estrategias',
+        { icon: 'fa-lightbulb', title: 'Planificamos estrategias',
           description: 'Planificamos estrategias de marketing digital que le permitirán a tu empresa destacarse por frente a la competencia.' },
-        { icon: 'dollar-sign', title: 'Cuidamos tu presupuesto',
+        { icon: 'fa-dollar-sign', title: 'Cuidamos tu presupuesto',
           description: 'Cuidamos tu presupuesto, y lo empleamos para acciones de publicidad online que generen resultados concretos de negocio.' },
-        { icon: 'bar-chart-2', title: 'Generamos reportes claros',
+        { icon: 'fa-chart-bar', title: 'Generamos reportes claros',
           description: 'Mediante datos de Google Analytics, generamos reportes claros que se envían al cliente periódicamente, brindando información precisa y transparente sobre cada etapa del proyecto.' },
-        { icon: 'users', title: 'Soluciones integrales',
+        { icon: 'fa-users', title: 'Soluciones integrales',
           description: 'Brindamos soluciones integrales, contamos con especialistas en cada una de las áreas del marketing digital y del inbound marketing.' },
     ];
 
@@ -116,15 +112,38 @@ document.addEventListener('DOMContentLoaded', function() {
         reasonElement.setAttribute('data-aos', 'fade-up');
         reasonElement.setAttribute('data-aos-delay', (index * 100).toString());
         reasonElement.innerHTML = `
-            <svg class="w-12 h-12 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <use xlink:href="#icon-${reason.icon}"></use>
-            </svg>
+            <i class="fas ${reason.icon} text-3xl text-primary"></i>
             <div>
                 <h3 class="text-xl font-bold mb-2">${reason.title}</h3>
                 <p>${reason.description}</p>
             </div>
         `;
         reasonsGrid.appendChild(reasonElement);
+    });
+
+    // New section: Agency Features
+    const agencyFeatures = [
+        { icon: 'fa-globe', title: 'Global', 
+          description: 'Somos una agencia de marketing que trabajamos con empresas de diversos países como Argentina, Uruguay, Chile, Paraguay, México, España y Estados Unidos.' },
+        { icon: 'fa-laptop', title: 'Boutique', 
+          description: 'Somos una agencia 100% remota. Estamos actualizados con las nuevas tendencias globales y contamos con un equipo de expertos alrededor del mundo.' },
+        { icon: 'fa-star', title: '100% Remota', 
+          description: 'Brindamos un servicio personalizado para cada cliente. Como agencia de marketing digital trabajamos enfocados en lograr resultados de negocio.' },
+    ];
+
+    // Render agency features
+    const agencyFeaturesGrid = document.getElementById('agencyFeaturesGrid');
+    agencyFeatures.forEach((feature, index) => {
+        const featureElement = document.createElement('div');
+        featureElement.className = 'bg-custom bg-opacity-50 p-6 rounded-lg text-center';
+        featureElement.setAttribute('data-aos', 'fade-up');
+        featureElement.setAttribute('data-aos-delay', (index * 100).toString());
+        featureElement.innerHTML = `
+            <i class="fas ${feature.icon} text-4xl mb-4 text-accent"></i>
+            <h3 class="text-xl font-bold mb-2">${feature.title}</h3>
+            <p>${feature.description}</p>
+        `;
+        agencyFeaturesGrid.appendChild(featureElement);
     });
 
     // FAQ data
@@ -151,9 +170,7 @@ document.addEventListener('DOMContentLoaded', function() {
         faqElement.innerHTML = `
             <button class="flex justify-between items-center w-full text-left font-bold mb-2">
                 ${faq.question}
-                <svg class="w-6 h-6 transform transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                </svg>
+                <i class="fas fa-chevron-down transform transition-transform duration-200"></i>
             </button>
             <p class="hidden">${faq.answer}</p>
         `;
@@ -161,7 +178,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const button = faqElement.querySelector('button');
         const answer = faqElement.querySelector('p');
-        const icon = faqElement.querySelector('svg');
+        const icon = faqElement.querySelector('i');
 
         button.addEventListener('click', () => {
             answer.classList.toggle('hidden');
