@@ -95,8 +95,31 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-        #mobileMenuButton, header nav a {
-            color: #FF5E00;
+        .language-selector {
+            position: relative;
+            display: inline-block;
+        }
+        .language-selector select {
+            appearance: none;
+            background-color: transparent;
+            border: none;
+            padding: 0 1em 0 0;
+            margin: 0;
+            width: 100%;
+            font-family: inherit;
+            font-size: inherit;
+            cursor: pointer;
+            line-height: inherit;
+            outline: none;
+        }
+        .language-selector::after {
+            content: "\25BC";
+            position: absolute;
+            top: 0;
+            right: 0;
+            padding: 0 0.5em;
+            background-color: transparent;
+            pointer-events: none;
         }
     </style>
 </head>
@@ -107,12 +130,32 @@
 
     <div class="fixed-header">
         <div class="bg-primary py-2">
-            <div class="container mx-auto px-4">
-                <div class="slider">
+            <div class="container mx-auto px-4 flex justify-between items-center">
+                <div class="slider w-2/3">
                     <div class="slide-track">
                         <div class="slide text-custom text-center">¡Oferta especial! 20% de descuento en todos los servicios</div>
                         <div class="slide text-custom text-center">Nuevo servicio: Consultoría de marketing digital personalizada</div>
                         <div class="slide text-custom text-center">¡Únete a nuestro webinar gratuito sobre estrategias de SEO!</div>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="#" class="text-custom hover:text-accent transition-colors" aria-label="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="text-custom hover:text-accent transition-colors" aria-label="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="text-custom hover:text-accent transition-colors" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="text-custom hover:text-accent transition-colors" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <div class="language-selector">
+                        <select id="languageSelect" class="text-custom bg-transparent">
+                            <option value="es">ES</option>
+                            <option value="en">EN</option>
+                        </select>
                     </div>
                 </div>
             </div>
@@ -122,13 +165,13 @@
             <div class="container mx-auto px-4 flex justify-between items-center">
                 <img src="logo.png" alt="Vibrando Alto" width="50" height="50" class="w-12 h-12">
                 <nav class="hidden md:flex space-x-4">
-                    <a href="#inicio">Inicio</a>
-                    <a href="#servicios">Servicios</a>
-                    <a href="#nosotros">Nosotros</a>
-                    <a href="#clientes">Clientes</a>
-                    <a href="#contacto">Contacto</a>
+                    <a href="#inicio" class="text-orange-500" data-translate="inicio">Inicio</a>
+                    <a href="#servicios" class="text-orange-500" data-translate="servicios">Servicios</a>
+                    <a href="#nosotros" class="text-orange-500" data-translate="nosotros">Nosotros</a>
+                    <a href="#clientes" class="text-orange-500" data-translate="clientes">Clientes</a>
+                    <a href="#contacto" class="text-orange-500" data-translate="contacto">Contacto</a>
                 </nav>
-                <button id="mobileMenuButton" class="md:hidden">
+                <button id="mobileMenuButton" class="md:hidden text-orange-500">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                     </svg>
@@ -140,13 +183,13 @@
     <main>
         <section id="inicio" class="py-20 text-center relative overflow-hidden">
             <div class="container mx-auto px-4 relative z-10">
-                <h1 class="text-5xl font-bold mb-4 text-custom" data-aos="fade-up">Agencia Marketing Digital</h1>
-                <p class="text-xl mb-8 text-custom" data-aos="fade-up" data-aos-delay="200">Prepárate para el futuro.</p>
+                <h1 class="text-5xl font-bold mb-4 text-custom" data-aos="fade-up" data-translate="agenciaMarketingDigital">Agencia Marketing Digital</h1>
+                <p class="text-xl mb-8 text-custom" data-aos="fade-up" data-aos-delay="200" data-translate="preparateParaElFuturo">Prepárate para el futuro.</p>
                 <div class="flex flex-col sm:flex-row justify-center gap-4" data-aos="fade-up" data-aos-delay="400">
-                    <button id="btnAsesoria" class="bg-primary text-custom py-2 px-6 rounded-full hover:bg-secondary transition-colors">
+                    <button id="btnAsesoria" class="bg-primary text-custom py-2 px-6 rounded-full hover:bg-secondary transition-colors" data-translate="reservarAsesoria">
                         Reservar Asesoría 
                     </button>
-                    <button id="btnInfo" class="bg-custom text-primary py-2 px-6 rounded-full border border-primary hover:bg-primary hover:text-custom transition-colors">
+                    <button id="btnInfo" class="bg-custom text-primary py-2 px-6 rounded-full border border-primary hover:bg-primary hover:text-custom transition-colors" data-translate="masInformacion">
                         Más información
                     </button>
                 </div>
@@ -207,7 +250,7 @@
 
         <section class="py-20 bg-custom">
             <div class="container mx-auto px-4">
-                <h2 class="text-3xl font-bold mb-8 text-center text-custom" data-aos="fade-up">¿Por qué elegir a <span class="text-primary">Vibrando Alto</span>?</h2>
+                <h2 class="text-3xl font-bold mb-8 text-center text-custom" data-aos="fade-up">¿Por qué  elegir a <span class="text-primary">Vibrando Alto</span>?</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8" id="reasonsGrid">
                     <!-- Reasons will be dynamically inserted here -->
                 </div>
@@ -243,7 +286,7 @@
 
         <section class="py-20 bg-custom">
             <div class="container mx-auto px-4">
-                <h2 class="text-3xl font-bold mb-8  text-center text-custom" data-aos="fade-up">Preguntas Frecuentes</h2>
+                <h2 class="text-3xl font-bold mb-8 text-center text-custom" data-aos="fade-up">Preguntas Frecuentes</h2>
                 <div class="space-y-4" id="faqContainer">
                     <!-- FAQ items will be dynamically inserted here -->
                 </div>
@@ -302,5 +345,6 @@
     </style>
 
     <script src="js/main.js"></script>
+    <script src="js/translations.js"></script>
 </body>
 </html>
