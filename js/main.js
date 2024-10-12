@@ -1,4 +1,13 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // Preloader
+    window.addEventListener('load', function() {
+        const preloader = document.querySelector('.preloader');
+        preloader.style.opacity = '0';
+        setTimeout(() => {
+            preloader.style.display = 'none';
+        }, 500);
+    });
+
     // Initialize AOS
     AOS.init({
         duration: 1000,
@@ -12,6 +21,18 @@ document.addEventListener('DOMContentLoaded', function() {
     mobileMenuButton.addEventListener('click', () => {
         nav.classList.toggle('hidden');
     });
+
+    // Adjust padding-top of the first section to account for fixed header
+    const fixedHeader = document.querySelector('.fixed-header');
+    const firstSection = document.querySelector('main > section:first-child');
+    
+    function adjustFirstSectionPadding() {
+        const headerHeight = fixedHeader.offsetHeight;
+        firstSection.style.paddingTop = `${headerHeight + 20}px`; // 20px extra for spacing
+    }
+
+    window.addEventListener('resize', adjustFirstSectionPadding);
+    adjustFirstSectionPadding();
 
     // Services data
     const services = [
@@ -121,7 +142,7 @@ document.addEventListener('DOMContentLoaded', function() {
         reasonsGrid.appendChild(reasonElement);
     });
 
-    // New section: Agency Features
+    // Agency Features
     const agencyFeatures = [
         { icon: 'fa-globe', title: 'Global', 
           description: 'Somos una agencia de marketing que trabajamos con empresas de diversos países como Argentina, Uruguay, Chile, Paraguay, México, España y Estados Unidos.' },
@@ -197,18 +218,19 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Intersection Observer for navbar background change
-const header = document.querySelector('header');
-const heroSection = document.querySelector('section');
+// Slider functionality
+const slideTrack = document.querySelector('.slide-track');
+const slides = document.querySelectorAll('.slide');
+let currentIndex =  0;
 
-const heroObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (!entry.isIntersecting) {
-            header.classList.add('bg-custom', 'shadow-md');
-        } else {
-            header.classList.remove('bg-custom', 'shadow-md');
-        }
-    });
-}, { threshold: 0.1 });
+function nextSlide() {
+    currentIndex = (currentIndex + 1) % slides.length;
+    updateSlider();
+}
 
-heroObserver.observe(heroSection);
+function updateSlider() {
+    const offset = -currentIndex * 100;
+    slideTrack.style.transform = `translateX(${offset}%)`;
+}
+
+setInterval(nextSlide, 5000); // Change slide every 5 seconds
