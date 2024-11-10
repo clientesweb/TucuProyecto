@@ -61,37 +61,16 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('resize', adjustFirstSectionPadding);
     adjustFirstSectionPadding();
 
-    function initTopBanner() {
-        const slider = document.querySelector('.slider .slide-track');
-        if (slider) {
-            const slides = slider.children;
-            let currentSlide = 0;
-            
-            function showNextSlide() {
-                slides[currentSlide].style.opacity = '0';
-                currentSlide = (currentSlide + 1) % slides.length;
-                slides[currentSlide].style.opacity = '1';
-            }
-
-            // Inicializar la visibilidad de las diapositivas
-            Array.from(slides).forEach((slide, index) => {
-                slide.style.opacity = index === 0 ? '1' : '0';
-                slide.style.transition = 'opacity 0.5s ease-in-out';
-            });
-
-            // Cambiar de diapositiva cada 5 segundos
-            setInterval(showNextSlide, 5000);
-        }
-    }
-
     // Banner video
     const bannerSection = document.querySelector('#banner');
     if (bannerSection) {
         bannerSection.innerHTML = `
-            <video autoplay loop muted playsinline class="w-full h-full object-cover">
-                <source src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/vibrando1-Ma5Wpw4ZuwVNuGLkYgvmMpb1EtJnVo.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
+            <div class="relative w-full h-screen">
+                <video autoplay loop muted playsinline class="absolute top-0 left-0 w-full h-full object-cover">
+                    <source src="img/vibrando1.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
         `;
     }
 
@@ -251,35 +230,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Modal para la sección "nosotros"
-    const nosotrosButton = document.querySelector('[data-service="nosotros"]');
-    if (nosotrosButton) {
-        nosotrosButton.addEventListener('click', () => {
-            const modalContent = `
-                <div class="bg-custom p-6 rounded-lg w-full max-w-4xl mx-auto max-h-[90vh] overflow-y-auto">
-                    <h2 class="text-2xl font-bold mb-4">Sobre Nosotros</h2>
-                    <p class="mb-4">Somos un equipo apasionado por crear estrategias digitales que impulsan marcas hacia el éxito. En Vibrando Alto, combinamos creatividad, innovación y experiencia para conectar a nuestros clientes con su audiencia ideal, logrando resultados reales.</p>
-                    <p class="mb-4">Nuestro objetivo es hacer que tu marca brille y crezca en el mundo digital. Trabajamos con un enfoque personalizado para cada cliente, asegurando que cada estrategia se alinee perfectamente con sus objetivos y valores.</p>
-                    <h3 class="text-xl font-bold mb-2">Nuestros Valores</h3>
-                    <ul class="list-disc pl-5 mb-4">
-                        <li>Innovación constante</li>
-                        <li>Compromiso con los resultados</li>
-                        <li>Transparencia en la comunicación</li>
-                        <li>Adaptabilidad a las nuevas tendencias</li>
-                    </ul>
-                    <button class="close-modal bg-primary text-custom py-2 px-4 rounded-full hover:bg-secondary transition-colors">Cerrar</button>
-                </div>
-            `;
-            modalContainer.innerHTML = modalContent;
-            modalContainer.classList.remove('hidden');
-
-            modalContainer.querySelector('.close-modal').addEventListener('click', () => {
-                modalContainer.classList.add('hidden');
-            });
-        });
-    }
-
-
     // Clients data
     const clients = [
         { name: 'Cliente 1', logo: 'img/florencio-logo.png' },
@@ -311,66 +261,49 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Reviews data
     const reviews = [
-        { name: 'Juan Pérez', rating: 5, text: 'Excelente servicio, superaron mis expectativas.', image: 'https://randomuser.me/api/portraits/men/1.jpg' },
-        { name: 'María García', rating: 4, text: 'Muy profesionales y atentos a los detalles.', image: 'https://randomuser.me/api/portraits/women/2.jpg' },
-        { name: 'Carlos Rodríguez', rating: 5, text: 'Lograron aumentar significativamente nuestras ventas en línea.', image: 'https://randomuser.me/api/portraits/men/3.jpg' },
-        { name: 'Ana Martínez', rating: 4, text: 'Gran equipo, siempre dispuestos a ayudar.', image: 'https://randomuser.me/api/portraits/women/4.jpg' },
+        { name: 'Juan Pérez', rating: 5, text: 'Excelente servicio, superaron mis expectativas.' },
+        { name: 'María García', rating: 4, text: 'Muy profesionales y atentos a los detalles.' },
+        { name: 'Carlos Rodríguez', rating: 5, text: 'Lograron aumentar significativamente nuestras ventas en línea.' },
+        { name: 'Ana Martínez', rating: 4, text: 'Gran equipo, siempre dispuestos a ayudar.' },
     ];
 
     // Render reviews slider
     const reviewsSlider = document.getElementById('reviewsSlider');
     if (reviewsSlider) {
         reviewsSlider.innerHTML = `
-            <div class="swiper-container">
-                <div class="swiper-wrapper">
+            <div class="overflow-hidden relative">
+                <div class="flex animate-slide">
                     ${reviews.map(review => `
-                        <div class="swiper-slide">
+                        <div class="flex-shrink-0 w-full md:w-1/2 lg:w-1/3 p-4">
                             <div class="bg-white rounded-lg shadow-lg p-6">
                                 <div class="flex items-center mb-4">
-                                    <img src="${review.image}" alt="${review.name}" class="w-12 h-12 rounded-full mr-4">
-                                    <div>
-                                        <p class="font-bold">${review.name}</p>
-                                        <div class="text-yellow-400">
-                                            ${'★'.repeat(review.rating)}${'☆'.repeat(5 - review.rating)}
-                                        </div>
+                                    <div class="text-yellow-400">
+                                        ${'★'.repeat(review.rating)}${'☆'.repeat(5 - review.rating)}
                                     </div>
+                                    <span class="ml-2 text-gray-600">${review.rating}/5</span>
                                 </div>
-                                <p class="text-gray-700">"${review.text}"</p>
+                                <p class="text-gray-700 mb-4">"${review.text}"</p>
+                                <p class="font-bold">${review.name}</p>
+                            </div>
+                        </div>
+                    `).join('')}
+                    ${reviews.map(review => `
+                        <div class="flex-shrink-0 w-full md:w-1/2 lg:w-1/3 p-4">
+                            <div class="bg-white rounded-lg shadow-lg p-6">
+                                <div class="flex items-center mb-4">
+                                    <div class="text-yellow-400">
+                                        ${'★'.repeat(review.rating)}${'☆'.repeat(5 - review.rating)}
+                                    </div>
+                                    <span class="ml-2 text-gray-600">${review.rating}/5</span>
+                                </div>
+                                <p class="text-gray-700 mb-4">"${review.text}"</p>
+                                <p class="font-bold">${review.name}</p>
                             </div>
                         </div>
                     `).join('')}
                 </div>
-                <div class="swiper-pagination"></div>
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
             </div>
         `;
-
-        new Swiper('.swiper-container', {
-            slidesPerView: 1,
-            spaceBetween: 30,
-            loop: true,
-            autoplay: {
-                delay: 3000,
-                disableOnInteraction: false,
-            },
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-            breakpoints: {
-                640: {
-                    slidesPerView: 2,
-                },
-                1024: {
-                    slidesPerView: 3,
-                },
-            },
-        });
     }
 
     // Team data
@@ -402,7 +335,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const reelsContainer = document.getElementById('reelsContainer');
     if (reelsContainer) {
         reelsContainer.innerHTML = `
-            <div class="flex overflow-x-auto space-x-4 pb-4">
+            <div class="flex overflow-x-auto space-x-4 p-4">
                 <iframe src="https://www.instagram.com/reel/CsZpGFcAhHt/embed" class="w-[320px] h-[570px]" frameborder="0" scrolling="no" allowtransparency="true"></iframe>
                 <iframe src="https://www.instagram.com/reel/CtFFElFAq66/embed" class="w-[320px] h-[570px]" frameborder="0" scrolling="no" allowtransparency="true"></iframe>
                 <iframe src="https://www.instagram.com/reel/Cs2aG6yg8TQ/embed" class="w-[320px] h-[570px]" frameborder="0" scrolling="no" allowtransparency="true"></iframe>
@@ -524,7 +457,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Modal functionality
     const modalContainer = document.createElement('div');
-    modalContainer.className = 'fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50 p-4';
+    modalContainer.className = 'fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50';
     document.body.appendChild(modalContainer);
 
     document.querySelectorAll('.modal-trigger').forEach(button => {
@@ -533,7 +466,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const service = services.find(s => s.title === serviceName);
             if (service) {
                 const modalContent = `
-                    <div class="bg-custom p-6 rounded-lg w-full max-w-4xl mx-auto max-h-[90vh] overflow-y-auto">
+                    <div class="bg-custom p-6 rounded-lg max-w-4xl w-full mx-4 max-h-[90vh] overflow-y-auto">
                         <h2 class="text-2xl font-bold mb-4">${service.title}</h2>
                         ${service.modalContent}
                         <button class="close-modal bg-primary text-custom py-2 px-4 rounded-full hover:bg-secondary transition-colors mt-4">Cerrar</button>
@@ -564,8 +497,6 @@ document.addEventListener('DOMContentLoaded', function() {
             window.open(`https://wa.me/5493815519630?text=${message}`, '_blank');
         });
     }
-
-    initTopBanner();
 
     console.log("Script loaded successfully!");
 });
