@@ -232,10 +232,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Clients data
     const clients = [
-        { name: 'Cliente 1', logo: 'img/florencio-logo (1).png' },
-        { name: 'Cliente 2', logo: 'img/alexis-logo (1).png' },
-        { name: 'Cliente 3', logo: 'img/fashion-logo (1).png' },
-        { name: 'Cliente 4', logo: 'img/market-logo (1).png' },
+        { name: 'Cliente 1', logo: 'img/florencio-logo.png' },
+        { name: 'Cliente 2', logo: 'img/alexis-logo.png' },
+        { name: 'Cliente 3', logo: 'img/fashion-logo.png' },
+        { name: 'Cliente 4', logo: 'img/market-logo.png' },
     ];
 
     // Render clients slider
