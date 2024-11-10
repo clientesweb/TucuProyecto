@@ -70,6 +70,13 @@ document.addEventListener('DOMContentLoaded', function() {
                     <source src="img/vibrando1.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
+                <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50">
+                    <div class="text-center text-white">
+                        <h1 class="text-4xl md:text-6xl font-bold mb-4">Bienvenido a Vibrando Alto</h1>
+                        <p class="text-xl md:text-2xl mb-8">Tu agencia de marketing digital</p>
+                        <a href="#contact" class="bg-primary text-white py-2 px-6 rounded-full text-lg hover:bg-secondary transition-colors">Contáctanos</a>
+                    </div>
+                </div>
             </div>
         `;
     }
@@ -371,49 +378,62 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Reviews data
     const reviews = [
-        { name: 'Juan Pérez', rating: 5, text: 'Excelente servicio, superaron mis expectativas.' },
-        { name: 'María García', rating: 4, text: 'Muy profesionales y atentos a los detalles.' },
-        { name: 'Carlos Rodríguez', rating: 5, text: 'Lograron aumentar significativamente nuestras ventas en línea.' },
-        { name: 'Ana Martínez', rating: 4, text: 'Gran equipo, siempre dispuestos a ayudar.' },
+        { name: 'Juan Pérez', rating: 5, text: 'Excelente servicio, superaron mis expectativas.', photo: 'https://i.pravatar.cc/100?img=1' },
+        { name: 'María García', rating: 4, text: 'Muy profesionales y atentos a los detalles.', photo: 'https://i.pravatar.cc/100?img=2' },
+        { name: 'Carlos Rodríguez', rating: 5, text: 'Lograron aumentar significativamente nuestras ventas en línea.', photo: 'https://i.pravatar.cc/100?img=3' },
+        { name: 'Ana Martínez', rating: 4, text: 'Gran equipo, siempre dispuestos a ayudar.', photo: 'https://i.pravatar.cc/100?img=4' },
     ];
 
     // Render reviews slider
     const reviewsSlider = document.getElementById('reviewsSlider');
     if (reviewsSlider) {
         reviewsSlider.innerHTML = `
-            <div class="overflow-hidden relative">
-                <div class="flex animate-slide">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
                     ${reviews.map(review => `
-                        <div class="flex-shrink-0 w-full md:w-1/2 lg:w-1/3 p-4">
-                            <div class="bg-white rounded-lg shadow-lg p-6">
+                        <div class="swiper-slide">
+                            <div class="bg-white rounded-lg shadow-lg p-6 transition-transform duration-300 hover:scale-105">
                                 <div class="flex items-center mb-4">
-                                    <div class="text-yellow-400">
-                                        ${'★'.repeat(review.rating)}${'☆'.repeat(5 - review.rating)}
+                                    <img src="${review.photo}" alt="${review.name}" class="w-12 h-12 rounded-full mr-4">
+                                    <div>
+                                        <h3 class="font-bold">${review.name}</h3>
+                                        <div class="text-yellow-400">
+                                            ${'★'.repeat(review.rating)}${'☆'.repeat(5 - review.rating)}
+                                        </div>
                                     </div>
-                                    <span class="ml-2 text-gray-600">${review.rating}/5</span>
                                 </div>
-                                <p class="text-gray-700 mb-4">"${review.text}"</p>
-                                <p class="font-bold">${review.name}</p>
-                            </div>
-                        </div>
-                    `).join('')}
-                    ${reviews.map(review => `
-                        <div class="flex-shrink-0 w-full md:w-1/2 lg:w-1/3 p-4">
-                            <div class="bg-white rounded-lg shadow-lg p-6">
-                                <div class="flex items-center mb-4">
-                                    <div class="text-yellow-400">
-                                        ${'★'.repeat(review.rating)}${'☆'.repeat(5 - review.rating)}
-                                    </div>
-                                    <span class="ml-2 text-gray-600">${review.rating}/5</span>
-                                </div>
-                                <p class="text-gray-700 mb-4">"${review.text}"</p>
-                                <p class="font-bold">${review.name}</p>
+                                <p class="text-gray-700">"${review.text}"</p>
                             </div>
                         </div>
                     `).join('')}
                 </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
             </div>
         `;
+
+        new Swiper('.swiper-container', {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            loop: true,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 2,
+                },
+                1024: {
+                    slidesPerView: 3,
+                },
+            },
+        });
     }
 
     // Team data
@@ -445,10 +465,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const reelsContainer = document.getElementById('reelsContainer');
     if (reelsContainer) {
         reelsContainer.innerHTML = `
-            <div class="flex overflow-x-auto space-x-4 p-4">
-                <iframe src="https://www.instagram.com/reel/CsZpGFcAhHt/embed" class="w-[320px] h-[570px]" frameborder="0" scrolling="no" allowtransparency="true"></iframe>
-                <iframe src="https://www.instagram.com/reel/CtFFElFAq66/embed" class="w-[320px] h-[570px]" frameborder="0" scrolling="no" allowtransparency="true"></iframe>
-                <iframe src="https://www.instagram.com/reel/Cs2aG6yg8TQ/embed" class="w-[320px] h-[570px]" frameborder="0" scrolling="no" allowtransparency="true"></iframe>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <iframe src="https://www.instagram.com/reel/CsZpGFcAhHt/embed" class="w-full aspect-[9/16]" frameborder="0" scrolling="no" allowtransparency="true"></iframe>
+                <iframe src="https://www.instagram.com/reel/CtFFElFAq66/embed" class="w-full aspect-[9/16]" frameborder="0" scrolling="no" allowtransparency="true"></iframe>
+                <iframe src="https://www.instagram.com/reel/Cs2aG6yg8TQ/embed" class="w-full aspect-[9/16]" frameborder="0" scrolling="no" allowtransparency="true"></iframe>
             </div>
         `;
     }
@@ -501,8 +521,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (agencyFeaturesGrid) {
         agencyFeatures.forEach((feature, index) => {
             const featureElement = document.createElement('div');
-            featureElement.className =
-            'bg-custom bg-opacity-50 p-6 rounded-lg text-center hover-effect';
+            featureElement.className = 'bg-custom bg-opacity-50 p-6 rounded-lg text-center hover-effect';
             featureElement.setAttribute('data-aos', 'fade-up');
             featureElement.setAttribute('data-aos-delay', (index * 100).toString());
             featureElement.innerHTML = `
