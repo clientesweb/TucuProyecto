@@ -3,15 +3,17 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('load', function() {
         const preloader = document.querySelector('.preloader');
         preloader.innerHTML = `
-            <img src="logo.png" alt="Logo" class="animate-pulse">
-            <p class="mt-4">Powered By Duality Domain</p>
+            <div class="flex flex-col items-center">
+                <img src="logo.png" alt="Logo" class="animate-pulse w-24 h-24 mb-4">
+                <p class="text-white text-lg">Powered By Duality Domain</p>
+            </div>
         `;
         setTimeout(() => {
             preloader.style.opacity = '0';
             setTimeout(() => {
                 preloader.style.display = 'none';
             }, 500);
-        }, 2000); // Ajusta este tiempo según lo que desees mostrar el preloader
+        }, 2000);
     });
 
     // Initialize AOS
@@ -22,10 +24,22 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Mobile menu toggle
     const mobileMenuButton = document.getElementById('mobileMenuButton');
-    const nav = document.querySelector('nav');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const closeMenu = document.getElementById('closeMenu');
 
     mobileMenuButton.addEventListener('click', () => {
-        nav.classList.toggle('hidden');
+        mobileMenu.classList.add('active');
+    });
+
+    closeMenu.addEventListener('click', () => {
+        mobileMenu.classList.remove('active');
+    });
+
+    // Close mobile menu when clicking on a link
+    document.querySelectorAll('#mobileMenu a').forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+        });
     });
 
     // Adjust padding-top of the first section to account for fixed header
@@ -40,11 +54,11 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('resize', adjustFirstSectionPadding);
     adjustFirstSectionPadding();
 
-    // Banner video (nuevo)
+    // Banner video (modificado para ocupar todo el espacio disponible)
     const bannerSection = document.querySelector('#banner');
     if (bannerSection) {
         bannerSection.innerHTML = `
-            <video autoplay loop muted playsinline class="w-full h-full object-cover">
+            <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover">
                 <source src="img/vibrando1.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
@@ -93,7 +107,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <i class="fas ${service.icon} text-4xl mb-4"></i>
             <h3 class="text-xl font-bold mb-2">${service.title}</h3>
             <p class="mb-4">${service.description}</p>
-            <button class="bg-custom text-primary py-2 px-4 rounded-full hover:bg-accent hover:text-custom transition-colors">
+            <button class="bg-custom text-primary py-2 px-4 rounded-full hover:bg-accent hover:text-custom transition-colors modal-trigger" data-service="${service.title}">
                 Descubre más
             </button>
         `;
@@ -123,8 +137,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Team data (Mariana Mónaco removida)
     const team = [
-        { name: 'VALENTINA TERAN', role: 'CEO Y EDITORA' },
-        { name: 'CANDELA CIUTATT', role: 'CEO Y CLOSER' },
+        { name: 'VALENTINA TERAN', role: 'CEO Y EDITORA', photo: 'img/valentina-teran.jpg' },
+        { name: 'CANDELA CIUTATT', role: 'CEO Y CLOSER', photo: 'img/candela-ciutatt.jpg' },
     ];
 
     // Render team
@@ -135,8 +149,8 @@ document.addEventListener('DOMContentLoaded', function() {
         memberElement.setAttribute('data-aos', 'fade-up');
         memberElement.setAttribute('data-aos-delay', (index * 100).toString());
         memberElement.innerHTML = `
-            <div class="w-32 h-32 mx-auto mb-4 gradient-primary rounded-lg flex items-center justify-center">
-                <img src="/placeholder.svg" alt="${member.name}" width="96" height="96" class="rounded-lg">
+            <div class="w-32 h-32 mx-auto mb-4 gradient-primary rounded-lg flex items-center justify-center overflow-hidden">
+                <img src="${member.photo}" alt="${member.name}" class="w-full h-full object-cover">
             </div>
             <h3 class="font-bold">${member.name}</h3>
             <p>${member.role}</p>
@@ -288,4 +302,37 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Initialize language
     updateLanguage(document.documentElement.lang);
+
+    // Modal functionality
+    const modalContainer = document.createElement('div');
+    modalContainer.className = 'fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50';
+    document.body.appendChild(modalContainer);
+
+    document.querySelectorAll('.modal-trigger').forEach(button => {
+        button.addEventListener('click', () => {
+            const serviceName = button.getAttribute('data-service');
+            const service = services.find(s => s.title === serviceName);
+            if (service) {
+                const modalContent = `
+                    <div class="bg-custom p-6 rounded-lg max-w-lg w-full">
+                        <h2 class="text-2xl font-bold mb-4">${service.title}</h2>
+                        <p class="mb-4">${service.description}</p>
+                        <button class="close-modal bg-primary text-custom py-2 px-4 rounded-full hover:bg-secondary transition-colors">Cerrar</button>
+                    </div>
+                `;
+                modalContainer.innerHTML = modalContent;
+                modalContainer.classList.remove('hidden');
+
+                modalContainer.querySelector('.close-modal').addEventListener('click', () => {
+                    modalContainer.classList.add('hidden');
+                });
+            }
+        });
+    });
+
+    modalContainer.addEventListener('click', (e) => {
+        if (e.target === modalContainer) {
+            modalContainer.classList.add('hidden');
+        }
+    });
 });
