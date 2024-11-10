@@ -71,30 +71,31 @@
         .gradient-yellow {
             background: linear-gradient(135deg, var(--color-yellow) 0%, var(--color-accent) 100%);
         }
-        /* Banner deslizante */
+        /* Ajustes para el slider */
 .fixed-header {
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 50; /* Asegura que el banner esté encima */
+    z-index: 50; /* Mantener el slider en la parte superior */
+    padding-top: 40px; /* Asegura que el banner no se superponga al logo */
 }
 
 .slider {
     overflow: hidden;
-    white-space: nowrap; /* Evita que los mensajes se apilen */
+    white-space: nowrap; /* Para evitar que los mensajes se apilen */
 }
 
 .slide-track {
-    display: inline-flex; /* Los mensajes estarán en línea */
-    animation: scroll 20s linear infinite; /* Animación infinita */
+    display: inline-flex; /* Los mensajes deben estar en línea */
+    animation: scroll 20s linear infinite; /* Animación para mover los mensajes */
 }
 
 .slide {
     padding: 1rem;
-    display: inline-block; /* Asegura que cada mensaje esté en una línea */
+    display: inline-block;
     text-align: center;
     font-size: 1rem;
-    white-space: nowrap; /* Para que el texto no se divida en varias líneas */
+    white-space: nowrap; /* Evita que los mensajes se dividan en varias líneas */
 }
 
 /* Animación para mover los mensajes de izquierda a derecha */
@@ -103,15 +104,15 @@
     100% { transform: translateX(-100%); } /* Termina fuera a la izquierda */
 }
 
-/* Banner dinámico (bot) */
+/* Ajustes para el banner dinámico */
 #dynamicBanner {
     position: relative;
-    top: -2px; /* Ajusta para que esté justo encima del slider */
+    top: -2px; /* Asegura que no haya separación con el slider */
     margin: 0;
     padding: 0;
     text-align: center;
     font-size: 1rem;
-    color: white; /* Color del texto */
+    color: white;
     z-index: 100; /* Asegura que el banner dinámico esté encima */
 }
         .preloader {
