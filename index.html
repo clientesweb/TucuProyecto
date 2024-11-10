@@ -72,18 +72,36 @@
             background: linear-gradient(135deg, var(--color-yellow) 0%, var(--color-accent) 100%);
         }
         .slider {
-            overflow: hidden;
-            position: relative;
-            width: 100%;
-        }
-        .slide-track {
-            display: flex;
-            transition: transform 0.5s ease-in-out;
-        }
-        .slide {
-            flex: 0 0 100%;
-            padding: 0.5rem;
-        }
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+
+.slide-track {
+    display: flex;
+    width: calc(100% * 6); /* Ajustar según la cantidad de slides */
+}
+
+.slide {
+    flex: 0 0 100%;
+    padding: 0.5rem;
+    white-space: nowrap;
+    text-align: center;
+}
+
+/* Animación de deslizamiento automático */
+@keyframes slide {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.animate-slide {
+    animation: slide 20s linear infinite;
+}
         .fixed-header {
             position: fixed;
             top: 0;
@@ -245,37 +263,44 @@
     </div>
 
     <div class="fixed-header">
-        <div class="bg-primary py-2">
-            <div class="container mx-auto px-4 flex justify-between items-center">
-                <div class="slider w-2/3">
-                    <div class="slide-track">
-                        <div class="slide text-custom text-center">¡Oferta especial! 20% de descuento en todos los servicios</div>
-                        <div class="slide text-custom text-center">Nuevo servicio: Consultoría de marketing digital personalizada</div>
-                        <div class="slide text-custom text-center">¡Únete a nuestro webinar gratuito sobre estrategias de SEO!</div>
-                    </div>
+    <div class="bg-primary py-2">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <!-- Slider Automático -->
+            <div class="slider w-2/3 overflow-hidden">
+                <div class="slide-track animate-slide flex">
+                    <div class="slide text-custom text-center">¡Oferta especial! 20% de descuento en todos los servicios</div>
+                    <div class="slide text-custom text-center">Nuevo servicio: Consultoría de marketing digital personalizada</div>
+                    <div class="slide text-custom text-center">¡Únete a nuestro webinar gratuito sobre estrategias de SEO!</div>
+                    <!-- Duplicar los slides para un efecto continuo -->
+                    <div class="slide text-custom text-center">¡Oferta especial! 20% de descuento en todos los servicios</div>
+                    <div class="slide text-custom text-center">Nuevo servicio: Consultoría de marketing digital personalizada</div>
+                    <div class="slide text-custom text-center">¡Únete a nuestro webinar gratuito sobre estrategias de SEO!</div>
                 </div>
-                <div class="flex items-center space-x-4">
-                    <a href="#" class="text-custom hover:text-accent transition-colors" aria-label="Facebook">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="#" class="text-custom hover:text-accent transition-colors" aria-label="Twitter">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                    <a href="#" class="text-custom hover:text-accent transition-colors" aria-label="Instagram">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="#" class="text-custom hover:text-accent transition-colors" aria-label="LinkedIn">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-                    <div class="language-selector">
-                        <select id="languageSelect" class="text-custom bg-transparent">
-                            <option value="es">ES</option>
-                            <option value="en">EN</option>
-                        </select>
-                    </div>
+            </div>
+            <!-- Redes Sociales y Selector de Idioma -->
+            <div class="flex items-center space-x-4">
+                <a href="#" class="text-custom hover:text-accent transition-colors" aria-label="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="#" class="text-custom hover:text-accent transition-colors" aria-label="Twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#" class="text-custom hover:text-accent transition-colors" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" class="text-custom hover:text-accent transition-colors" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <div class="language-selector">
+                    <select id="languageSelect" class="text-custom bg-transparent">
+                        <option value="es">ES</option>
+                        <option value="en">EN</option>
+                    </select>
                 </div>
             </div>
         </div>
+    </div>
+</div>
 
         <header class="bg-black py-4 w-full">
             <div class="container mx-auto px-4 flex justify-between items-center">
