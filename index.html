@@ -79,6 +79,7 @@
             height: 100%;
             background-color: #000000;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             z-index: 9999;
@@ -119,6 +120,42 @@
         }
         .slide {
             flex: 0 0 100%;
+        }
+        .menu-item {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        .menu-item::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 50%;
+            background-color: var(--color-accent);
+            transition: all 0.3s ease;
+        }
+        .menu-item:hover::after {
+            width: 100%;
+            left: 0;
+        }
+        .menu-item:hover {
+            color: var(--color-accent);
+            transform: translateY(-2px);
+        }
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        .pulse {
+            animation: pulse 2s infinite;
         }
     </style>
 </head>
@@ -163,12 +200,12 @@
         <header class="bg-black py-4 w-full">
             <div class="container mx-auto px-4 flex justify-between items-center">
                 <img src="logo.png" alt="Vibrando Alto" width="50" height="50" class="w-12 h-12">
-                <nav class="hidden md:flex space-x-4">
-                    <a href="#inicio" class="text-orange-500" data-translate="inicio">Inicio</a>
-                    <a href="#servicios" class="text-orange-500" data-translate="servicios">Servicios</a>
-                    <a href="#nosotros" class="text-orange-500" data-translate="nosotros">Nosotros</a>
-                    <a href="#clientes" class="text-orange-500" data-translate="clientes">Clientes</a>
-                    <a href="#contacto" class="text-orange-500" data-translate="contacto">Contacto</a>
+                <nav class="hidden md:flex space-x-6">
+                    <a href="#inicio" class="menu-item text-orange-500 text-lg font-semibold" data-translate="inicio">Inicio</a>
+                    <a href="#servicios" class="menu-item text-orange-500 text-lg font-semibold" data-translate="servicios">Servicios</a>
+                    <a href="#nosotros" class="menu-item text-orange-500 text-lg font-semibold" data-translate="nosotros">Nosotros</a>
+                    <a href="#clientes" class="menu-item text-orange-500 text-lg font-semibold" data-translate="clientes">Clientes</a>
+                    <a href="#contacto" class="menu-item text-orange-500 text-lg font-semibold" data-translate="contacto">Contacto</a>
                 </nav>
                 <button id="mobileMenuButton" class="md:hidden text-orange-500">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -182,7 +219,22 @@
     <main>
         <section id="inicio" class="py-20 relative overflow-hidden">
             <div id="banner" class="w-full h-[60vh] md:h-[80vh] relative">
-                <!-- El contenido del banner se insertará dinámicamente desde JavaScript -->
+                <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover">
+                    <source src="video/banner-background.mp4" type="video/mp4">
+                    Tu navegador no soporta el tag de video.
+                </video>
+                <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center text-center px-4">
+                    <h1 class="text-4xl md:text-6xl font-bold text-white mb-4" data-aos="fade-up">Agencia Marketing Digital</h1>
+                    <p class="text-xl md:text-2xl text-white mb-8" data-aos="fade-up" data-aos-delay="200">Prepárate para el futuro</p>
+                    <div class="flex flex-col md:flex-row gap-4" data-aos="fade-up" data-aos-delay="400">
+                        <a href="#contacto" class="bg-primary text-white py-2 px-6 rounded-full hover:bg-secondary transition-colors">
+                            Reservar Asesoría
+                        </a>
+                        <a href="#servicios" class="bg-white text-primary py-2 px-6 rounded-full hover:bg-accent hover:text-white transition-colors">
+                            Impulsa tu Negocio Online
+                        </a>
+                    </div>
+                </div>
             </div>
         </section>
 
