@@ -61,6 +61,29 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('resize', adjustFirstSectionPadding);
     adjustFirstSectionPadding();
 
+    function initTopBanner() {
+        const slider = document.querySelector('.slider .slide-track');
+        if (slider) {
+            const slides = slider.children;
+            let currentSlide = 0;
+            
+            function showNextSlide() {
+                slides[currentSlide].style.opacity = '0';
+                currentSlide = (currentSlide + 1) % slides.length;
+                slides[currentSlide].style.opacity = '1';
+            }
+
+            // Inicializar la visibilidad de las diapositivas
+            Array.from(slides).forEach((slide, index) => {
+                slide.style.opacity = index === 0 ? '1' : '0';
+                slide.style.transition = 'opacity 0.5s ease-in-out';
+            });
+
+            // Cambiar de diapositiva cada 5 segundos
+            setInterval(showNextSlide, 5000);
+        }
+    }
+
     // Banner video
     const bannerSection = document.querySelector('#banner');
     if (bannerSection) {
@@ -228,6 +251,35 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Modal para la sección "nosotros"
+    const nosotrosButton = document.querySelector('[data-service="nosotros"]');
+    if (nosotrosButton) {
+        nosotrosButton.addEventListener('click', () => {
+            const modalContent = `
+                <div class="bg-custom p-6 rounded-lg w-full max-w-4xl mx-auto max-h-[90vh] overflow-y-auto">
+                    <h2 class="text-2xl font-bold mb-4">Sobre Nosotros</h2>
+                    <p class="mb-4">Somos un equipo apasionado por crear estrategias digitales que impulsan marcas hacia el éxito. En Vibrando Alto, combinamos creatividad, innovación y experiencia para conectar a nuestros clientes con su audiencia ideal, logrando resultados reales.</p>
+                    <p class="mb-4">Nuestro objetivo es hacer que tu marca brille y crezca en el mundo digital. Trabajamos con un enfoque personalizado para cada cliente, asegurando que cada estrategia se alinee perfectamente con sus objetivos y valores.</p>
+                    <h3 class="text-xl font-bold mb-2">Nuestros Valores</h3>
+                    <ul class="list-disc pl-5 mb-4">
+                        <li>Innovación constante</li>
+                        <li>Compromiso con los resultados</li>
+                        <li>Transparencia en la comunicación</li>
+                        <li>Adaptabilidad a las nuevas tendencias</li>
+                    </ul>
+                    <button class="close-modal bg-primary text-custom py-2 px-4 rounded-full hover:bg-secondary transition-colors">Cerrar</button>
+                </div>
+            `;
+            modalContainer.innerHTML = modalContent;
+            modalContainer.classList.remove('hidden');
+
+            modalContainer.querySelector('.close-modal').addEventListener('click', () => {
+                modalContainer.classList.add('hidden');
+            });
+        });
+    }
+
+
     // Clients data
     const clients = [
         { name: 'Cliente 1', logo: 'img/florencio-logo.png' },
@@ -298,6 +350,10 @@ document.addEventListener('DOMContentLoaded', function() {
             slidesPerView: 1,
             spaceBetween: 30,
             loop: true,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            },
             pagination: {
                 el: '.swiper-pagination',
                 clickable: true,
@@ -508,6 +564,8 @@ document.addEventListener('DOMContentLoaded', function() {
             window.open(`https://wa.me/5493815519630?text=${message}`, '_blank');
         });
     }
+
+    initTopBanner();
 
     console.log("Script loaded successfully!");
 });
