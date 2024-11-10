@@ -45,11 +45,11 @@ document.addEventListener('DOMContentLoaded', function() {
     if (bannerSection) {
         bannerSection.innerHTML = `
             <video autoplay loop muted playsinline class="w-full h-full object-cover">
-                <source src="/path/to/your/video.mp4" type="video/mp4">
+                <source src="img/vibrando1.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
             <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-                <h1 class="text-4xl md:text-6xl text-white font-bold">Tu Mensaje Principal</h1>
+                <h1 class="text-4xl md:text-6xl text-white font-bold"></h1>
             </div>
         `;
     }
