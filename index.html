@@ -71,28 +71,27 @@
         .gradient-yellow {
             background: linear-gradient(135deg, var(--color-yellow) 0%, var(--color-accent) 100%);
         }
-        /* Banner dinámico */
+       /* Banner dinámico */
 #dynamicBanner {
     position: fixed; /* Fijo en la parte superior */
     top: 0; /* Ajuste de la posición */
     left: 0;
     width: 100%;
-    background-color: transparent; /* Fondo transparente */
     color: white;
     text-align: center;
     font-size: 1rem;
     z-index: 100; /* Está encima del banner deslizante */
-    padding: 0.5rem; /* Ajustamos el tamaño para que se vea bien */
+    padding: 0.3rem 0; /* Un poquito de espacio */
 }
 
 /* Banner deslizante */
 .fixed-header {
     position: fixed; /* Fijo en la parte superior */
-    top: 40px; /* Justo debajo del banner dinámico */
+    top: 40px; /* Justo debajo del banner dinámico (con un pequeño espacio) */
     width: 100%;
     z-index: 50; /* Está debajo del banner dinámico */
     background-color: transparent; /* Fondo transparente */
-    padding: 0.5rem 0; /* Ajustamos el tamaño */
+    padding: 0.5rem 0; /* Un poco de espacio */
 }
 
 .slider {
