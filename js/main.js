@@ -65,12 +65,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const bannerSection = document.querySelector('#banner');
     if (bannerSection) {
         bannerSection.innerHTML = `
-            <div class="relative w-full h-0 pb-[56.25%]"> <!-- 16:9 aspect ratio -->
-                <video autoplay loop muted playsinline class="absolute top-0 left-0 w-full h-full object-cover">
-                    <source src="img/vibrando1.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-            </div>
+            <video autoplay loop muted playsinline class="w-full h-full object-cover">
+                <source src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/vibrando1-Ma5Wpw4ZuwVNuGLkYgvmMpb1EtJnVo.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
         `;
     }
 
@@ -348,7 +346,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const reelsContainer = document.getElementById('reelsContainer');
     if (reelsContainer) {
         reelsContainer.innerHTML = `
-            <div class="flex flex-wrap justify-center gap-4">
+            <div class="flex overflow-x-auto space-x-4 pb-4">
                 <iframe src="https://www.instagram.com/reel/CsZpGFcAhHt/embed" class="w-[320px] h-[570px]" frameborder="0" scrolling="no" allowtransparency="true"></iframe>
                 <iframe src="https://www.instagram.com/reel/CtFFElFAq66/embed" class="w-[320px] h-[570px]" frameborder="0" scrolling="no" allowtransparency="true"></iframe>
                 <iframe src="https://www.instagram.com/reel/Cs2aG6yg8TQ/embed" class="w-[320px] h-[570px]" frameborder="0" scrolling="no" allowtransparency="true"></iframe>
