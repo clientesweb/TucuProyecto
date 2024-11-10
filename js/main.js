@@ -102,10 +102,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Clients data (modificado para usar imágenes de logos)
     const clients = [
-        { name: 'AG ALEXIS GORGONEA PELUQUERIA CANINA', logo: '/path/to/alexis-logo.png' },
-        { name: 'MARKET', logo: '/path/to/market-logo.png' },
-        { name: 'Florencio Soto', logo: '/path/to/florencio-logo.png' },
-        { name: 'FASHION', logo: '/path/to/fashion-logo.png' },
+        { name: 'AG ALEXIS GORGONEA PELUQUERIA CANINA', logo: 'img/alexis-logo.png' },
+        { name: 'MARKET', logo: 'img/market-logo.png' },
+        { name: 'Florencio Soto', logo: 'img/florencio-logo.png' },
+        { name: 'FASHION', logo: 'img/fashion-logo.png' },
     ];
 
     // Render clients
