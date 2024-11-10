@@ -419,8 +419,8 @@ if (reviewsSlider) {
 
     // Team data
     const team = [
-        { name: 'VALENTINA TERAN', role: 'CEO Y EDITORA', photo: 'img/valen.png' },
-        { name: 'CANDELA CIUTATT', role: 'CEO Y CLOSER', photo: 'img/cande.png' },
+        { name: 'VALENTINA TERAN', role: 'CEO Y EDITORA', photo: '/img/valen.png' },
+        { name: 'CANDELA CIUTATT', role: 'CEO Y CLOSER', photo: '/img/cande.png' },
     ];
 
     // Render team
