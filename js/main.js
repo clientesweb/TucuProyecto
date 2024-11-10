@@ -8,14 +8,13 @@ document.addEventListener('DOMContentLoaded', function() {
             <p class="pulse">Powered By Duality Domain</p>
         `;
         
-        // Ocultar el preloader después de que todo el contenido se haya cargado
         window.addEventListener('load', function() {
             setTimeout(() => {
                 preloader.style.opacity = '0';
                 setTimeout(() => {
                     preloader.style.display = 'none';
                 }, 500);
-            }, 1000); // Reducido a 1 segundo para una carga más rápida
+            }, 1000);
         });
     }
 
@@ -41,7 +40,6 @@ document.addEventListener('DOMContentLoaded', function() {
             mobileMenu.classList.remove('active');
         });
 
-        // Close mobile menu when clicking on a link
         document.querySelectorAll('#mobileMenu a').forEach(link => {
             link.addEventListener('click', () => {
                 mobileMenu.classList.remove('active');
@@ -67,14 +65,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const bannerSection = document.querySelector('#banner');
     if (bannerSection) {
         bannerSection.innerHTML = `
-            <div class="relative w-full h-0 pb-[56.25%]">
+            <div class="relative w-full h-screen">
                 <video autoplay loop muted playsinline class="absolute top-0 left-0 w-full h-full object-cover">
                     <source src="img/vibrando1.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
-                <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-                    <h1 class="text-4xl md:text-6xl text-white font-bold text-center">Vibrando Alto: Tu Agencia de Marketing Digital</h1>
-                </div>
             </div>
         `;
     }
@@ -243,19 +238,72 @@ document.addEventListener('DOMContentLoaded', function() {
         { name: 'Cliente 4', logo: 'https://images.unsplash.com/photo-1621768216002-5ac171876625?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80' },
     ];
 
-    // Render clients
-    const clientsGrid = document.getElementById('clientsGrid');
-    if (clientsGrid) {
-        clients.forEach((client, index) => {
-            const clientElement = document.createElement('div');
-            clientElement.className = 'bg-custom p-4 rounded-lg flex items-center justify-center h-24 hover-effect';
-            clientElement.setAttribute('data-aos', 'fade-up');
-            clientElement.setAttribute('data-aos-delay', (index * 100).toString());
-            clientElement.innerHTML = `
-                <img src="${client.logo}" alt="${client.name}" class="max-h-full max-w-full object-contain">
-            `;
-            clientsGrid.appendChild(clientElement);
-        });
+    // Render clients slider
+    const clientsSlider = document.getElementById('clientsSlider');
+    if (clientsSlider) {
+        clientsSlider.innerHTML = `
+            <div class="overflow-hidden relative">
+                <div class="flex animate-slide">
+                    ${clients.map(client => `
+                        <div class="flex-shrink-0 w-1/4 p-4">
+                            <img src="${client.logo}" alt="${client.name}" class="w-full h-auto object-contain">
+                        </div>
+                    `).join('')}
+                    ${clients.map(client => `
+                        <div class="flex-shrink-0 w-1/4 p-4">
+                            <img src="${client.logo}" alt="${client.name}" class="w-full h-auto object-contain">
+                        </div>
+                    `).join('')}
+                </div>
+            </div>
+        `;
+    }
+
+    // Reviews data
+    const reviews = [
+        { name: 'Juan Pérez', rating: 5, text: 'Excelente servicio, superaron mis expectativas.' },
+        { name: 'María García', rating: 4, text: 'Muy profesionales y atentos a los detalles.' },
+        { name: 'Carlos Rodríguez', rating: 5, text: 'Lograron aumentar significativamente nuestras ventas en línea.' },
+        { name: 'Ana Martínez', rating: 4, text: 'Gran equipo, siempre dispuestos a ayudar.' },
+    ];
+
+    // Render reviews slider
+    const reviewsSlider = document.getElementById('reviewsSlider');
+    if (reviewsSlider) {
+        reviewsSlider.innerHTML = `
+            <div class="overflow-hidden relative">
+                <div class="flex animate-slide">
+                    ${reviews.map(review => `
+                        <div class="flex-shrink-0 w-full md:w-1/2 lg:w-1/3 p-4">
+                            <div class="bg-white rounded-lg shadow-lg p-6">
+                                <div class="flex items-center mb-4">
+                                    <div class="text-yellow-400">
+                                        ${'★'.repeat(review.rating)}${'☆'.repeat(5 - review.rating)}
+                                    </div>
+                                    <span class="ml-2 text-gray-600">${review.rating}/5</span>
+                                </div>
+                                <p class="text-gray-700 mb-4">"${review.text}"</p>
+                                <p class="font-bold">${review.name}</p>
+                            </div>
+                        </div>
+                    `).join('')}
+                    ${reviews.map(review => `
+                        <div class="flex-shrink-0 w-full md:w-1/2 lg:w-1/3 p-4">
+                            <div class="bg-white rounded-lg shadow-lg p-6">
+                                <div class="flex items-center mb-4">
+                                    <div class="text-yellow-400">
+                                        ${'★'.repeat(review.rating)}${'☆'.repeat(5 - review.rating)}
+                                    </div>
+                                    <span class="ml-2 text-gray-600">${review.rating}/5</span>
+                                </div>
+                                <p class="text-gray-700 mb-4">"${review.text}"</p>
+                                <p class="font-bold">${review.name}</p>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            </div>
+        `;
     }
 
     // Team data
@@ -281,6 +329,18 @@ document.addEventListener('DOMContentLoaded', function() {
             `;
             teamGrid.appendChild(memberElement);
         });
+    }
+
+    // Render Instagram Reels
+    const reelsContainer = document.getElementById('reelsContainer');
+    if (reelsContainer) {
+        reelsContainer.innerHTML = `
+            <div class="flex overflow-x-auto space-x-4 p-4">
+                <iframe src="https://www.instagram.com/reel/CsZpGFcAhHt/embed" class="w-[320px] h-[570px]" frameborder="0" scrolling="no" allowtransparency="true"></iframe>
+                <iframe src="https://www.instagram.com/reel/CtFFElFAq66/embed" class="w-[320px] h-[570px]" frameborder="0" scrolling="no" allowtransparency="true"></iframe>
+                <iframe src="https://www.instagram.com/reel/Cs2aG6yg8TQ/embed" class="w-[320px] h-[570px]" frameborder="0" scrolling="no" allowtransparency="true"></iframe>
+            </div>
+        `;
     }
 
     // Reasons data
@@ -395,27 +455,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Slider functionality
-    const slideTrack = document.querySelector('.slide-track');
-    const slides = document.querySelectorAll('.slide');
-    let currentIndex = 0;
-
-    function nextSlide() {
-        currentIndex = (currentIndex + 1) % slides.length;
-        updateSlider();
-    }
-
-    function updateSlider() {
-        if (slideTrack) {
-            const offset = -currentIndex * 100;
-            slideTrack.style.transform = `translateX(${offset}%)`;
-        }
-    }
-
-    if (slides.length > 0) {
-        setInterval(nextSlide, 5000); // Change slide every 5 seconds
-    }
-
     // Modal functionality
     const modalContainer = document.createElement('div');
     modalContainer.className = 'fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50';
@@ -455,67 +494,11 @@ document.addEventListener('DOMContentLoaded', function() {
         newsletterForm.addEventListener('submit', function(e) {
             e.preventDefault();
             const message = encodeURIComponent('Hola, me gustaría suscribirme al boletín informativo de Vibrando Alto.');
-            window.open(`https://wa.me/+5493815519630?text=${message}`, '_blank');
-            this.reset();
+            window.open(`https://wa.me/5493815519630?text=${message}`, '_blank');
         });
     }
 
-    // WhatsApp float button bounce effect
-    const whatsappFloat = document.querySelector('.whatsapp-float');
-    if (whatsappFloat) {
-        whatsappFloat.addEventListener('mouseover', () => {
-            whatsappFloat.classList.add('bounce');
-        });
-        whatsappFloat.addEventListener('mouseout', () => {
-            whatsappFloat.classList.remove('bounce');
-        });
-    }
-
-    // Nosotros modal content
-    const nosotrosModalContent = `
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-                <h3 class="text-xl font-bold mb-2">Nuestra Historia</h3>
-                <p>Vibrando Alto nació de la pasión por el marketing digital y la visión de crear estrategias innovadoras que realmente impulsen el crecimiento de las empresas. Desde nuestros inicios, nos hemos dedicado a ofrecer soluciones personalizadas y resultados medibles para nuestros clientes.</p>
-            </div>
-            <div>
-                <h3 class="text-xl font-bold mb-2">Nuestra Misión</h3>
-                <p>Nuestra misión es empoderar a las empresas para que alcancen su máximo potencial en el mundo digital. Nos esforzamos por ofrecer estrategias de marketing innovadoras y efectivas que generen un impacto real y duradero en el crecimiento de nuestros clientes.</p>
-            </div>
-            <div>
-                <h3 class="text-xl font-bold mb-2">Nuestros Valores</h3>
-                <ul class="list-disc pl-5">
-                    <li>Innovación constante</li>
-                    <li>Compromiso con los resultados</li>
-                    <li>Transparencia y honestidad</li>
-                    <li>Trabajo en equipo</li>
-                    <li>Aprendizaje continuo</li>
-                </ul>
-            </div>
-            <div>
-                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Equipo Vibrando Alto" class="w-full h-auto rounded-lg">
-            </div>
-        </div>
-    `;
-
-    // Add Nosotros modal trigger
-    const nosotrosButton = document.querySelector('button[data-service="nosotros"]');
-    if (nosotrosButton) {
-        nosotrosButton.addEventListener('click', () => {
-            modalContainer.innerHTML = `
-                <div class="bg-custom p-6 rounded-lg max-w-4xl w-full mx-4 max-h-[90vh] overflow-y-auto">
-                    <h2 class="text-2xl font-bold mb-4">Sobre Nosotros</h2>
-                    ${nosotrosModalContent}
-                    <button class="close-modal bg-primary text-custom py-2 px-4 rounded-full hover:bg-secondary transition-colors mt-4">Cerrar</button>
-                </div>
-            `;
-            modalContainer.classList.remove('hidden');
-
-            modalContainer.querySelector('.close-modal').addEventListener('click', () => {
-                modalContainer.classList.add('hidden');
-            });
-        });
-    }
-
-    console.log("Script loaded and executed successfully!");
+    console.log("Script loaded successfully!");
 });
+
+console.log("Script parsed without errors.");
