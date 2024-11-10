@@ -1,347 +1,162 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Preloader
-    const preloader = document.querySelector('.preloader');
-    if (preloader) {
-        preloader.style.display = 'flex';
+    // Preloader (modificado)
+    window.addEventListener('load', function() {
+        const preloader = document.querySelector('.preloader');
         preloader.innerHTML = `
-            <img src="logo.png" alt="Logo" class="pulse">
-            <p class="pulse">Powered By Duality Domain</p>
+            <div class="flex flex-col items-center">
+                <img src="logo.png" alt="Logo" class="animate-pulse w-24 h-24 mb-4">
+                <p class="text-white text-lg">Powered By Duality Domain</p>
+            </div>
         `;
-        
-        window.addEventListener('load', function() {
+        setTimeout(() => {
+            preloader.style.opacity = '0';
             setTimeout(() => {
-                preloader.style.opacity = '0';
-                setTimeout(() => {
-                    preloader.style.display = 'none';
-                }, 500);
-            }, 1000);
-        });
-    }
+                preloader.style.display = 'none';
+            }, 500);
+        }, 2000);
+    });
 
     // Initialize AOS
-    if (typeof AOS !== 'undefined') {
-        AOS.init({
-            duration: 1000,
-            once: true,
-        });
-    }
+    AOS.init({
+        duration: 1000,
+        once: true,
+    });
 
     // Mobile menu toggle
     const mobileMenuButton = document.getElementById('mobileMenuButton');
     const mobileMenu = document.getElementById('mobileMenu');
     const closeMenu = document.getElementById('closeMenu');
 
-    if (mobileMenuButton && mobileMenu && closeMenu) {
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.add('active');
-        });
+    mobileMenuButton.addEventListener('click', () => {
+        mobileMenu.classList.add('active');
+    });
 
-        closeMenu.addEventListener('click', () => {
+    closeMenu.addEventListener('click', () => {
+        mobileMenu.classList.remove('active');
+    });
+
+    // Close mobile menu when clicking on a link
+    document.querySelectorAll('#mobileMenu a').forEach(link => {
+        link.addEventListener('click', () => {
             mobileMenu.classList.remove('active');
         });
-
-        document.querySelectorAll('#mobileMenu a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.remove('active');
-            });
-        });
-    }
+    });
 
     // Adjust padding-top of the first section to account for fixed header
     const fixedHeader = document.querySelector('.fixed-header');
     const firstSection = document.querySelector('main > section:first-child');
     
     function adjustFirstSectionPadding() {
-        if (fixedHeader && firstSection) {
-            const headerHeight = fixedHeader.offsetHeight;
-            firstSection.style.paddingTop = `${headerHeight}px`;
-        }
+        const headerHeight = fixedHeader.offsetHeight;
+        firstSection.style.paddingTop = `${headerHeight + 20}px`; // 20px extra for spacing
     }
 
     window.addEventListener('resize', adjustFirstSectionPadding);
     adjustFirstSectionPadding();
 
-    // Banner video
+    // Banner video (modificado para ocupar todo el espacio disponible)
     const bannerSection = document.querySelector('#banner');
     if (bannerSection) {
         bannerSection.innerHTML = `
-            <div class="relative w-full h-screen">
-                <video autoplay loop muted playsinline class="absolute top-0 left-0 w-full h-full object-cover">
-                    <source src="img/vibrando1.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
+            <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover">
+                <source src="img/vibrando1.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+                <h1 class="text-4xl md:text-6xl text-white font-bold"></h1>
             </div>
         `;
     }
 
     // Services data
     const services = [
-        { 
-            icon: 'fa-globe', 
-            title: 'SEO', 
-            description: 'Impulsamos el crecimiento de tu negocio en canales orgánicos a través de estrategias de posicionamiento web.',
-            modalContent: `
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                        <h3 class="text-xl font-bold mb-2">Nuestro servicio de SEO incluye:</h3>
-                        <ul class="list-disc pl-5">
-                            <li>Auditoría técnica del sitio web</li>
-                            <li>Investigación de palabras clave</li>
-                            <li>Optimización on-page y off-page</li>
-                            <li>Creación de contenido optimizado</li>
-                            <li>Seguimiento y análisis de resultados</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <img src="https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1474&q=80" alt="SEO" class="w-full h-auto rounded-lg">
-                    </div>
-                </div>
-            `
-        },
-        { 
-            icon: 'fa-bullhorn', 
-            title: 'Redes Sociales',
-            description: 'Activamos y gestionamos tu presencia online en las redes sociales más importantes del momento.',
-            modalContent: `
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                        <h3 class="text-xl font-bold mb-2">Nuestro servicio de Redes Sociales incluye:</h3>
-                        <ul class="list-disc pl-5">
-                            <li>Estrategia de contenido personalizada</li>
-                            <li>Diseño de publicaciones atractivas</li>
-                            <li>Programación y publicación de contenido</li>
-                            <li>Interacción con la audiencia</li>
-                            <li>Análisis de métricas y optimización continua</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <img src="https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1474&q=80" alt="Redes Sociales" class="w-full h-auto rounded-lg">
-                    </div>
-                </div>
-            `
-        },
-        { 
-            icon: 'fa-laptop-code', 
-            title: 'Diseño y Desarrollo Web',
-            description: 'Nos encargamos del diseño de tu sitio web o aplicación abordando todas las necesidades de tu empresa.',
-            modalContent: `
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                        <h3 class="text-xl font-bold mb-2">Nuestro servicio de Diseño y Desarrollo Web incluye:</h3>
-                        <ul class="list-disc pl-5">
-                            <li>Diseño UX/UI personalizado</li>
-                            <li>Desarrollo frontend y backend</li>
-                            <li>Optimización para dispositivos móviles</li>
-                            <li>Integración de CMS</li>
-                            <li>Mantenimiento y soporte técnico</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" alt="Diseño y Desarrollo Web" class="w-full h-auto rounded-lg">
-                    </div>
-                </div>
-            `
-        },
-        { 
-            icon: 'fa-comments', 
-            title: 'Setters',
-            description: 'Identifica cuentas de alto potencial y optimiza la búsqueda de clientes calificados.',
-            modalContent: `
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                        <h3 class="text-xl font-bold mb-2">Nuestro servicio de Setters incluye:</h3>
-                        <ul class="list-disc pl-5">
-                            <li>Identificación de leads potenciales</li>
-                            <li>Estrategias de acercamiento personalizadas</li>
-                            <li>Gestión de la comunicación inicial</li>
-                            <li>Calificación de prospectos</li>
-                            <li>Reportes de rendimiento y mejora continua</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" alt="Setters" class="w-full h-auto rounded-lg">
-                    </div>
-                </div>
-            `
-        },
-        { 
-            icon: 'fa-bolt', 
-            title: 'Google ADS',
-            description: 'Desarrollamos campañas de búsqueda, display, remarketing, discovery y performance max.',
-            modalContent: `
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                        <h3 class="text-xl font-bold mb-2">Nuestro servicio de Google ADS incluye:</h3>
-                        <ul class="list-disc pl-5">
-                            <li>Configuración y optimización de campañas</li>
-                            <li>Selección estratégica de palabras clave</li>
-                            <li>Creación de anuncios persuasivos</li>
-                            <li>Seguimiento de conversiones</li>
-                            <li>Informes detallados y optimización continua</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Google ADS" class="w-full h-auto rounded-lg">
-                    </div>
-                </div>
-            `
-        },
-        { 
-            icon: 'fa-robot', 
-            title: 'Crecimiento con IA',
-            description: 'Sistematización de crecimiento exponencial que mejorará la imagen de tu perfil.',
-            modalContent: `
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                        <h3 class="text-xl font-bold mb-2">Nuestro servicio de Crecimiento con IA incluye:</h3>
-                        <ul class="list-disc pl-5">
-                            <li>Implementación de chatbots inteligentes</li>
-                            <li>Análisis predictivo de tendencias</li>
-                            <li>Personalización de contenido con IA</li>
-                            <li>Optimización de campañas con aprendizaje automático</li>
-                            <li>Informes avanzados basados en IA</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Crecimiento con IA" class="w-full h-auto rounded-lg">
-                    </div>
-                </div>
-            `
-        },
+        { icon: 'fa-globe', title: 'SEO', 
+          description: 'Impulsamos el crecimiento de tu negocio en canales orgánicos a través de estrategias de posicionamiento web.' },
+        { icon: 'fa-bullhorn', title: 'Redes Sociales',
+          description: 'Activamos y gestionamos tu presencia online en las redes sociales más importantes del momento.' },
+        { icon: 'fa-laptop-code', title: 'Diseño y Desarrollo Web',
+          description: 'Nos encargamos del diseño de tu sitio web o aplicación abordando todas las necesidades de tu empresa.' },
+        { icon: 'fa-comments', title: 'Setters',
+          description: 'Identifica cuentas de alto potencial y optimiza la búsqueda de clientes calificados.' },
+        { icon: 'fa-bolt', title: 'Google ADS',
+          description: 'Desarrollamos campañas de búsqueda, display, remarketing, discovery y performance max.' },
+        { icon: 'fa-robot', title: 'Crecimiento con IA',
+          description: 'Sistematización de crecimiento exponencial que mejorará la imagen de tu perfil.' },
+        { icon: 'fa-pen', title: 'Guiones', 
+          description: 'Esquemas que organizan el contenido de videos cortos, con introducción, mensaje clave y llamado a la acción, para captar la atención en redes sociales.' },
+        { icon: 'fa-microphone', title: 'Creación de podcast', 
+          description: 'Unimos cámaras, tarjetas de audio de distintas cámaras y hacemos la edición para que tu podcast sea llamativo y crees un canal con una audiencia sólida.' },
+        { icon: 'fa-handshake', title: 'Cerradores', 
+          description: 'Personas encargadas de cerrar las ventas potenciales que tiene nuestro cliente, sin gastar tiempo y mejorando su ROI y beneficio.' },
+        { icon: 'fa-file-alt', title: 'Marketing de Contenidos', 
+          description: 'Desarrollamos campañas de búsqueda, display, remarketing, discovery y performance max.' },
+        { icon: 'fa-search', title: 'Posicionamiento en Google', 
+          description: 'Llevamos tu empresa a los primeros lugares de Google.' },
+        { icon: 'fa-video', title: 'Edición de video', 
+          description: 'Editamos videos profesionales que captan la esencia de tu marca y atraen a tu audiencia, ideales para redes sociales y campañas publicitarias.' }
     ];
 
     // Render services
     const servicesGrid = document.getElementById('servicesGrid');
-    if (servicesGrid) {
-        services.forEach((service, index) => {
-            const serviceElement = document.createElement('div');
-            serviceElement.className = 'bg-primary p-6 rounded-lg text-center hover-effect';
-            serviceElement.setAttribute('data-aos', 'fade-up');
-            serviceElement.setAttribute('data-aos-delay', (index * 100).toString());
-            serviceElement.innerHTML = `
-                <i class="fas ${service.icon} text-4xl mb-4"></i>
-                <h3 class="text-xl font-bold mb-2">${service.title}</h3>
-                <p class="mb-4">${service.description}</p>
-                <button class="bg-custom text-primary py-2 px-4 rounded-full hover:bg-accent hover:text-custom transition-colors modal-trigger" data-service="${service.title}">
-                    Descubre más
-                </button>
-            `;
-            servicesGrid.appendChild(serviceElement);
-        });
-    }
+    services.forEach((service, index) => {
+        const serviceElement = document.createElement('div');
+        serviceElement.className = 'bg-primary p-6 rounded-lg text-center';
+        serviceElement.setAttribute('data-aos', 'fade-up');
+        serviceElement.setAttribute('data-aos-delay', (index * 100).toString());
+        serviceElement.innerHTML = `
+            <i class="fas ${service.icon} text-4xl mb-4"></i>
+            <h3 class="text-xl font-bold mb-2">${service.title}</h3>
+            <p class="mb-4">${service.description}</p>
+            <button class="bg-custom text-primary py-2 px-4 rounded-full hover:bg-accent hover:text-custom transition-colors modal-trigger" data-service="${service.title}">
+                Descubre más
+            </button>
+        `;
+        servicesGrid.appendChild(serviceElement);
+    });
 
-    // Clients data
+    // Clients data (modificado para usar imágenes de logos)
     const clients = [
-        { name: 'Cliente 1', logo: 'img/florencio-logo.png' },
-        { name: 'Cliente 2', logo: 'img/alexis-logo.png' },
-        { name: 'Cliente 3', logo: 'img/fashion-logo.png' },
-        { name: 'Cliente 4', logo: 'img/market-logo.png' },
+        { name: 'AG ALEXIS GORGONEA PELUQUERIA CANINA', logo: 'img/alexis-logo.png' },
+        { name: 'MARKET', logo: 'img/market-logo.png' },
+        { name: 'Florencio Soto', logo: 'img/florencio-logo.png' },
+        { name: 'FASHION', logo: 'img/fashion-logo.png' },
     ];
 
-    // Render clients slider
-    const clientsSlider = document.getElementById('clientsSlider');
-    if (clientsSlider) {
-        clientsSlider.innerHTML = `
-            <div class="overflow-hidden relative">
-                <div class="flex animate-slide">
-                    ${clients.map(client => `
-                        <div class="flex-shrink-0 w-1/4 p-4">
-                            <img src="${client.logo}" alt="${client.name}" class="w-full h-auto object-contain">
-                        </div>
-                    `).join('')}
-                    ${clients.map(client => `
-                        <div class="flex-shrink-0 w-1/4 p-4">
-                            <img src="${client.logo}" alt="${client.name}" class="w-full h-auto object-contain">
-                        </div>
-                    `).join('')}
-                </div>
-            </div>
+    // Render clients
+    const clientsGrid = document.getElementById('clientsGrid');
+    clients.forEach((client, index) => {
+        const clientElement = document.createElement('div');
+        clientElement.className = 'bg-custom p-4 rounded-lg flex items-center justify-center h-24';
+        clientElement.setAttribute('data-aos', 'fade-up');
+        clientElement.setAttribute('data-aos-delay', (index * 100).toString());
+        clientElement.innerHTML = `
+            <img src="${client.logo}" alt="${client.name}" class="max-h-full max-w-full object-contain">
         `;
-    }
+        clientsGrid.appendChild(clientElement);
+    });
 
-    // Reviews data
-    const reviews = [
-        { name: 'Juan Pérez', rating: 5, text: 'Excelente servicio, superaron mis expectativas.' },
-        { name: 'María García', rating: 4, text: 'Muy profesionales y atentos a los detalles.' },
-        { name: 'Carlos Rodríguez', rating: 5, text: 'Lograron aumentar significativamente nuestras ventas en línea.' },
-        { name: 'Ana Martínez', rating: 4, text: 'Gran equipo, siempre dispuestos a ayudar.' },
-    ];
-
-    // Render reviews slider
-    const reviewsSlider = document.getElementById('reviewsSlider');
-    if (reviewsSlider) {
-        reviewsSlider.innerHTML = `
-            <div class="overflow-hidden relative">
-                <div class="flex animate-slide">
-                    ${reviews.map(review => `
-                        <div class="flex-shrink-0 w-full md:w-1/2 lg:w-1/3 p-4">
-                            <div class="bg-white rounded-lg shadow-lg p-6">
-                                <div class="flex items-center mb-4">
-                                    <div class="text-yellow-400">
-                                        ${'★'.repeat(review.rating)}${'☆'.repeat(5 - review.rating)}
-                                    </div>
-                                    <span class="ml-2 text-gray-600">${review.rating}/5</span>
-                                </div>
-                                <p class="text-gray-700 mb-4">"${review.text}"</p>
-                                <p class="font-bold">${review.name}</p>
-                            </div>
-                        </div>
-                    `).join('')}
-                    ${reviews.map(review => `
-                        <div class="flex-shrink-0 w-full md:w-1/2 lg:w-1/3 p-4">
-                            <div class="bg-white rounded-lg shadow-lg p-6">
-                                <div class="flex items-center mb-4">
-                                    <div class="text-yellow-400">
-                                        ${'★'.repeat(review.rating)}${'☆'.repeat(5 - review.rating)}
-                                    </div>
-                                    <span class="ml-2 text-gray-600">${review.rating}/5</span>
-                                </div>
-                                <p class="text-gray-700 mb-4">"${review.text}"</p>
-                                <p class="font-bold">${review.name}</p>
-                            </div>
-                        </div>
-                    `).join('')}
-                </div>
-            </div>
-        `;
-    }
-
-    // Team data
+    // Team data (Mariana Mónaco removida)
     const team = [
-        { name: 'VALENTINA TERAN', role: 'CEO Y EDITORA', photo: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80' },
-        { name: 'CANDELA CIUTATT', role: 'CEO Y CLOSER', photo: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80' },
+        { name: 'VALENTINA TERAN', role: 'CEO Y EDITORA', photo: 'img/valentina-teran.jpg' },
+        { name: 'CANDELA CIUTATT', role: 'CEO Y CLOSER', photo: 'img/candela-ciutatt.jpg' },
     ];
 
     // Render team
     const teamGrid = document.getElementById('teamGrid');
-    if (teamGrid) {
-        team.forEach((member, index) => {
-            const memberElement = document.createElement('div');
-            memberElement.className = 'text-center hover-effect';
-            memberElement.setAttribute('data-aos', 'fade-up');
-            memberElement.setAttribute('data-aos-delay', (index * 100).toString());
-            memberElement.innerHTML = `
-                <div class="w-32 h-32 mx-auto mb-4 gradient-primary rounded-lg flex items-center justify-center overflow-hidden">
-                    <img src="${member.photo}" alt="${member.name}" class="w-full h-full object-cover">
-                </div>
-                <h3 class="font-bold">${member.name}</h3>
-                <p>${member.role}</p>
-            `;
-            teamGrid.appendChild(memberElement);
-        });
-    }
-
-    // Render Instagram Reels
-    const reelsContainer = document.getElementById('reelsContainer');
-    if (reelsContainer) {
-        reelsContainer.innerHTML = `
-            <div class="flex overflow-x-auto space-x-4 p-4">
-                <iframe src="https://www.instagram.com/reel/CsZpGFcAhHt/embed" class="w-[320px] h-[570px]" frameborder="0" scrolling="no" allowtransparency="true"></iframe>
-                <iframe src="https://www.instagram.com/reel/CtFFElFAq66/embed" class="w-[320px] h-[570px]" frameborder="0" scrolling="no" allowtransparency="true"></iframe>
-                <iframe src="https://www.instagram.com/reel/Cs2aG6yg8TQ/embed" class="w-[320px] h-[570px]" frameborder="0" scrolling="no" allowtransparency="true"></iframe>
+    team.forEach((member, index) => {
+        const memberElement = document.createElement('div');
+        memberElement.className = 'text-center';
+        memberElement.setAttribute('data-aos', 'fade-up');
+        memberElement.setAttribute('data-aos-delay', (index * 100).toString());
+        memberElement.innerHTML = `
+            <div class="w-32 h-32 mx-auto mb-4 gradient-primary rounded-lg flex items-center justify-center overflow-hidden">
+                <img src="${member.photo}" alt="${member.name}" class="w-full h-full object-cover">
             </div>
+            <h3 class="font-bold">${member.name}</h3>
+            <p>${member.role}</p>
         `;
-    }
+        teamGrid.appendChild(memberElement);
+    });
 
     // Reasons data
     const reasons = [
@@ -359,22 +174,20 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Render reasons
     const reasonsGrid = document.getElementById('reasonsGrid');
-    if (reasonsGrid) {
-        reasons.forEach((reason, index) => {
-            const reasonElement = document.createElement('div');
-            reasonElement.className = 'flex items-start space-x-4 hover-effect';
-            reasonElement.setAttribute('data-aos', 'fade-up');
-            reasonElement.setAttribute('data-aos-delay', (index * 100).toString());
-            reasonElement.innerHTML = `
-                <i class="fas ${reason.icon} text-3xl text-primary"></i>
-                <div>
-                    <h3 class="text-xl font-bold mb-2">${reason.title}</h3>
-                    <p>${reason.description}</p>
-                </div>
-            `;
-            reasonsGrid.appendChild(reasonElement);
-        });
-    }
+    reasons.forEach((reason, index) => {
+        const reasonElement = document.createElement('div');
+        reasonElement.className = 'flex items-start space-x-4';
+        reasonElement.setAttribute('data-aos', 'fade-up');
+        reasonElement.setAttribute('data-aos-delay', (index * 100).toString());
+        reasonElement.innerHTML = `
+            <i class="fas ${reason.icon} text-3xl text-primary"></i>
+            <div>
+                <h3 class="text-xl font-bold mb-2">${reason.title}</h3>
+                <p>${reason.description}</p>
+            </div>
+        `;
+        reasonsGrid.appendChild(reasonElement);
+    });
 
     // Agency Features
     const agencyFeatures = [
@@ -388,20 +201,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Render agency features
     const agencyFeaturesGrid = document.getElementById('agencyFeaturesGrid');
-    if (agencyFeaturesGrid) {
-        agencyFeatures.forEach((feature, index) => {
-            const featureElement = document.createElement('div');
-            featureElement.className = 'bg-custom bg-opacity-50 p-6 rounded-lg text-center hover-effect';
-            featureElement.setAttribute('data-aos', 'fade-up');
-            featureElement.setAttribute('data-aos-delay', (index * 100).toString());
-            featureElement.innerHTML = `
-                <i class="fas ${feature.icon} text-4xl mb-4 text-accent"></i>
-                <h3 class="text-xl font-bold mb-2">${feature.title}</h3>
-                <p>${feature.description}</p>
-            `;
-            agencyFeaturesGrid.appendChild(featureElement);
-        });
-    }
+    agencyFeatures.forEach((feature, index) => {
+        const featureElement = document.createElement('div');
+        featureElement.className = 'bg-custom bg-opacity-50 p-6 rounded-lg text-center';
+        featureElement.setAttribute('data-aos', 'fade-up');
+        featureElement.setAttribute('data-aos-delay', (index * 100).toString());
+        featureElement.innerHTML = `
+            <i class="fas ${feature.icon} text-4xl mb-4 text-accent"></i>
+            <h3 class="text-xl font-bold mb-2">${feature.title}</h3>
+            <p>${feature.description}</p>
+        `;
+        agencyFeaturesGrid.appendChild(featureElement);
+    });
 
     // FAQ data
     const faqs = [
@@ -419,31 +230,29 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Render FAQs
     const faqContainer = document.getElementById('faqContainer');
-    if (faqContainer) {
-        faqs.forEach((faq, index) => {
-            const faqElement = document.createElement('div');
-            faqElement.className = 'border-b border-gray-700 pb-4 hover-effect';
-            faqElement.setAttribute('data-aos', 'fade-up');
-            faqElement.setAttribute('data-aos-delay', (index * 100).toString());
-            faqElement.innerHTML = `
-                <button class="flex justify-between items-center w-full text-left font-bold mb-2">
-                    ${faq.question}
-                    <i class="fas fa-chevron-down transform transition-transform duration-200"></i>
-                </button>
-                <p class="hidden">${faq.answer}</p>
-            `;
-            faqContainer.appendChild(faqElement);
+    faqs.forEach((faq, index) => {
+        const faqElement = document.createElement('div');
+        faqElement.className = 'border-b border-gray-700 pb-4';
+        faqElement.setAttribute('data-aos', 'fade-up');
+        faqElement.setAttribute('data-aos-delay', (index * 100).toString());
+        faqElement.innerHTML = `
+            <button class="flex justify-between items-center w-full text-left font-bold mb-2">
+                ${faq.question}
+                <i class="fas fa-chevron-down transform transition-transform duration-200"></i>
+            </button>
+            <p class="hidden">${faq.answer}</p>
+        `;
+        faqContainer.appendChild(faqElement);
 
-            const button = faqElement.querySelector('button');
-            const answer = faqElement.querySelector('p');
-            const icon = faqElement.querySelector('i');
+        const button = faqElement.querySelector('button');
+        const answer = faqElement.querySelector('p');
+        const icon = faqElement.querySelector('i');
 
-            button.addEventListener('click', () => {
-                answer.classList.toggle('hidden');
-                icon.classList.toggle('rotate-180');
-            });
+        button.addEventListener('click', () => {
+            answer.classList.toggle('hidden');
+            icon.classList.toggle('rotate-180');
         });
-    }
+    });
 
     // Smooth scroll for navigation links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -454,6 +263,45 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     });
+
+    // Slider functionality
+    const slideTrack = document.querySelector('.slide-track');
+    const slides = document.querySelectorAll('.slide');
+    let currentIndex = 0;
+
+    function nextSlide() {
+        currentIndex = (currentIndex + 1) % slides.length;
+        updateSlider();
+    }
+
+    function updateSlider() {
+        const offset = -currentIndex * 100;
+        slideTrack.style.transform = `translateX(${offset}%)`;
+    }
+
+    setInterval(nextSlide, 5000); // Change slide every 5 seconds
+
+    // Add data-translate attributes to elements
+    const translatableElements = {
+        'inicio': document.querySelector('nav a[href="#inicio"]'),
+        'servicios': document.querySelector('nav a[href="#servicios"]'),
+        'nosotros': document.querySelector('nav a[href="#nosotros"]'),
+        'clientes': document.querySelector('nav a[href="#clientes"]'),
+        'contacto': document.querySelector('nav a[href="#contacto"]'),
+        'agenciaMarketingDigital': document.querySelector('#inicio h1'),
+        'preparateParaElFuturo': document.querySelector('#inicio p'),
+        'reservarAsesoria': document.querySelector('#btnAsesoria'),
+        'masInformacion': document.querySelector('#btnInfo'),
+    };
+
+    Object.entries(translatableElements).forEach(([key, element]) => {
+        if (element) {
+            element.setAttribute('data-translate', key);
+        }
+    });
+
+    // Initialize language
+    updateLanguage(document.documentElement.lang);
 
     // Modal functionality
     const modalContainer = document.createElement('div');
@@ -466,10 +314,10 @@ document.addEventListener('DOMContentLoaded', function() {
             const service = services.find(s => s.title === serviceName);
             if (service) {
                 const modalContent = `
-                    <div class="bg-custom p-6 rounded-lg max-w-4xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+                    <div class="bg-custom p-6 rounded-lg max-w-lg w-full">
                         <h2 class="text-2xl font-bold mb-4">${service.title}</h2>
-                        ${service.modalContent}
-                        <button class="close-modal bg-primary text-custom py-2 px-4 rounded-full hover:bg-secondary transition-colors mt-4">Cerrar</button>
+                        <p class="mb-4">${service.description}</p>
+                        <button class="close-modal bg-primary text-custom py-2 px-4 rounded-full hover:bg-secondary transition-colors">Cerrar</button>
                     </div>
                 `;
                 modalContainer.innerHTML = modalContent;
@@ -487,18 +335,4 @@ document.addEventListener('DOMContentLoaded', function() {
             modalContainer.classList.add('hidden');
         }
     });
-
-    // Newsletter form submission
-    const newsletterForm = document.getElementById('newsletterForm');
-    if (newsletterForm) {
-        newsletterForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const message = encodeURIComponent('Hola, me gustaría suscribirme al boletín informativo de Vibrando Alto.');
-            window.open(`https://wa.me/5493815519630?text=${message}`, '_blank');
-        });
-    }
-
-    console.log("Script loaded successfully!");
 });
-
-console.log("Script parsed without errors.");
