@@ -78,6 +78,7 @@
     width: 100%;
     z-index: 50; /* Asegura que el banner esté encima */
     background-color: transparent; /* Fondo transparente para el slider */
+    margin-bottom: 60px; /* Añadimos margen para que no se superponga con el header */
 }
 
 .slider {
@@ -87,12 +88,12 @@
 }
 
 .slide-track {
-    display: inline-flex; /* Hacemos que los mensajes estén en línea (horizontalmente) */
-    animation: scroll 15s linear infinite; /* Animación infinita */
+    display: inline-flex; /* Los mensajes estarán en línea (horizontalmente) */
+    animation: scroll 30s linear infinite; /* Animación más lenta (30s en vez de 15s) */
 }
 
 .slide {
-    flex: 0 0 auto; /* Mantiene los mensajes en una fila horizontal */
+    flex: 0 0 auto; /* Los mensajes ocupan solo el ancho necesario */
     padding: 1rem;
     text-align: center;
     font-size: 1rem;
