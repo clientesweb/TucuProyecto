@@ -617,19 +617,18 @@ const banners = [
 ];
 
 const dynamicBanner = document.getElementById('dynamicBanner');
-dynamicBanner.className = 'p-4 text-center text-white transition-colors duration-500';
 
 let currentBannerIndex = 0;
 
 function updateBanner() {
     const currentBanner = banners[currentBannerIndex];
     dynamicBanner.textContent = currentBanner.text;
-    dynamicBanner.className = `p-4 text-center text-white transition-colors duration-500 ${currentBanner.bgColor}`;
+    dynamicBanner.className = `text-center text-white transition-colors duration-500 ${currentBanner.bgColor}`;
     currentBannerIndex = (currentBannerIndex + 1) % banners.length;
 }
 
 updateBanner();
-setInterval(updateBanner, 5000);
+setInterval(updateBanner, 5000); // Actualiza cada 5 segundos
 
     // About Us modal
     const aboutUsButton = document.querySelector('#aboutUsButton');
