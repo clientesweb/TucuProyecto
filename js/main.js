@@ -349,72 +349,73 @@ document.addEventListener('DOMContentLoaded', function() {
     ];
 
     // Render clients slider
-    const clientsSlider = document.getElementById('clientsSlider');
-    if (clientsSlider) {
-        clientsSlider.innerHTML = `
-            <div class="overflow-hidden relative">
-                <div class="flex animate-slide">
-                    ${clients.map(client => `
-                        <div class="flex-shrink-0 w-1/4 p-4">
-                            <img src="${client.logo}" alt="${client.name}" class="w-full h-auto object-contain">
-                        </div>
-                    `).join('')}
-                    ${clients.map(client => `
-                        <div class="flex-shrink-0 w-1/4 p-4">
-                            <img src="${client.logo}" alt="${client.name}" class="w-full h-auto object-contain">
-                        </div>
-                    `).join('')}
-                </div>
+const clientsSlider = document.getElementById('clientsSlider');
+if (clientsSlider) {
+    clientsSlider.innerHTML = `
+        <div class="overflow-hidden relative">
+            <div class="flex animate-slide">
+                ${clients.map(client => `
+                    <div class="flex-shrink-0 w-1/4 p-4 transition-transform transform hover:scale-105">
+                        <img src="${client.logo}" alt="${client.name}" class="w-full h-auto object-contain">
+                    </div>
+                `).join('')}
+                ${clients.map(client => `
+                    <div class="flex-shrink-0 w-1/4 p-4 transition-transform transform hover:scale-105">
+                        <img src="${client.logo}" alt="${client.name}" class="w-full h-auto object-contain">
+                    </div>
+                `).join('')}
             </div>
-        `;
-    }
+        </div>
+    `;
+}
 
-    // Reviews data
-    const reviews = [
-        { name: 'Juan Pérez', rating: 5, text: 'Excelente servicio, superaron mis expectativas.' },
-        { name: 'María García', rating: 4, text: 'Muy profesionales y atentos a los detalles.' },
-        { name: 'Carlos Rodríguez', rating: 5, text: 'Lograron aumentar significativamente nuestras ventas en línea.' },
-        { name: 'Ana Martínez', rating: 4, text: 'Gran equipo, siempre dispuestos a ayudar.' },
-    ];
+// Render reviews slider with a faster speed and smooth animation
+const reviews = [
+    { name: 'Juan Pérez', rating: 5, text: 'Excelente servicio, superaron mis expectativas.' },
+    { name: 'María García', rating: 4, text: 'Muy profesionales y atentos a los detalles.' },
+    { name: 'Carlos Rodríguez', rating: 5, text: 'Lograron aumentar significativamente nuestras ventas en línea.' },
+    { name: 'Ana Martínez', rating: 4, text: 'Gran equipo, siempre dispuestos a ayudar.' },
+    { name: 'Laura González', rating: 5, text: 'Excelente atención al cliente y resultados asombrosos.' },
+    { name: 'Pedro López', rating: 5, text: 'Recomiendo 100%, son los mejores en el negocio.' },
+];
 
-    // Render reviews slider
-    const reviewsSlider = document.getElementById('reviewsSlider');
-    if (reviewsSlider) {
-        reviewsSlider.innerHTML = `
-            <div class="overflow-hidden relative">
-                <div class="flex animate-slide">
-                    ${reviews.map(review => `
-                        <div class="flex-shrink-0 w-full md:w-1/2 lg:w-1/3 p-4">
-                            <div class="bg-white rounded-lg shadow-lg p-6">
-                                <div class="flex items-center mb-4">
-                                    <div class="text-yellow-400">
-                                        ${'★'.repeat(review.rating)}${'☆'.repeat(5 - review.rating)}
-                                    </div>
-                                    <span class="ml-2 text-gray-600">${review.rating}/5</span>
+const reviewsSlider = document.getElementById('reviewsSlider');
+if (reviewsSlider) {
+    reviewsSlider.innerHTML = `
+        <div class="overflow-hidden relative">
+            <div class="flex animate-slide">
+                ${reviews.map(review => `
+                    <div class="flex-shrink-0 w-full md:w-1/2 lg:w-1/3 p-4">
+                        <div class="bg-white rounded-xl shadow-xl p-6 transition-all transform hover:scale-105">
+                            <div class="flex items-center mb-4">
+                                <div class="text-yellow-400">
+                                    ${'★'.repeat(review.rating)}${'☆'.repeat(5 - review.rating)}
                                 </div>
-                                <p class="text-gray-700 mb-4">"${review.text}"</p>
-                                <p class="font-bold">${review.name}</p>
+                                <span class="ml-2 text-gray-600">${review.rating}/5</span>
                             </div>
+                            <p class="text-gray-700 mb-4">"${review.text}"</p>
+                            <p class="font-bold text-lg">${review.name}</p>
                         </div>
-                    `).join('')}
-                    ${reviews.map(review => `
-                        <div class="flex-shrink-0 w-full md:w-1/2 lg:w-1/3 p-4">
-                            <div class="bg-white rounded-lg shadow-lg p-6">
-                                <div class="flex items-center mb-4">
-                                    <div class="text-yellow-400">
-                                        ${'★'.repeat(review.rating)}${'☆'.repeat(5 - review.rating)}
-                                    </div>
-                                    <span class="ml-2 text-gray-600">${review.rating}/5</span>
+                    </div>
+                `).join('')}
+                ${reviews.map(review => `
+                    <div class="flex-shrink-0 w-full md:w-1/2 lg:w-1/3 p-4">
+                        <div class="bg-white rounded-xl shadow-xl p-6 transition-all transform hover:scale-105">
+                            <div class="flex items-center mb-4">
+                                <div class="text-yellow-400">
+                                    ${'★'.repeat(review.rating)}${'☆'.repeat(5 - review.rating)}
                                 </div>
-                                <p class="text-gray-700 mb-4">"${review.text}"</p>
-                                <p class="font-bold">${review.name}</p>
+                                <span class="ml-2 text-gray-600">${review.rating}/5</span>
                             </div>
+                            <p class="text-gray-700 mb-4">"${review.text}"</p>
+                            <p class="font-bold text-lg">${review.name}</p>
                         </div>
-                    `).join('')}
-                </div>
+                    </div>
+                `).join('')}
             </div>
-        `;
-    }
+        </div>
+    `;
+}
 
     // Team data
     const team = [
