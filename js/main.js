@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('resize', adjustFirstSectionPadding);
     adjustFirstSectionPadding();
 
-    // Banner video
+    // Banner video (Automatic top banner)
     const bannerSection = document.querySelector('#banner');
     if (bannerSection) {
         bannerSection.innerHTML = `
@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function() {
         `;
     }
 
-    // Services data
+    // Services data (including new services)
     const services = [
         { 
             icon: 'fa-globe', 
@@ -208,6 +208,116 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
             `
         },
+        { 
+            icon: 'fa-pen', 
+            title: 'Guiones',
+            description: 'Es un esquema que organiza el contenido de un video corto, con introducción, mensaje clave y llamado a la acción, para captar la atención en redes sociales.',
+            modalContent: `
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <h3 class="text-xl font-bold mb-2">Nuestro servicio de Guiones incluye:</h3>
+                        <ul class="list-disc pl-5">
+                            <li>Desarrollo de esquemas de contenido</li>
+                            <li>Creación de introducciones atractivas</li>
+                            <li>Formulación de mensajes clave</li>
+                            <li>Diseño de llamados a la acción efectivos</li>
+                            <li>Optimización para redes sociales</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1473&q=80" alt="Guiones" class="w-full h-auto rounded-lg">
+                    </div>
+                </div>
+            `
+        },
+        { 
+            icon: 'fa-microphone', 
+            title: 'Creación de podcast',
+            description: 'Unimos cámaras, tarjetas de audio de distintas cámaras y hacemos la edición para que tu podcast sea llamativo y crees un canal con una audiencia sólida.',
+            modalContent: `
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <h3 class="text-xl font-bold mb-2">Nuestro servicio de Creación de podcast incluye:</h3>
+                        <ul class="list-disc pl-5">
+                            <li>Configuración técnica de equipos</li>
+                            <li>Edición profesional de audio y video</li>
+                            <li>Diseño de la identidad visual del podcast</li>
+                            <li>Estrategias para crecer la audiencia</li>
+                            <li>Distribución en plataformas de podcasting</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1590602847861-f357a9332bbc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Creación de podcast" class="w-full h-auto rounded-lg">
+                    </div>
+                </div>
+            `
+        },
+        { 
+            icon: 'fa-handshake', 
+            title: 'Cerradores',
+            description: 'Personas encargadas de cerrar las ventas potenciales que tiene nuestro cliente, sin gastar tiempo y mejorando su ROI y beneficio.',
+            modalContent: `
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <h3 class="text-xl font-bold mb-2">Nuestro servicio de Cerradores incluye:</h3>
+                        <ul class="list-disc pl-5">
+                            <li>Equipo de ventas especializado</li>
+                            <li>Estrategias de cierre personalizadas</li>
+                            <li>Seguimiento de leads calificados</li>
+                            <li>Optimización del proceso de ventas</li>
+                            <li>Informes detallados de conversión</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Cerradores" class="w-full h-auto rounded-lg">
+                    </div>
+                </div>
+            `
+        },
+        { 
+            icon: 'fa-chart-line', 
+            title: 'Marketing de Contenidos',
+            description: 'Desarrollamos campañas de búsqueda, display, remarketing, discovery y performance max. Lleva tu empresa a los primeros lugares de Google.',
+            modalContent: `
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <h3 class="text-xl font-bold mb-2">Nuestro servicio de Marketing de Contenidos incluye:</h3>
+                        <ul class="list-disc pl-5">
+                            <li>Estrategia de contenidos personalizada</li>
+                            <li>Creación de contenido de valor</li>
+                            <li>Optimización SEO de contenidos</li>
+                            <li>Distribución en canales relevantes</li>
+                            <li>Análisis de rendimiento y ajustes</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Marketing de Contenidos" class="w-full h-auto rounded-lg">
+                    </div>
+                </div>
+            `
+        },
+        { 
+            icon: 'fa-video', 
+            title: 'Edición de video',
+            description: 'Editamos videos profesionales que captan la esencia de tu marca y atraen a tu audiencia, ideales para redes sociales y campañas publicitarias.',
+            modalContent: `
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <h3 class="text-xl font-bold mb-2">Nuestro servicio de Edición de video incluye:</h3>
+                        <ul class="list-disc pl-5">
+                            <li>Edición profesional de video</li>
+                            <li>Corrección de color y audio</li>
+                            <li>Adición de efectos visuales y gráficos</li>
+                            <li>Optimización para diferentes plataformas</li>
+                            <li>Subtitulado y localización</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Edición de video" class="w-full h-auto rounded-lg">
+                    </div>
+                </div>
+            `
+        }
     ];
 
     // Render services
@@ -391,7 +501,8 @@ document.addEventListener('DOMContentLoaded', function() {
     if (agencyFeaturesGrid) {
         agencyFeatures.forEach((feature, index) => {
             const featureElement = document.createElement('div');
-            featureElement.className = 'bg-custom bg-opacity-50 p-6 rounded-lg text-center hover-effect';
+            featureElement.className =
+            'bg-custom bg-opacity-50 p-6 rounded-lg text-center hover-effect';
             featureElement.setAttribute('data-aos', 'fade-up');
             featureElement.setAttribute('data-aos-delay', (index * 100).toString());
             featureElement.innerHTML = `
@@ -495,6 +606,71 @@ document.addEventListener('DOMContentLoaded', function() {
             e.preventDefault();
             const message = encodeURIComponent('Hola, me gustaría suscribirme al boletín informativo de Vibrando Alto.');
             window.open(`https://wa.me/5493815519630?text=${message}`, '_blank');
+        });
+    }
+
+    // Automatic top banner
+    const banners = [
+        { text: "Potencia tu presencia digital con Vibrando Alto", bgColor: "bg-primary" },
+        { text: "Estrategias personalizadas para tu éxito online", bgColor: "bg-secondary" },
+        { text: "Impulsa tu negocio con nuestros servicios de marketing", bgColor: "bg-accent" }
+    ];
+
+    const topBanner = document.createElement('div');
+    topBanner.className = 'p-4 text-center text-white transition-colors duration-500';
+    document.body.insertBefore(topBanner, document.body.firstChild);
+
+    let currentBannerIndex = 0;
+
+    function updateBanner() {
+        const currentBanner = banners[currentBannerIndex];
+        topBanner.textContent = currentBanner.text;
+        topBanner.className = `p-4 text-center text-white transition-colors duration-500 ${currentBanner.bgColor}`;
+        currentBannerIndex = (currentBannerIndex + 1) % banners.length;
+    }
+
+    updateBanner();
+    setInterval(updateBanner, 5000);
+
+    // About Us modal
+    const aboutUsButton = document.querySelector('#aboutUsButton');
+    if (aboutUsButton) {
+        aboutUsButton.addEventListener('click', () => {
+            const modalContent = `
+                <div class="bg-custom p-6 rounded-lg max-w-4xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+                    <h2 class="text-2xl font-bold mb-4">Sobre Nosotros</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">Nuestra Misión</h3>
+                            <p>Potenciar el crecimiento de nuestros clientes a través de estrategias de marketing digital innovadoras y efectivas.</p>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">Nuestro Equipo</h3>
+                            <p>Contamos con expertos en diversas áreas del marketing digital, desde SEO hasta producción de contenido multimedia.</p>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">Nuestro Enfoque</h3>
+                            <p>Nos centramos en resultados medibles y en la construcción de relaciones a largo plazo con nuestros clientes.</p>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">Nuestros Valores</h3>
+                            <ul class="list-disc pl-5">
+                                <li>Innovación constante</li>
+                                <li>Transparencia en la comunicación</li>
+                                <li>Compromiso con la excelencia</li>
+                                <li>Adaptabilidad a las necesidades del cliente</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <button class="close-modal bg-primary text-custom py-2 px-4 rounded-full hover:bg-secondary transition-colors mt-4">Cerrar</button>
+                </div>
+            `;
+            modalContainer.innerHTML = modalContent;
+            modalContainer.classList.remove('hidden');
+
+            modalContainer.querySelector('.close-modal').addEventListener('click', () => {
+                modalContainer.classList.add('hidden');
+            });
         });
     }
 
