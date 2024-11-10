@@ -71,32 +71,38 @@
         .gradient-yellow {
             background: linear-gradient(135deg, var(--color-yellow) 0%, var(--color-accent) 100%);
         }
-        /* Asegura que el banner dinámico se quede fijo arriba y que el contenido no lo cubra */
+        /* Fijar el banner deslizante en la parte superior */
 .fixed-header {
     position: fixed;
     top: 0;
+    left: 0;
     width: 100%;
-    z-index: 100; /* Mantener el slider en la parte superior */
-    padding-top: 40px; /* Espacio adecuado para no cubrir el contenido */
+    z-index: 100; /* Asegura que el slider esté encima */
+    background-color: #333; /* Color de fondo para que el texto sea legible */
+    padding: 0; /* Asegura que no haya relleno adicional */
 }
 
-/* Slider que se desliza horizontalmente */
+/* Contenedor del slider */
 .slider {
     overflow: hidden;
-    white-space: nowrap; /* Para que los mensajes no se apilen */
+    white-space: nowrap; /* Evita que los mensajes se apilen */
+    width: 100%; /* Asegura que ocupe todo el ancho */
 }
 
+/* Contenedor que maneja el desplazamiento de los mensajes */
 .slide-track {
     display: inline-flex; /* Los mensajes estarán en una fila */
     animation: scroll 20s linear infinite; /* Animación para mover los mensajes */
 }
 
+/* Cada mensaje del slider */
 .slide {
     padding: 1rem;
     display: inline-block;
     text-align: center;
     font-size: 1rem;
     white-space: nowrap; /* Evita que los mensajes se dividan en varias líneas */
+    color: #fff; /* Asegura que el texto sea visible */
 }
 
 /* Animación de movimiento de los mensajes de izquierda a derecha */
@@ -105,16 +111,61 @@
     100% { transform: translateX(-100%); } /* Termina fuera de la vista por la izquierda */
 }
 
-/* El banner dinámico mantiene su funcionalidad original */
+/* Banner dinámico (cambia de mensaje y color) */
 #dynamicBanner {
     position: relative;
-    top: -2px; /* Ajusta la separación con el slider */
     margin: 0;
     padding: 0;
     text-align: center;
     font-size: 1rem;
     color: white;
     z-index: 101; /* El banner dinámico está encima del slider */
+    background-color: #333;
+    padding: 10px;
+}
+
+/* Ajustes para el contenedor de la parte superior */
+.bg-primary {
+    background-color: #0044cc; /* Puedes cambiarlo según el color de tu sitio */
+}
+
+.py-2 {
+    padding: 0.5rem 0; /* Espaciado vertical */
+}
+
+/* Espaciado en los íconos de redes sociales */
+.flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.space-x-4 {
+    gap: 1rem; /* Espaciado entre los elementos */
+}
+
+.text-custom {
+    color: white; /* Color de texto personalizado */
+}
+
+/* Selector de idiomas */
+.language-selector select {
+    appearance: none;
+    background-color: transparent;
+    border: none;
+    padding: 0 1em;
+    font-size: 1rem;
+    color: white;
+}
+
+/* Estilo para los íconos de redes sociales */
+.fab {
+    font-size: 1.5rem;
+}
+
+/* Añadir hover para los íconos */
+.text-custom:hover {
+    color: #ffcc00; /* Cambiar el color al pasar el mouse */
 }
         .preloader {
             position: fixed;
@@ -270,12 +321,13 @@
     </div>
 
    <!-- Banner dinámico (cambia de mensaje y color) -->
-<div id="dynamicBanner"></div>
+<div id="dynamicBanner">¡Bienvenido a nuestro sitio! Ofertas especiales disponibles.</div>
 
 <!-- Banner deslizante (slider) -->
 <div class="fixed-header">
     <div class="bg-primary py-2">
         <div class="container mx-auto px-4 flex justify-between items-center">
+            <!-- Slider que se desliza horizontalmente -->
             <div class="slider w-full"> <!-- Se asegura que ocupe todo el ancho -->
                 <div class="slide-track">
                     <div class="slide text-custom text-center">¡Oferta especial! 20% de descuento en todos los servicios</div>
@@ -283,6 +335,8 @@
                     <div class="slide text-custom text-center">¡Únete a nuestro webinar gratuito sobre estrategias de SEO!</div>
                 </div>
             </div>
+
+            <!-- Íconos de redes sociales y selector de idioma -->
             <div class="flex items-center space-x-4">
                 <a href="#" class="text-custom hover:text-accent transition-colors" aria-label="Facebook">
                     <i class="fab fa-facebook-f"></i>
