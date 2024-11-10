@@ -261,20 +261,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Reviews data
     const reviews = [
-        { name: 'Juan Pérez', rating: 5, text: 'Excelente servicio, superaron mis expectativas.' },
-        { name: 'María García', rating: 4, text: 'Muy profesionales y atentos a los detalles.' },
-        { name: 'Carlos Rodríguez', rating: 5, text: 'Lograron aumentar significativamente nuestras ventas en línea.' },
-        { name: 'Ana Martínez', rating: 4, text: 'Gran equipo, siempre dispuestos a ayudar.' },
-    ];
-
-    // Render reviews slider
-    const reviews = [
         { name: 'Juan Pérez', rating: 5, text: 'Excelente servicio, superaron mis expectativas.', image: 'https://randomuser.me/api/portraits/men/1.jpg' },
         { name: 'María García', rating: 4, text: 'Muy profesionales y atentos a los detalles.', image: 'https://randomuser.me/api/portraits/women/2.jpg' },
         { name: 'Carlos Rodríguez', rating: 5, text: 'Lograron aumentar significativamente nuestras ventas en línea.', image: 'https://randomuser.me/api/portraits/men/3.jpg' },
         { name: 'Ana Martínez', rating: 4, text: 'Gran equipo, siempre dispuestos a ayudar.', image: 'https://randomuser.me/api/portraits/women/4.jpg' },
     ];
 
+    // Render reviews slider
     const reviewsSlider = document.getElementById('reviewsSlider');
     if (reviewsSlider) {
         reviewsSlider.innerHTML = `
@@ -500,6 +493,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             }
         });
+    });
+
+    modalContainer.addEventListener('click', (e) => {
+        if (e.target === modalContainer) {
+            modalContainer.classList.add('hidden');
+        }
     });
 
     // Newsletter form submission
