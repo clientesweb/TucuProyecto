@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const bannerSection = document.querySelector('#banner');
     if (bannerSection) {
         bannerSection.innerHTML = `
-            <div class="relative w-full h-screen">
+            <div class="relative w-full h-0 pb-[56.25%]"> <!-- 16:9 aspect ratio -->
                 <video autoplay loop muted playsinline class="absolute top-0 left-0 w-full h-full object-cover">
                     <source src="img/vibrando1.mp4" type="video/mp4">
                     Your browser does not support the video tag.
@@ -268,42 +268,62 @@ document.addEventListener('DOMContentLoaded', function() {
     ];
 
     // Render reviews slider
+    const reviews = [
+        { name: 'Juan Pérez', rating: 5, text: 'Excelente servicio, superaron mis expectativas.', image: 'https://randomuser.me/api/portraits/men/1.jpg' },
+        { name: 'María García', rating: 4, text: 'Muy profesionales y atentos a los detalles.', image: 'https://randomuser.me/api/portraits/women/2.jpg' },
+        { name: 'Carlos Rodríguez', rating: 5, text: 'Lograron aumentar significativamente nuestras ventas en línea.', image: 'https://randomuser.me/api/portraits/men/3.jpg' },
+        { name: 'Ana Martínez', rating: 4, text: 'Gran equipo, siempre dispuestos a ayudar.', image: 'https://randomuser.me/api/portraits/women/4.jpg' },
+    ];
+
     const reviewsSlider = document.getElementById('reviewsSlider');
     if (reviewsSlider) {
         reviewsSlider.innerHTML = `
-            <div class="overflow-hidden relative">
-                <div class="flex animate-slide">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
                     ${reviews.map(review => `
-                        <div class="flex-shrink-0 w-full md:w-1/2 lg:w-1/3 p-4">
+                        <div class="swiper-slide">
                             <div class="bg-white rounded-lg shadow-lg p-6">
                                 <div class="flex items-center mb-4">
-                                    <div class="text-yellow-400">
-                                        ${'★'.repeat(review.rating)}${'☆'.repeat(5 - review.rating)}
+                                    <img src="${review.image}" alt="${review.name}" class="w-12 h-12 rounded-full mr-4">
+                                    <div>
+                                        <p class="font-bold">${review.name}</p>
+                                        <div class="text-yellow-400">
+                                            ${'★'.repeat(review.rating)}${'☆'.repeat(5 - review.rating)}
+                                        </div>
                                     </div>
-                                    <span class="ml-2 text-gray-600">${review.rating}/5</span>
                                 </div>
-                                <p class="text-gray-700 mb-4">"${review.text}"</p>
-                                <p class="font-bold">${review.name}</p>
-                            </div>
-                        </div>
-                    `).join('')}
-                    ${reviews.map(review => `
-                        <div class="flex-shrink-0 w-full md:w-1/2 lg:w-1/3 p-4">
-                            <div class="bg-white rounded-lg shadow-lg p-6">
-                                <div class="flex items-center mb-4">
-                                    <div class="text-yellow-400">
-                                        ${'★'.repeat(review.rating)}${'☆'.repeat(5 - review.rating)}
-                                    </div>
-                                    <span class="ml-2 text-gray-600">${review.rating}/5</span>
-                                </div>
-                                <p class="text-gray-700 mb-4">"${review.text}"</p>
-                                <p class="font-bold">${review.name}</p>
+                                <p class="text-gray-700">"${review.text}"</p>
                             </div>
                         </div>
                     `).join('')}
                 </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
             </div>
         `;
+
+        new Swiper('.swiper-container', {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            loop: true,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 2,
+                },
+                1024: {
+                    slidesPerView: 3,
+                },
+            },
+        });
     }
 
     // Team data
@@ -335,7 +355,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const reelsContainer = document.getElementById('reelsContainer');
     if (reelsContainer) {
         reelsContainer.innerHTML = `
-            <div class="flex overflow-x-auto space-x-4 p-4">
+            <div class="flex flex-wrap justify-center gap-4">
                 <iframe src="https://www.instagram.com/reel/CsZpGFcAhHt/embed" class="w-[320px] h-[570px]" frameborder="0" scrolling="no" allowtransparency="true"></iframe>
                 <iframe src="https://www.instagram.com/reel/CtFFElFAq66/embed" class="w-[320px] h-[570px]" frameborder="0" scrolling="no" allowtransparency="true"></iframe>
                 <iframe src="https://www.instagram.com/reel/Cs2aG6yg8TQ/embed" class="w-[320px] h-[570px]" frameborder="0" scrolling="no" allowtransparency="true"></iframe>
@@ -457,7 +477,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Modal functionality
     const modalContainer = document.createElement('div');
-    modalContainer.className = 'fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50';
+    modalContainer.className = 'fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50 p-4';
     document.body.appendChild(modalContainer);
 
     document.querySelectorAll('.modal-trigger').forEach(button => {
@@ -466,7 +486,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const service = services.find(s => s.title === serviceName);
             if (service) {
                 const modalContent = `
-                    <div class="bg-custom p-6 rounded-lg max-w-4xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+                    <div class="bg-custom p-6 rounded-lg w-full max-w-4xl mx-auto max-h-[90vh] overflow-y-auto">
                         <h2 class="text-2xl font-bold mb-4">${service.title}</h2>
                         ${service.modalContent}
                         <button class="close-modal bg-primary text-custom py-2 px-4 rounded-full hover:bg-secondary transition-colors mt-4">Cerrar</button>
@@ -480,12 +500,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             }
         });
-    });
-
-    modalContainer.addEventListener('click', (e) => {
-        if (e.target === modalContainer) {
-            modalContainer.classList.add('hidden');
-        }
     });
 
     // Newsletter form submission
