@@ -609,28 +609,27 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Automatic top banner
-    const banners = [
-        { text: "Potencia tu presencia digital con Vibrando Alto", bgColor: "bg-primary" },
-        { text: "Estrategias personalizadas para tu éxito online", bgColor: "bg-secondary" },
-        { text: "Impulsa tu negocio con nuestros servicios de marketing", bgColor: "bg-accent" }
-    ];
+    // Banner dinámico
+const banners = [
+    { text: "Potencia tu presencia digital con Vibrando Alto", bgColor: "bg-primary" },
+    { text: "Estrategias personalizadas para tu éxito online", bgColor: "bg-secondary" },
+    { text: "Impulsa tu negocio con nuestros servicios de marketing", bgColor: "bg-accent" }
+];
 
-    const topBanner = document.createElement('div');
-    topBanner.className = 'p-4 text-center text-white transition-colors duration-500';
-    document.body.insertBefore(topBanner, document.body.firstChild);
+const dynamicBanner = document.getElementById('dynamicBanner');
+dynamicBanner.className = 'p-4 text-center text-white transition-colors duration-500';
 
-    let currentBannerIndex = 0;
+let currentBannerIndex = 0;
 
-    function updateBanner() {
-        const currentBanner = banners[currentBannerIndex];
-        topBanner.textContent = currentBanner.text;
-        topBanner.className = `p-4 text-center text-white transition-colors duration-500 ${currentBanner.bgColor}`;
-        currentBannerIndex = (currentBannerIndex + 1) % banners.length;
-    }
+function updateBanner() {
+    const currentBanner = banners[currentBannerIndex];
+    dynamicBanner.textContent = currentBanner.text;
+    dynamicBanner.className = `p-4 text-center text-white transition-colors duration-500 ${currentBanner.bgColor}`;
+    currentBannerIndex = (currentBannerIndex + 1) % banners.length;
+}
 
-    updateBanner();
-    setInterval(updateBanner, 5000);
+updateBanner();
+setInterval(updateBanner, 5000);
 
     // About Us modal
     const aboutUsButton = document.querySelector('#aboutUsButton');
