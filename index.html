@@ -224,17 +224,17 @@
             box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
         @keyframes slide {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
 
-.animate-slide {
-  animation: slide 30s linear infinite;
-}
+        .animate-slide {
+            animation: slide 30s linear infinite;
+        }
     </style>
 </head>
 <body class="min-h-screen bg-custom text-custom">
@@ -305,7 +305,7 @@
     </div>
 
     <main>
-        <section id="inicio" class="relative overflow-hidden">
+       <section id="inicio" class="relative overflow-hidden">
             <div id="banner" class="w-full h-screen relative">
                 <!-- El contenido del banner se insertará dinámicamente desde JavaScript -->
             </div>
@@ -373,8 +373,8 @@
         <section id="clientes" class="py-20 bg-primary">
             <div class="container mx-auto px-4">
                 <h2 class="text-3xl font-bold mb-8 text-center text-custom" data-aos="fade-up" data-translate="clientesCreenEnNosotros">Clientes que creen en nosotros</h2>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-8" id="clientsGrid">
-                    <!-- Los logos de los clientes se insertarán dinámicamente aquí -->
+                <div id="clientsSlider" class="overflow-hidden">
+                    <!-- El slider de clientes se insertará dinámicamente aquí -->
                 </div>
             </div>
         </section>
@@ -384,6 +384,18 @@
                 <h2 class="text-3xl font-bold mb-8 text-center text-custom" data-aos="fade-up" data-translate="nuestroEquipo">Nuestro Equipo</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8" id="teamGrid">
                     <!-- Los miembros del equipo se insertarán dinámicamente aquí -->
+                </div>
+                <div id="reelsContainer" class="mt-12">
+                    <!-- Los Reels de Instagram se insertarán dinámicamente aquí -->
+                </div>
+            </div>
+        </section>
+        
+        <section class="py-20 bg-custom">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold mb-8 text-center text-custom" data-aos="fade-up" data-translate="opiniones">Opiniones de nuestros clientes</h2>
+                <div id="reviewsSlider" class="overflow-hidden">
+                    <!-- El slider de reseñas se insertará dinámicamente aquí -->
                 </div>
             </div>
         </section>
@@ -464,7 +476,7 @@
         </div>
     </footer>
 
-    <a href="https://wa.me/1234567890" class="whatsapp-float bounce" target="_blank" aria-label="WhatsApp">
+    <a href="https://wa.me/5493815519630" class="whatsapp-float bounce" target="_blank" aria-label="WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
 
