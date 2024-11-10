@@ -251,23 +251,39 @@
         <!-- El contenido del preloader se insertará dinámicamente desde JavaScript -->
     </div>
 
-    <!-- Banner automático con mensajes deslizantes -->
-<div id="sliderBanner" class="fixed-header">
+    <div class="fixed-header">
     <div class="bg-primary py-2">
         <div class="container mx-auto px-4 flex justify-between items-center">
-            <div class="slider w-2/3">
+            <div class="slider w-2/3 overflow-hidden">
                 <div class="slide-track">
                     <div class="slide text-custom text-center">¡Oferta especial! 20% de descuento en todos los servicios</div>
                     <div class="slide text-custom text-center">Nuevo servicio: Consultoría de marketing digital personalizada</div>
                     <div class="slide text-custom text-center">¡Únete a nuestro webinar gratuito sobre estrategias de SEO!</div>
                 </div>
             </div>
+            <div class="flex items-center space-x-4">
+                <a href="#" class="text-custom hover:text-accent transition-colors" aria-label="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="#" class="text-custom hover:text-accent transition-colors" aria-label="Twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#" class="text-custom hover:text-accent transition-colors" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" class="text-custom hover:text-accent transition-colors" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <div class="language-selector">
+                    <select id="languageSelect" class="text-custom bg-transparent">
+                        <option value="es">ES</option>
+                        <option value="en">EN</option>
+                    </select>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-
-<!-- Banner dinámico controlado por JavaScript -->
-<div id="dynamicBanner"></div>
 
         <header class="bg-black py-4 w-full">
             <div class="container mx-auto px-4 flex justify-between items-center">
