@@ -1,12 +1,10 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Preloader (modificado)
+    // Preloader
     window.addEventListener('load', function() {
         const preloader = document.querySelector('.preloader');
         preloader.innerHTML = `
-            <div class="flex flex-col items-center">
-                <img src="logo.png" alt="Logo" class="animate-pulse w-24 h-24 mb-4">
-                <p class="text-white text-lg">Powered By Duality Domain</p>
-            </div>
+            <img src="logo.png" alt="Logo" class="pulse">
+            <p class="pulse">Powered By Duality Domain</p>
         `;
         setTimeout(() => {
             preloader.style.opacity = '0';
@@ -54,46 +52,60 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('resize', adjustFirstSectionPadding);
     adjustFirstSectionPadding();
 
-    // Banner video (modificado para ocupar todo el espacio disponible)
+    // Banner video
     const bannerSection = document.querySelector('#banner');
     if (bannerSection) {
         bannerSection.innerHTML = `
-            <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover">
-                <source src="img/vibrando1.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-                <h1 class="text-4xl md:text-6xl text-white font-bold"></h1>
+            <div class="relative w-full h-full overflow-hidden">
+                <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover">
+                    <source src="img/vibrando1.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+                    <h1 class="text-4xl md:text-6xl text-white font-bold text-center">Vibrando Alto: Tu Agencia de Marketing Digital</h1>
+                </div>
             </div>
         `;
     }
 
     // Services data
     const services = [
-        { icon: 'fa-globe', title: 'SEO', 
-          description: 'Impulsamos el crecimiento de tu negocio en canales orgánicos a través de estrategias de posicionamiento web.' },
-        { icon: 'fa-bullhorn', title: 'Redes Sociales',
-          description: 'Activamos y gestionamos tu presencia online en las redes sociales más importantes del momento.' },
-        { icon: 'fa-laptop-code', title: 'Diseño y Desarrollo Web',
-          description: 'Nos encargamos del diseño de tu sitio web o aplicación abordando todas las necesidades de tu empresa.' },
-        { icon: 'fa-comments', title: 'Setters',
-          description: 'Identifica cuentas de alto potencial y optimiza la búsqueda de clientes calificados.' },
-        { icon: 'fa-bolt', title: 'Google ADS',
-          description: 'Desarrollamos campañas de búsqueda, display, remarketing, discovery y performance max.' },
-        { icon: 'fa-robot', title: 'Crecimiento con IA',
-          description: 'Sistematización de crecimiento exponencial que mejorará la imagen de tu perfil.' },
-        { icon: 'fa-pen', title: 'Guiones', 
-          description: 'Esquemas que organizan el contenido de videos cortos, con introducción, mensaje clave y llamado a la acción, para captar la atención en redes sociales.' },
-        { icon: 'fa-microphone', title: 'Creación de podcast', 
-          description: 'Unimos cámaras, tarjetas de audio de distintas cámaras y hacemos la edición para que tu podcast sea llamativo y crees un canal con una audiencia sólida.' },
-        { icon: 'fa-handshake', title: 'Cerradores', 
-          description: 'Personas encargadas de cerrar las ventas potenciales que tiene nuestro cliente, sin gastar tiempo y mejorando su ROI y beneficio.' },
-        { icon: 'fa-file-alt', title: 'Marketing de Contenidos', 
-          description: 'Desarrollamos campañas de búsqueda, display, remarketing, discovery y performance max.' },
-        { icon: 'fa-search', title: 'Posicionamiento en Google', 
-          description: 'Llevamos tu empresa a los primeros lugares de Google.' },
-        { icon: 'fa-video', title: 'Edición de video', 
-          description: 'Editamos videos profesionales que captan la esencia de tu marca y atraen a tu audiencia, ideales para redes sociales y campañas publicitarias.' }
+        { 
+            icon: 'fa-globe', 
+            title: 'SEO', 
+            description: 'Impulsamos el crecimiento de tu negocio en canales orgánicos a través de estrategias de posicionamiento web.',
+            modalContent: 'Nuestro servicio de SEO incluye:<br>- Auditoría técnica del sitio web<br>- Investigación de palabras clave<br>- Optimización on-page y off-page<br>- Creación de contenido optimizado<br>- Seguimiento y análisis de resultados'
+        },
+        { 
+            icon: 'fa-bullhorn', 
+            title: 'Redes Sociales',
+            description: 'Activamos y gestionamos tu presencia online en las redes sociales más importantes del momento.',
+            modalContent: 'Nuestro servicio de Redes Sociales incluye:<br>- Estrategia de contenido personalizada<br>- Diseño de publicaciones atractivas<br>- Programación y publicación de contenido<br>- Interacción con la audiencia<br>- Análisis de métricas y optimización continua'
+        },
+        { 
+            icon: 'fa-laptop-code', 
+            title: 'Diseño y Desarrollo Web',
+            description: 'Nos encargamos del diseño de tu sitio web o aplicación abordando todas las necesidades de tu empresa.',
+            modalContent: 'Nuestro servicio de Diseño y Desarrollo Web incluye:<br>- Diseño UX/UI personalizado<br>- Desarrollo frontend y backend<br>- Optimización para dispositivos móviles<br>- Integración de CMS<br>- Mantenimiento y soporte técnico'
+        },
+        { 
+            icon: 'fa-comments', 
+            title: 'Setters',
+            description: 'Identifica cuentas de alto potencial y optimiza la búsqueda de clientes calificados.',
+            modalContent: 'Nuestro servicio de Setters incluye:<br>- Identificación de leads potenciales<br>- Estrategias de acercamiento personalizadas<br>- Gestión de la comunicación inicial<br>- Calificación de prospectos<br>- Reportes de rendimiento y mejora continua'
+        },
+        { 
+            icon: 'fa-bolt', 
+            title: 'Google ADS',
+            description: 'Desarrollamos campañas de búsqueda, display, remarketing, discovery y performance max.',
+            modalContent: 'Nuestro servicio de Google ADS incluye:<br>- Configuración y optimización de campañas<br>- Selección estratégica de palabras clave<br>- Creación de anuncios persuasivos<br>- Seguimiento de conversiones<br>- Informes detallados y optimización continua'
+        },
+        { 
+            icon: 'fa-robot', 
+            title: 'Crecimiento con IA',
+            description: 'Sistematización de crecimiento exponencial que mejorará la imagen de tu perfil.',
+            modalContent: 'Nuestro servicio de Crecimiento con IA incluye:<br>- Implementación de chatbots inteligentes<br>- Análisis predictivo de tendencias<br>- Personalización de contenido con IA<br>- Optimización de campañas con aprendizaje automático<br>- Informes avanzados basados en IA'
+        },
     ];
 
     // Render services
@@ -114,7 +126,7 @@ document.addEventListener('DOMContentLoaded', function() {
         servicesGrid.appendChild(serviceElement);
     });
 
-    // Clients data (modificado para usar imágenes de logos)
+    // Clients data
     const clients = [
         { name: 'AG ALEXIS GORGONEA PELUQUERIA CANINA', logo: 'img/alexis-logo.png' },
         { name: 'MARKET', logo: 'img/market-logo.png' },
@@ -135,7 +147,7 @@ document.addEventListener('DOMContentLoaded', function() {
         clientsGrid.appendChild(clientElement);
     });
 
-    // Team data (Mariana Mónaco removida)
+    // Team data
     const team = [
         { name: 'VALENTINA TERAN', role: 'CEO Y EDITORA', photo: 'img/valentina-teran.jpg' },
         { name: 'CANDELA CIUTATT', role: 'CEO Y CLOSER', photo: 'img/candela-ciutatt.jpg' },
@@ -281,28 +293,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     setInterval(nextSlide, 5000); // Change slide every 5 seconds
 
-    // Add data-translate attributes to elements
-    const translatableElements = {
-        'inicio': document.querySelector('nav a[href="#inicio"]'),
-        'servicios': document.querySelector('nav a[href="#servicios"]'),
-        'nosotros': document.querySelector('nav a[href="#nosotros"]'),
-        'clientes': document.querySelector('nav a[href="#clientes"]'),
-        'contacto': document.querySelector('nav a[href="#contacto"]'),
-        'agenciaMarketingDigital': document.querySelector('#inicio h1'),
-        'preparateParaElFuturo': document.querySelector('#inicio p'),
-        'reservarAsesoria': document.querySelector('#btnAsesoria'),
-        'masInformacion': document.querySelector('#btnInfo'),
-    };
-
-    Object.entries(translatableElements).forEach(([key, element]) => {
-        if (element) {
-            element.setAttribute('data-translate', key);
-        }
-    });
-
-    // Initialize language
-    updateLanguage(document.documentElement.lang);
-
     // Modal functionality
     const modalContainer = document.createElement('div');
     modalContainer.className = 'fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50';
@@ -317,6 +307,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <div class="bg-custom p-6 rounded-lg max-w-lg w-full">
                         <h2 class="text-2xl font-bold mb-4">${service.title}</h2>
                         <p class="mb-4">${service.description}</p>
+                        <div class="mb-4">${service.modalContent}</div>
                         <button class="close-modal bg-primary text-custom py-2 px-4 rounded-full hover:bg-secondary transition-colors">Cerrar</button>
                     </div>
                 `;
@@ -334,5 +325,24 @@ document.addEventListener('DOMContentLoaded', function() {
         if (e.target === modalContainer) {
             modalContainer.classList.add('hidden');
         }
+    });
+
+    // Newsletter form submission
+    const newsletterForm = document.getElementById('newsletterForm');
+    newsletterForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const email = this.querySelector('input[type="email"]').value;
+        // Aquí puedes agregar la lógica para enviar el correo a tu servicio de newsletter
+        alert(`Gracias por suscribirte con el correo: ${email}`);
+        this.reset();
+    });
+
+    // WhatsApp float button bounce effect
+    const whatsappFloat = document.querySelector('.whatsapp-float');
+    whatsappFloat.addEventListener('mouseover', () => {
+        whatsappFloat.classList.add('bounce');
+    });
+    whatsappFloat.addEventListener('mouseout', () => {
+        whatsappFloat.classList.remove('bounce');
     });
 });
