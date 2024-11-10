@@ -112,13 +112,27 @@
 /* Banner dinámico */
 #dynamicBanner {
     position: relative;
-    top: -5px; /* Mueve el banner hacia arriba sin que se salga de la página */
+    top: -1px; /* Ajusta para que no se sobreponga al slider */
     margin: 0;
     padding: 0;
     text-align: center;
-    color: white; /* Mantiene el texto blanco */
+    color: white;
     font-size: 1rem;
-    z-index: 100; /* Asegura que el banner dinámico esté encima */
+    z-index: 100; /* Asegura que el banner dinámico esté encima del slider */
+}
+
+/* Banner deslizante */
+.fixed-header {
+    position: fixed;
+    top: 30px; /* Asegura que el banner deslizante esté debajo del banner dinámico */
+    width: 100%;
+    z-index: 50; /* Mantiene el slider en la parte superior */
+}
+
+.slider {
+    overflow: hidden;
+    width: 100%;
+    position: relative;
 }
         .preloader {
             position: fixed;
