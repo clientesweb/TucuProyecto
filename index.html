@@ -216,6 +216,13 @@
         .bounce {
             animation: bounce 2s infinite;
         }
+        .hover-effect {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .hover-effect:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
     </style>
 </head>
 <body class="min-h-screen bg-custom text-custom">
@@ -260,11 +267,11 @@
             <div class="container mx-auto px-4 flex justify-between items-center">
                 <img src="logo.png" alt="Vibrando Alto" width="50" height="50" class="w-12 h-12">
                 <nav class="hidden md:flex space-x-4">
-                    <a href="#inicio" class="text-orange-500" data-translate="inicio">Inicio</a>
-                    <a href="#servicios" class="text-orange-500" data-translate="servicios">Servicios</a>
-                    <a href="#nosotros" class="text-orange-500" data-translate="nosotros">Nosotros</a>
-                    <a href="#clientes" class="text-orange-500" data-translate="clientes">Clientes</a>
-                    <a href="#contacto" class="text-orange-500" data-translate="contacto">Contacto</a>
+                    <a href="#inicio" class="text-orange-500 hover:text-accent transition-colors" data-translate="inicio">Inicio</a>
+                    <a href="#servicios" class="text-orange-500 hover:text-accent transition-colors" data-translate="servicios">Servicios</a>
+                    <a href="#nosotros" class="text-orange-500 hover:text-accent transition-colors" data-translate="nosotros">Nosotros</a>
+                    <a href="#clientes" class="text-orange-500 hover:text-accent transition-colors" data-translate="clientes">Clientes</a>
+                    <a href="#contacto" class="text-orange-500 hover:text-accent transition-colors" data-translate="contacto">Contacto</a>
                 </nav>
                 <button id="mobileMenuButton" class="md:hidden text-orange-500">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -286,8 +293,8 @@
     </div>
 
     <main>
-        <section id="inicio" class="py-20 relative overflow-hidden">
-            <div id="banner" class="w-full h-[60vh] md:h-[80vh] relative">
+        <section id="inicio" class="relative overflow-hidden">
+            <div id="banner" class="w-full h-screen relative">
                 <!-- El contenido del banner se insertará dinámicamente desde JavaScript -->
             </div>
         </section>
@@ -304,7 +311,7 @@
                     digital.
                 </p>
                 <div class="text-center" data-aos="fade-up" data-aos-delay="400">
-                    <button class="bg-custom text-primary py-2 px-6 rounded-full hover:bg-secondary hover:text-custom transition-colors" data-translate="descubreMas">
+                    <button class="bg-custom text-primary py-2 px-6 rounded-full hover:bg-secondary hover:text-custom transition-colors modal-trigger" data-service="nosotros" data-translate="descubreMas">
                         Descubre más
                     </button>
                 </div>
@@ -324,11 +331,11 @@
             <div class="container mx-auto px-4">
                 <h2 class="text-3xl font-bold mb-8 text-center text-custom" data-aos="fade-up" data-translate="certificaciones">Certificaciones de Nuestra <span class="text-primary">Agencia de Marketing Digital</span></h2>
                 <div class="flex justify-center items-center flex-wrap gap-8" data-aos="fade-up" data-aos-delay="200">
-                    <img src="img/meta-logo.png" alt="Meta Business Partner" width="96" height="48">
-                    <img src="img/instagram-logo.png" alt="Instagram Partner" width="96" height="48">
-                    <img src="img/tiktok-logo.png" alt="TikTok Marketing Partner" width="96" height="48">
-                    <img src="img/linkedin-logo.png" alt="LinkedIn Marketing Partner" width="96" height="48">
-                    <img src="img/google-logo.png" alt="Google Partner" width="96" height="48">
+                    <img src="img/meta-logo.png" alt="Meta Business Partner" width="96" height="48" class="hover-effect">
+                    <img src="img/instagram-logo.png" alt="Instagram Partner" width="96" height="48" class="hover-effect">
+                    <img src="img/tiktok-logo.png" alt="TikTok Marketing Partner" width="96" height="48" class="hover-effect">
+                    <img src="img/linkedin-logo.png" alt="LinkedIn Marketing Partner" width="96" height="48" class="hover-effect">
+                    <img src="img/google-logo.png" alt="Google Partner" width="96" height="48" class="hover-effect">
                 </div>
             </div>
         </section>
@@ -417,7 +424,7 @@
                     <h3 class="text-lg font-bold mb-4 text-primary">Boletín Informativo</h3>
                     <p class="text-sm text-gray-400 mb-4">Suscríbete para recibir las últimas noticias y ofertas.</p>
                     <form id="newsletterForm" class="flex flex-col space-y-2">
-                        <input type="email" placeholder="Tu correo electrónico" class="bg-gray-800 text-white px-4 py-2 rounded-md" required>
+                        <input type="tel" placeholder="Tu número de WhatsApp" class="bg-gray-800 text-white px-4 py-2 rounded-md" required>
                         <button type="submit" class="bg-primary text-white px-4 py-2 rounded-md hover:bg-secondary transition-colors">Suscribirse</button>
                     </form>
                 </div>
