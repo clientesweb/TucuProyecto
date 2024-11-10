@@ -46,6 +46,30 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     }
+     // Automatic top banner
+    const bannerSection = document.querySelector('#banner');
+    if (bannerSection) {
+        const banners = [
+            { text: "Potencia tu presencia digital con Vibrando Alto", bgColor: "bg-primary" },
+            { text: "Estrategias personalizadas para tu éxito online", bgColor: "bg-secondary" },
+            { text: "Impulsa tu negocio con nuestros servicios de marketing", bgColor: "bg-accent" }
+        ];
+
+        let currentBannerIndex = 0;
+
+        function updateBanner() {
+            const currentBanner = banners[currentBannerIndex];
+            bannerSection.innerHTML = `
+                <div class="w-full h-screen flex items-center justify-center ${currentBanner.bgColor} transition-colors duration-500">
+                    <h1 class="text-4xl md:text-6xl font-bold text-white text-center px-4">${currentBanner.text}</h1>
+                </div>
+            `;
+            currentBannerIndex = (currentBannerIndex + 1) % banners.length;
+        }
+
+        updateBanner(); // Initial update
+        setInterval(updateBanner, 5000); // Change banner every 5 seconds
+    }
 
     // Adjust padding-top of the first section to account for fixed header
     const fixedHeader = document.querySelector('.fixed-header');
