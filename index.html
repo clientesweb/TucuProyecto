@@ -71,22 +71,23 @@
         .gradient-yellow {
             background: linear-gradient(135deg, var(--color-yellow) 0%, var(--color-accent) 100%);
         }
-        /* Ajustes para el slider */
+        /* Asegura que el banner dinámico se quede fijo arriba y que el contenido no lo cubra */
 .fixed-header {
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 50; /* Mantener el slider en la parte superior */
-    padding-top: 40px; /* Asegura que el banner no se superponga al logo */
+    z-index: 100; /* Mantener el slider en la parte superior */
+    padding-top: 40px; /* Espacio adecuado para no cubrir el contenido */
 }
 
+/* Slider que se desliza horizontalmente */
 .slider {
     overflow: hidden;
-    white-space: nowrap; /* Para evitar que los mensajes se apilen */
+    white-space: nowrap; /* Para que los mensajes no se apilen */
 }
 
 .slide-track {
-    display: inline-flex; /* Los mensajes deben estar en línea */
+    display: inline-flex; /* Los mensajes estarán en una fila */
     animation: scroll 20s linear infinite; /* Animación para mover los mensajes */
 }
 
@@ -98,22 +99,22 @@
     white-space: nowrap; /* Evita que los mensajes se dividan en varias líneas */
 }
 
-/* Animación para mover los mensajes de izquierda a derecha */
+/* Animación de movimiento de los mensajes de izquierda a derecha */
 @keyframes scroll {
-    0% { transform: translateX(100%); } /* Empieza fuera a la derecha */
-    100% { transform: translateX(-100%); } /* Termina fuera a la izquierda */
+    0% { transform: translateX(100%); } /* Comienza fuera de la vista por la derecha */
+    100% { transform: translateX(-100%); } /* Termina fuera de la vista por la izquierda */
 }
 
-/* Ajustes para el banner dinámico */
+/* El banner dinámico mantiene su funcionalidad original */
 #dynamicBanner {
     position: relative;
-    top: -2px; /* Asegura que no haya separación con el slider */
+    top: -2px; /* Ajusta la separación con el slider */
     margin: 0;
     padding: 0;
     text-align: center;
     font-size: 1rem;
     color: white;
-    z-index: 100; /* Asegura que el banner dinámico esté encima */
+    z-index: 101; /* El banner dinámico está encima del slider */
 }
         .preloader {
             position: fixed;
@@ -268,14 +269,14 @@
         <!-- El contenido del preloader se insertará dinámicamente desde JavaScript -->
     </div>
 
-    <!-- Banner dinámico (cambia de mensaje y color) -->
+   <!-- Banner dinámico (cambia de mensaje y color) -->
 <div id="dynamicBanner"></div>
 
 <!-- Banner deslizante (slider) -->
 <div class="fixed-header">
     <div class="bg-primary py-2">
         <div class="container mx-auto px-4 flex justify-between items-center">
-            <div class="slider w-2/3">
+            <div class="slider w-full"> <!-- Se asegura que ocupe todo el ancho -->
                 <div class="slide-track">
                     <div class="slide text-custom text-center">¡Oferta especial! 20% de descuento en todos los servicios</div>
                     <div class="slide text-custom text-center">Nuevo servicio: Consultoría de marketing digital personalizada</div>
