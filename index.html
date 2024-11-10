@@ -74,22 +74,22 @@
        /* Banner dinámico */
 #dynamicBanner {
     position: fixed; /* Fijo en la parte superior */
-    top: 0; /* Asegura que esté en la parte superior */
+    top: 0; /* Está en la parte superior */
     left: 0;
     width: 100%;
     color: white;
     text-align: center;
     font-size: 1rem;
     z-index: 100; /* Asegura que esté encima del banner deslizante */
-    padding: 0.1rem 0; /* Espacio muy pequeño entre el texto y los bordes */
+    padding: 0.05rem 0; /* Espacio mínimo entre el texto y los bordes */
 }
 
 /* Banner deslizante */
 .fixed-header {
     position: fixed; /* Fijo en la parte superior */
-    top: 30px; /* Reducido el espacio entre los dos banners */
+    top: 25px; /* Separación muy pequeña entre los dos banners */
     width: 100%;
-    z-index: 50; /* Mantiene el slider debajo del banner dinámico */
+    z-index: 50; /* Asegura que esté debajo del banner dinámico */
     background-color: transparent; /* Fondo transparente */
     padding: 0.5rem 0; /* Un poco de espacio en el slider */
 }
