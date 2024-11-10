@@ -72,14 +72,13 @@
             background: linear-gradient(135deg, var(--color-yellow) 0%, var(--color-accent) 100%);
         }
         /* Banner deslizante */
-/* Banner deslizante */
 .fixed-header {
     position: fixed;
-    top: 0;
+    top: 30px; /* Asegura que el banner deslizante esté debajo del banner dinámico */
     width: 100%;
-    z-index: 50; /* Asegura que el banner esté encima */
+    z-index: 50; /* Mantiene el slider en la parte superior */
     background-color: transparent; /* Fondo transparente para el slider */
-    margin-bottom: 30px; /* Reducimos el espacio entre el banner deslizante y el header */
+    margin-bottom: 30px; /* Reduce el espacio entre el banner deslizante y el header */
 }
 
 .slider {
@@ -119,20 +118,6 @@
     color: white;
     font-size: 1rem;
     z-index: 100; /* Asegura que el banner dinámico esté encima del slider */
-}
-
-/* Banner deslizante */
-.fixed-header {
-    position: fixed;
-    top: 30px; /* Asegura que el banner deslizante esté debajo del banner dinámico */
-    width: 100%;
-    z-index: 50; /* Mantiene el slider en la parte superior */
-}
-
-.slider {
-    overflow: hidden;
-    width: 100%;
-    position: relative;
 }
         .preloader {
             position: fixed;
