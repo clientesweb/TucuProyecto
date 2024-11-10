@@ -73,26 +73,26 @@
         }
         /* Banner dinámico */
 #dynamicBanner {
-    position: fixed;
-    top: 0; /* Ajustamos para que esté justo en la parte superior */
+    position: fixed; /* Fijo en la parte superior */
+    top: 0; /* Ajuste de la posición */
     left: 0;
     width: 100%;
-    margin: 0;
-    padding: 0;
-    text-align: center;
+    background-color: transparent; /* Fondo transparente */
     color: white;
+    text-align: center;
     font-size: 1rem;
-    z-index: 100; /* Asegura que el banner dinámico esté encima del banner deslizante */
+    z-index: 100; /* Está encima del banner deslizante */
+    padding: 0.5rem; /* Ajustamos el tamaño para que se vea bien */
 }
 
 /* Banner deslizante */
 .fixed-header {
-    position: fixed;
-    top: 40px; /* Se coloca justo debajo del banner dinámico */
+    position: fixed; /* Fijo en la parte superior */
+    top: 40px; /* Justo debajo del banner dinámico */
     width: 100%;
-    z-index: 50; /* Asegura que el banner deslizante esté debajo del dinámico */
-    background-color: transparent; /* Fondo transparente para el slider */
-    margin-bottom: 30px; /* Se asegura que no haya superposición entre el slider y el header */
+    z-index: 50; /* Está debajo del banner dinámico */
+    background-color: transparent; /* Fondo transparente */
+    padding: 0.5rem 0; /* Ajustamos el tamaño */
 }
 
 .slider {
@@ -102,24 +102,31 @@
 }
 
 .slide-track {
-    display: flex; /* Los mensajes se mostrarán en una fila horizontal */
-    animation: scroll 18s linear infinite; /* Animación más lenta (18s en vez de 30s) */
+    display: flex;
+    animation: scroll 18s linear infinite; /* Animación más lenta */
 }
 
 .slide {
-    flex: 0 0 100%; /* Cada mensaje ocupará el 100% del contenedor */
-    padding: 0 2rem; /* Ajustamos el padding para que los mensajes no estén tan pegados */
+    flex: 0 0 100%; /* Cada mensaje ocupa todo el contenedor */
+    padding: 0 2rem;
     text-align: center;
     font-size: 1rem;
-    white-space: nowrap; /* No permite que los mensajes se dividan en líneas */
+    white-space: nowrap; /* Los mensajes no se dividen en líneas */
 }
 
-/* Animación del slider para deslizar los mensajes */
+/* Animación del slider */
 @keyframes scroll {
-    0% { transform: translateX(100%); } /* Empieza fuera a la derecha */
-    33.33% { transform: translateX(0); } /* Muestra el primer mensaje */
-    66.66% { transform: translateX(-100%); } /* Muestra el segundo mensaje */
-    100% { transform: translateX(-200%); } /* Muestra el tercer mensaje y vuelve al primero */
+    0% { transform: translateX(100%); }
+    33.33% { transform: translateX(0); }
+    66.66% { transform: translateX(-100%); }
+    100% { transform: translateX(-200%); }
+}
+
+/* Header */
+header {
+    position: relative; /* Asegura que el header esté debajo de los banners */
+    z-index: 10; /* Está debajo de los banners fijos */
+    margin-top: 80px; /* Desplaza el header hacia abajo para que no se superponga con los banners */
 }
         .preloader {
             position: fixed;
