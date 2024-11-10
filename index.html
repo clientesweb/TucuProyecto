@@ -71,14 +71,28 @@
         .gradient-yellow {
             background: linear-gradient(135deg, var(--color-yellow) 0%, var(--color-accent) 100%);
         }
-        /* Banner deslizante */
+        /* Banner dinámico */
+#dynamicBanner {
+    position: fixed;
+    top: 0; /* Ajustamos para que esté justo en la parte superior */
+    left: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    color: white;
+    font-size: 1rem;
+    z-index: 100; /* Asegura que el banner dinámico esté encima del banner deslizante */
+}
+
+/* Banner deslizante */
 .fixed-header {
     position: fixed;
-    top: 30px; /* Asegura que el banner deslizante esté debajo del banner dinámico */
+    top: 40px; /* Se coloca justo debajo del banner dinámico */
     width: 100%;
-    z-index: 50; /* Mantiene el slider en la parte superior */
+    z-index: 50; /* Asegura que el banner deslizante esté debajo del dinámico */
     background-color: transparent; /* Fondo transparente para el slider */
-    margin-bottom: 30px; /* Reduce el espacio entre el banner deslizante y el header */
+    margin-bottom: 30px; /* Se asegura que no haya superposición entre el slider y el header */
 }
 
 .slider {
@@ -106,18 +120,6 @@
     33.33% { transform: translateX(0); } /* Muestra el primer mensaje */
     66.66% { transform: translateX(-100%); } /* Muestra el segundo mensaje */
     100% { transform: translateX(-200%); } /* Muestra el tercer mensaje y vuelve al primero */
-}
-
-/* Banner dinámico */
-#dynamicBanner {
-    position: relative;
-    top: -1px; /* Ajusta para que no se sobreponga al slider */
-    margin: 0;
-    padding: 0;
-    text-align: center;
-    color: white;
-    font-size: 1rem;
-    z-index: 100; /* Asegura que el banner dinámico esté encima del slider */
 }
         .preloader {
             position: fixed;
