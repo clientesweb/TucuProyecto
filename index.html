@@ -40,38 +40,45 @@
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
     <style>
         :root {
-            --color-primary: #FF5E00;
-            --color-secondary: #FF7F33;
-            --color-accent: #FFA500;
-            --color-yellow: #FFD700;
-            --color-background: #000000;
-            --color-text: #FFFFFF;
-        }
-        .bg-primary { background-color: var(--color-primary); }
-        .bg-secondary { background-color: var(--color-secondary); }
-        .bg-accent { background-color: var(--color-accent); }
-        .bg-yellow { background-color: var(--color-yellow); }
-        .bg-custom { background-color: var(--color-background); }
-        .text-primary { color: var(--color-primary); }
-        .text-secondary { color: var(--color-secondary); }
-        .text-accent { color: var(--color-accent); }
-        .text-yellow { color: var(--color-yellow); }
-        .text-custom { color: var(--color-text); }
-        .hover\:bg-primary:hover { background-color: var(--color-primary); }
-        .hover\:bg-secondary:hover { background-color: var(--color-secondary); }
-        .hover\:bg-accent:hover { background-color: var(--color-accent); }
-        .hover\:text-primary:hover { color: var(--color-primary); }
-        .hover\:text-secondary:hover { color: var(--color-secondary); }
-        .hover\:text-accent:hover { color: var(--color-accent); }
-        .hover\:bg-yellow:hover { background-color: var(--color-yellow); }
-        .hover\:text-yellow:hover { color: var(--color-yellow); }
-        .gradient-primary {
-            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
-        }
-        .gradient-yellow {
-            background: linear-gradient(135deg, var(--color-yellow) 0%, var(--color-accent) 100%);
-        }
-       /* Banner dinámico */
+    --color-primary: #FF5E00;
+    --color-secondary: #FF7F33;
+    --color-accent: #FFA500;
+    --color-yellow: #FFD700;
+    --color-background: #000000;
+    --color-text: #FFFFFF;
+}
+
+/* Colores de fondo y texto */
+.bg-primary { background-color: var(--color-primary); }
+.bg-secondary { background-color: var(--color-secondary); }
+.bg-accent { background-color: var(--color-accent); }
+.bg-yellow { background-color: var(--color-yellow); }
+.bg-custom { background-color: var(--color-background); }
+.text-primary { color: var(--color-primary); }
+.text-secondary { color: var(--color-secondary); }
+.text-accent { color: var(--color-accent); }
+.text-yellow { color: var(--color-yellow); }
+.text-custom { color: var(--color-text); }
+
+/* Efectos hover */
+.hover\:bg-primary:hover { background-color: var(--color-primary); }
+.hover\:bg-secondary:hover { background-color: var(--color-secondary); }
+.hover\:bg-accent:hover { background-color: var(--color-accent); }
+.hover\:text-primary:hover { color: var(--color-primary); }
+.hover\:text-secondary:hover { color: var(--color-secondary); }
+.hover\:text-accent:hover { color: var(--color-accent); }
+.hover\:bg-yellow:hover { background-color: var(--color-yellow); }
+.hover\:text-yellow:hover { color: var(--color-yellow); }
+
+/* Gradientes */
+.gradient-primary {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+}
+.gradient-yellow {
+    background: linear-gradient(135deg, var(--color-yellow) 0%, var(--color-accent) 100%);
+}
+
+/* Banner dinámico */
 #dynamicBanner {
     position: fixed; /* Fijo en la parte superior */
     top: 0; /* Está en la parte superior */
@@ -127,152 +134,180 @@ header {
     z-index: 10; /* Está debajo de los banners fijos */
     margin-top: 80px; /* Desplaza el header hacia abajo para que no se superponga con los banners */
 }
-        .preloader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #000000;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-        }
-        .preloader img {
-            width: 150px;
-            height: auto;
-        }
-        .preloader p {
-            margin-top: 20px;
-            font-size: 1.2rem;
-            color: var(--color-primary);
-        }
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
-        }
-        .pulse {
-            animation: pulse 2s infinite;
-        }
-        .language-selector {
-            position: relative;
-            display: inline-block;
-        }
-        .language-selector select {
-            appearance: none;
-            background-color: transparent;
-            border: none;
-            padding: 0 1em 0 0;
-            margin: 0;
-            width: 100%;
-            font-family: inherit;
-            font-size: inherit;
-            cursor: pointer;
-            line-height: inherit;
-            outline: none;
-        }
-        .language-selector::after {
-            content: "\25BC";
-            position: absolute;
-            top: 0;
-            right: 0;
-            padding: 0 0.5em;
-            background-color: transparent;
-            pointer-events: none;
-        }
-        .hero-slider {
-            overflow: hidden;
-            position: relative;
-        }
-        .slide-container {
-            display: flex;
-            transition: transform 0.5s ease-in-out;
-        }
-        .slide {
-            flex: 0 0 100%;
-        }
-        .mobile-menu {
-            position: fixed;
-            top: 0;
-            right: -100%;
-            width: 80%;
-            height: 100vh;
-            background-color: var(--color-background);
-            transition: right 0.3s ease-in-out;
-            z-index: 1001;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-        .mobile-menu.active {
-            right: 0;
-        }
-        .mobile-menu a {
-            color: var(--color-text);
-            font-size: 1.5rem;
-            margin: 1rem 0;
-            text-decoration: none;
-        }
-        .close-menu {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            font-size: 2rem;
-            color: var(--color-text);
-            cursor: pointer;
-        }
-        .whatsapp-float {
-            position: fixed;
-            width: 60px;
-            height: 60px;
-            bottom: 20px;
-            right: 20px;
-            background-color: #25d366;
-            color: #FFF;
-            border-radius: 50px;
-            text-align: center;
-            font-size: 30px;
-            box-shadow: 2px 2px 3px #999;
-            z-index: 1000;
-            transition: transform 0.3s ease;
-        }
-        .whatsapp-float:hover {
-            transform: scale(1.1);
-        }
-        .whatsapp-float i {
-            margin-top: 16px;
-        }
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
-            40% {transform: translateY(-20px);}
-            60% {transform: translateY(-10px);}
-        }
-        .bounce {
-            animation: bounce 2s infinite;
-        }
-        .hover-effect {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .hover-effect:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-        }
-        @keyframes slide {
-            0% {
-                transform: translateX(0);
-            }
-            100% {
-                transform: translateX(-50%);
-            }
-        }
 
-        .animate-slide {
-            animation: slide 30s linear infinite;
-        }
+/* Preloader */
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.preloader img {
+    width: 150px;
+    height: auto;
+}
+
+.preloader p {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    color: var(--color-primary);
+}
+
+/* Efecto de pulsación */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.pulse {
+    animation: pulse 2s infinite;
+}
+
+/* Selector de idioma */
+.language-selector {
+    position: relative;
+    display: inline-block;
+}
+
+.language-selector select {
+    appearance: none;
+    background-color: transparent;
+    border: none;
+    padding: 0 1em 0 0;
+    margin: 0;
+    width: 100%;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: pointer;
+    line-height: inherit;
+    outline: none;
+}
+
+.language-selector::after {
+    content: "\25BC";
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0 0.5em;
+    background-color: transparent;
+    pointer-events: none;
+}
+
+/* Hero slider */
+.hero-slider {
+    overflow: hidden;
+    position: relative;
+}
+
+.slide-container {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+    flex: 0 0 100%;
+}
+
+/* Menú móvil */
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    height: 100vh;
+    background-color: var(--color-background);
+    transition: right 0.3s ease-in-out;
+    z-index: 1001;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.mobile-menu.active {
+    right: 0;
+}
+
+.mobile-menu a {
+    color: var(--color-text);
+    font-size: 1.5rem;
+    margin: 1rem 0;
+    text-decoration: none;
+}
+
+.close-menu {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 2rem;
+    color: var(--color-text);
+    cursor: pointer;
+}
+
+/* Botón de WhatsApp flotante */
+.whatsapp-float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 20px;
+    right: 20px;
+    background-color: #25d366;
+    color: #FFF;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 30px;
+    box-shadow: 2px 2px 3px #999;
+    z-index: 1000;
+    transition: transform 0.3s ease;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1);
+}
+
+.whatsapp-float i {
+    margin-top: 16px;
+}
+
+/* Animación de rebote */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-20px); }
+    60% { transform: translateY(-10px); }
+}
+
+.bounce {
+    animation: bounce 2s infinite;
+}
+
+/* Efecto hover */
+.hover-effect {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-effect:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Animación de deslizamiento */
+@keyframes slide {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+.animate-slide {
+    animation: slide 30s linear infinite;
+}
     </style>
 </head>
 <body class="min-h-screen bg-custom text-custom">
