@@ -1,20 +1,23 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Preloader
-    window.addEventListener('load', function() {
-        const preloader = document.querySelector('.preloader');
-        if (preloader) {
-            preloader.innerHTML = `
-                <img src="logo.png" alt="Logo" class="pulse">
-                <p class="pulse">Powered By Duality Domain</p>
-            `;
+    const preloader = document.querySelector('.preloader');
+    if (preloader) {
+        preloader.style.display = 'flex';
+        preloader.innerHTML = `
+            <img src="logo.png" alt="Logo" class="pulse">
+            <p class="pulse">Powered By Duality Domain</p>
+        `;
+        
+        // Ocultar el preloader después de que todo el contenido se haya cargado
+        window.addEventListener('load', function() {
             setTimeout(() => {
                 preloader.style.opacity = '0';
                 setTimeout(() => {
                     preloader.style.display = 'none';
                 }, 500);
-            }, 2000);
-        }
-    });
+            }, 1000); // Reducido a 1 segundo para una carga más rápida
+        });
+    }
 
     // Initialize AOS
     if (typeof AOS !== 'undefined') {
@@ -64,12 +67,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const bannerSection = document.querySelector('#banner');
     if (bannerSection) {
         bannerSection.innerHTML = `
-            <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover">
-                <source src="img/vibrando1.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-                <h1 class="text-4xl md:text-6xl text-white font-bold text-center">Vibrando Alto: Tu Agencia de Marketing Digital</h1>
+            <div class="relative w-full h-0 pb-[56.25%]">
+                <video autoplay loop muted playsinline class="absolute top-0 left-0 w-full h-full object-cover">
+                    <source src="img/vibrando1.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+                    <h1 class="text-4xl md:text-6xl text-white font-bold text-center">Vibrando Alto: Tu Agencia de Marketing Digital</h1>
+                </div>
             </div>
         `;
     }
@@ -422,7 +427,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const service = services.find(s => s.title === serviceName);
             if (service) {
                 const modalContent = `
-                    <div class="bg-custom p-6 rounded-lg max-w-4xl w-full mx-4">
+                    <div class="bg-custom p-6 rounded-lg max-w-4xl w-full mx-4 max-h-[90vh] overflow-y-auto">
                         <h2 class="text-2xl font-bold mb-4">${service.title}</h2>
                         ${service.modalContent}
                         <button class="close-modal bg-primary text-custom py-2 px-4 rounded-full hover:bg-secondary transition-colors mt-4">Cerrar</button>
@@ -449,9 +454,8 @@ document.addEventListener('DOMContentLoaded', function() {
     if (newsletterForm) {
         newsletterForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            const whatsappNumber = this.querySelector('input[type="tel"]').value;
             const message = encodeURIComponent('Hola, me gustaría suscribirme al boletín informativo de Vibrando Alto.');
-            window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
+            window.open(`https://wa.me/+5493815519630?text=${message}`, '_blank');
             this.reset();
         });
     }
@@ -499,7 +503,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (nosotrosButton) {
         nosotrosButton.addEventListener('click', () => {
             modalContainer.innerHTML = `
-                <div class="bg-custom p-6 rounded-lg max-w-4xl w-full mx-4">
+                <div class="bg-custom p-6 rounded-lg max-w-4xl w-full mx-4 max-h-[90vh] overflow-y-auto">
                     <h2 class="text-2xl font-bold mb-4">Sobre Nosotros</h2>
                     ${nosotrosModalContent}
                     <button class="close-modal bg-primary text-custom py-2 px-4 rounded-full hover:bg-secondary transition-colors mt-4">Cerrar</button>
