@@ -419,8 +419,8 @@ if (reviewsSlider) {
 
     // Team data
     const team = [
-        { name: 'VALENTINA TERAN', role: 'CEO Y EDITORA', photo: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80' },
-        { name: 'CANDELA CIUTATT', role: 'CEO Y CLOSER', photo: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80' },
+        { name: 'VALENTINA TERAN', role: 'CEO Y EDITORA', photo: 'img/valen.png' },
+        { name: 'CANDELA CIUTATT', role: 'CEO Y CLOSER', photo: 'img/cande.png' },
     ];
 
     // Render team
