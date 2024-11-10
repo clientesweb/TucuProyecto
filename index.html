@@ -71,23 +71,26 @@
         .gradient-yellow {
             background: linear-gradient(135deg, var(--color-yellow) 0%, var(--color-accent) 100%);
         }
-        /* Estilos para el banner dinámico */
+        /* Elimina la separación y asegura que el banner dinámico no tenga margen ni padding innecesarios */
 #dynamicBanner {
-    padding: 0; /* Elimina el padding innecesario */
+    margin: 0;  /* Eliminar márgenes */
+    padding: 0; /* Eliminar padding innecesario */
     background-color: #333; /* Fondo opcional */
     color: white;
     text-align: center;
     font-size: 16px;
     width: 100%;
     z-index: 50; /* Asegura que esté encima del slider */
+    position: relative;
 }
 
-/* Estilos para el slider (banner deslizante) */
+/* Estilos para el banner deslizante */
 .fixed-header {
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 40; /* Debe estar debajo del banner dinámico */
+    z-index: 40; /* Asegura que esté debajo del banner dinámico */
+    margin-top: 0; /* Elimina cualquier margen superior */
 }
 
 .slider {
@@ -105,6 +108,7 @@
     padding: 0 1rem; /* Ajusta el padding de los elementos */
 }
 
+/* Asegura que el contenido se deslice de derecha a izquierda */
 @keyframes scroll {
     0% { transform: translateX(100%); }
     100% { transform: translateX(-100%); }
