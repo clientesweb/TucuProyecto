@@ -623,7 +623,7 @@ let currentBannerIndex = 0;
 function updateBanner() {
     const currentBanner = banners[currentBannerIndex];
     dynamicBanner.textContent = currentBanner.text;
-    dynamicBanner.className = `text-center text-white transition-colors duration-500 ${currentBanner.bgColor}`;
+    dynamicBanner.className = `p-4 text-center text-white transition-colors duration-500 ${currentBanner.bgColor}`;
     currentBannerIndex = (currentBannerIndex + 1) % banners.length;
 }
 
