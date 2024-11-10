@@ -628,7 +628,7 @@ function updateBanner() {
 }
 
 updateBanner();
-setInterval(updateBanner, 5000); // Actualiza cada 5 segundos
+setInterval(updateBanner, 5000); // Cambia cada 5 segundos
 
     // About Us modal
     const aboutUsButton = document.querySelector('#aboutUsButton');
