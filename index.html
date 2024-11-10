@@ -72,13 +72,14 @@
             background: linear-gradient(135deg, var(--color-yellow) 0%, var(--color-accent) 100%);
         }
         /* Banner deslizante */
+/* Banner deslizante */
 .fixed-header {
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 50; /* Asegura que el banner esté encima */
     background-color: transparent; /* Fondo transparente para el slider */
-    margin-bottom: 60px; /* Añadimos margen para que no se superponga con el header */
+    margin-bottom: 30px; /* Reducimos el espacio entre el banner deslizante y el header */
 }
 
 .slider {
@@ -88,27 +89,27 @@
 }
 
 .slide-track {
-    display: inline-flex; /* Los mensajes estarán en línea (horizontalmente) */
-    animation: scroll 30s linear infinite; /* Animación más lenta (30s en vez de 15s) */
+    display: flex; /* Los mensajes se mostrarán en una fila horizontal */
+    animation: scroll 18s linear infinite; /* Animación más lenta (18s en vez de 30s) */
 }
 
 .slide {
-    flex: 0 0 auto; /* Los mensajes ocupan solo el ancho necesario */
-    padding: 1rem;
+    flex: 0 0 100%; /* Cada mensaje ocupará el 100% del contenedor */
+    padding: 0 2rem; /* Ajustamos el padding para que los mensajes no estén tan pegados */
     text-align: center;
     font-size: 1rem;
-    white-space: nowrap; /* Para que los mensajes no se dividan */
+    white-space: nowrap; /* No permite que los mensajes se dividan en líneas */
 }
 
 /* Animación del slider para deslizar los mensajes */
 @keyframes scroll {
     0% { transform: translateX(100%); } /* Empieza fuera a la derecha */
-    33% { transform: translateX(0); } /* Muestra el primer mensaje */
-    66% { transform: translateX(-100%); } /* Muestra el segundo mensaje */
+    33.33% { transform: translateX(0); } /* Muestra el primer mensaje */
+    66.66% { transform: translateX(-100%); } /* Muestra el segundo mensaje */
     100% { transform: translateX(-200%); } /* Muestra el tercer mensaje y vuelve al primero */
 }
 
-/* Banner dinámico - SIN fondo */
+/* Banner dinámico */
 #dynamicBanner {
     position: relative;
     top: -2px; /* Ajusta para que esté justo encima del slider */
