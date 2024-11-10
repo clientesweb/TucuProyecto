@@ -232,10 +232,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Clients data
     const clients = [
-        { name: 'Cliente 1', logo: 'https://images.unsplash.com/photo-1560179707-f14e90ef3623?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1473&q=80' },
-        { name: 'Cliente 2', logo: 'https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80' },
-        { name: 'Cliente 3', logo: 'https://images.unsplash.com/photo-1572021335469-31706a17aaef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80' },
-        { name: 'Cliente 4', logo: 'https://images.unsplash.com/photo-1621768216002-5ac171876625?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80' },
+        { name: 'Cliente 1', logo: 'img/florencio-logo (1).png' },
+        { name: 'Cliente 2', logo: 'img/alexis-logo (1).png' },
+        { name: 'Cliente 3', logo: 'img/fashion-logo (1).png' },
+        { name: 'Cliente 4', logo: 'img/market-logo (1).png' },
     ];
 
     // Render clients slider
