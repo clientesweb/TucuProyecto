@@ -1,11 +1,18 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Preloader
+    // Preloader (modificado)
     window.addEventListener('load', function() {
         const preloader = document.querySelector('.preloader');
-        preloader.style.opacity = '0';
+        preloader.innerHTML = `
+            <img src="logo.png" alt="Logo" class="animate-pulse">
+            <p class="mt-4">Powered By Duality Domain</p>
+            <p>con Herft</p>
+        `;
         setTimeout(() => {
-            preloader.style.display = 'none';
-        }, 500);
+            preloader.style.opacity = '0';
+            setTimeout(() => {
+                preloader.style.display = 'none';
+            }, 500);
+        }, 2000); // Ajusta este tiempo según lo que desees mostrar el preloader
     });
 
     // Initialize AOS
@@ -34,6 +41,20 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('resize', adjustFirstSectionPadding);
     adjustFirstSectionPadding();
 
+    // Banner video (nuevo)
+    const bannerSection = document.querySelector('#banner');
+    if (bannerSection) {
+        bannerSection.innerHTML = `
+            <video autoplay loop muted playsinline class="w-full h-full object-cover">
+                <source src="/path/to/your/video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+                <h1 class="text-4xl md:text-6xl text-white font-bold">Tu Mensaje Principal</h1>
+            </div>
+        `;
+    }
+
     // Services data
     const services = [
         { icon: 'fa-globe', title: 'SEO', 
@@ -48,6 +69,18 @@ document.addEventListener('DOMContentLoaded', function() {
           description: 'Desarrollamos campañas de búsqueda, display, remarketing, discovery y performance max.' },
         { icon: 'fa-robot', title: 'Crecimiento con IA',
           description: 'Sistematización de crecimiento exponencial que mejorará la imagen de tu perfil.' },
+        { icon: 'fa-pen', title: 'Guiones', 
+          description: 'Esquemas que organizan el contenido de videos cortos, con introducción, mensaje clave y llamado a la acción, para captar la atención en redes sociales.' },
+        { icon: 'fa-microphone', title: 'Creación de podcast', 
+          description: 'Unimos cámaras, tarjetas de audio de distintas cámaras y hacemos la edición para que tu podcast sea llamativo y crees un canal con una audiencia sólida.' },
+        { icon: 'fa-handshake', title: 'Cerradores', 
+          description: 'Personas encargadas de cerrar las ventas potenciales que tiene nuestro cliente, sin gastar tiempo y mejorando su ROI y beneficio.' },
+        { icon: 'fa-file-alt', title: 'Marketing de Contenidos', 
+          description: 'Desarrollamos campañas de búsqueda, display, remarketing, discovery y performance max.' },
+        { icon: 'fa-search', title: 'Posicionamiento en Google', 
+          description: 'Llevamos tu empresa a los primeros lugares de Google.' },
+        { icon: 'fa-video', title: 'Edición de video', 
+          description: 'Editamos videos profesionales que captan la esencia de tu marca y atraen a tu audiencia, ideales para redes sociales y campañas publicitarias.' }
     ];
 
     // Render services
@@ -68,29 +101,30 @@ document.addEventListener('DOMContentLoaded', function() {
         servicesGrid.appendChild(serviceElement);
     });
 
-    // Clients data
+    // Clients data (modificado para usar imágenes de logos)
     const clients = [
-        { name: 'AG ALEXIS GORGONEA PELUQUERIA CANINA', style: 'font-bold' },
-        { name: 'MARKET', style: 'text-blue-600 font-bold' },
-        { name: 'Florencio Soto', style: 'font-serif' },
-        { name: 'FASHION', style: 'text-pink-400 uppercase' },
+        { name: 'AG ALEXIS GORGONEA PELUQUERIA CANINA', logo: '/path/to/alexis-logo.png' },
+        { name: 'MARKET', logo: '/path/to/market-logo.png' },
+        { name: 'Florencio Soto', logo: '/path/to/florencio-logo.png' },
+        { name: 'FASHION', logo: '/path/to/fashion-logo.png' },
     ];
 
     // Render clients
     const clientsGrid = document.getElementById('clientsGrid');
     clients.forEach((client, index) => {
         const clientElement = document.createElement('div');
-        clientElement.className = `bg-custom text-primary p-4 rounded-lg flex items-center justify-center h-24 ${client.style}`;
+        clientElement.className = 'bg-custom p-4 rounded-lg flex items-center justify-center h-24';
         clientElement.setAttribute('data-aos', 'fade-up');
         clientElement.setAttribute('data-aos-delay', (index * 100).toString());
-        clientElement.textContent = client.name;
+        clientElement.innerHTML = `
+            <img src="${client.logo}" alt="${client.name}" class="max-h-full max-w-full object-contain">
+        `;
         clientsGrid.appendChild(clientElement);
     });
 
-    // Team data
+    // Team data (Mariana Mónaco removida)
     const team = [
         { name: 'VALENTINA TERAN', role: 'CEO Y EDITORA' },
-        { name: 'MARIANA MÓNACO TORRENTE', role: 'CEO Y COMMUNITY MANAGER' },
         { name: 'CANDELA CIUTATT', role: 'CEO Y CLOSER' },
     ];
 
