@@ -71,50 +71,51 @@
         .gradient-yellow {
             background: linear-gradient(135deg, var(--color-yellow) 0%, var(--color-accent) 100%);
         }
-        /* Banner Deslizante */
+        /* Banner deslizante */
 .fixed-header {
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 50; /* Asegura que este banner esté encima */
+    z-index: 50; /* Asegura que el banner esté encima */
 }
 
 .slider {
     overflow: hidden;
     width: 100%;
+    position: relative;
 }
 
 .slide-track {
     display: flex;
-    animation: scroll 15s linear infinite;
+    animation: scroll 15s linear infinite; /* Animación infinita */
 }
 
 .slide {
     flex: 0 0 100%;
-    padding: 0 1rem; /* Ajustamos el padding para que los textos estén bien alineados */
+    padding: 1rem; /* Ajustamos el padding */
     text-align: center;
     font-size: 1rem;
 }
 
 /* Animación del slider para deslizar los mensajes */
 @keyframes scroll {
-    0% { transform: translateX(100%); }
-    33% { transform: translateX(0); }
-    66% { transform: translateX(-100%); }
-    100% { transform: translateX(-200%); }
+    0% { transform: translateX(100%); } /* Empieza fuera a la derecha */
+    33% { transform: translateX(0); } /* Muestra el primer mensaje */
+    66% { transform: translateX(-100%); } /* Muestra el segundo mensaje */
+    100% { transform: translateX(-200%); } /* Muestra el tercer mensaje y vuelve al primero */
 }
 
-/* Banner Dinámico (El que cambia de color y texto) */
+/* Banner dinámico */
 #dynamicBanner {
     position: relative;
-    top: -2px; /* Ajusta para que esté justo encima del slider sin separación */
+    top: -2px; /* Ajusta para que esté justo encima del slider */
     margin: 0;
     padding: 0;
     text-align: center;
-    background-color: #333; /* Color por defecto */
+    background-color: #333; /* Color de fondo predeterminado */
     color: white;
     font-size: 1rem;
-    z-index: 100; /* Asegura que esté encima del slider */
+    z-index: 100; /* Asegura que el banner dinámico esté encima */
 }
         .preloader {
             position: fixed;
